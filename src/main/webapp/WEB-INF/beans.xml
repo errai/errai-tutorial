@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee">
+
+  <scan>
+    <!-- These exclusions were added by Errai to avoid deploying client-side classes to the server -->
+    <exclude name = "org.jboss.errai.demo.client.local.Click$Type" />
+    <exclude name = "org.jboss.errai.demo.client.local.BindableEmailAnchor" />
+    <exclude name = "org.jboss.errai.demo.client.local.ContactEditor" />
+    <exclude name = "org.jboss.errai.demo.client.local.AppSetup" />
+    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer" />
+    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQuery" />
+    <exclude name = "org.jboss.errai.demo.client.local.PaperTextArea" />
+    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQueryElement" />
+    <exclude name = "org.jboss.errai.demo.client.local.DateConverter" />
+    <exclude name = "org.jboss.errai.demo.client.local.NavBar" />
+    <exclude name = "org.jboss.errai.demo.client.local.PaperInput" />
+    <exclude name = "org.jboss.errai.demo.client.local.BindableTelAnchor" />
+    <exclude name = "org.jboss.errai.demo.client.local.ContactDisplay" />
+    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQueryArray" />
+    <exclude name = "org.jboss.errai.demo.client.local.BaseContactView" />
+    <exclude name = "org.jboss.errai.demo.client.local.Click" />
+    <exclude name = "org.jboss.errai.demo.client.local.ContactListPage" />
+    <!-- End of Errai exclusions -->
+  </scan>
+</beans>

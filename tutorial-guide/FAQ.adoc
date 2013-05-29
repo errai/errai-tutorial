@@ -1,0 +1,50 @@
+= Frequently Asked Questions
+
+Would you like to share a solution to a problem? Send your pull request to https://github.com/errai/errai-tutorial[github]!
+
+== Dev Mode Questions
+
+=== Changes in standalone.xml don't seem to work in Dev Mode. What gives?
+By default, the older JBossLauncher instance is started using a copy of `$JBOSS_HOME/standalone/configuration/standalone-full.xml`
+while the newer EmbeddedWildflyLauncher uses `$JBOSS_HOME/standalone/configuration/standalone.xml`.
+
+=== How can I specify a different configuration file for Jboss/WildFly?
+If you are using the older JBossLauncher, add this to your pom.xml in the `extraJvmArgs` part of the gwt-maven-plugin configuration:
+
+-----------------------------------------
+-Derrai.jboss.config.file=$CONFIG_FILE
+-----------------------------------------
+
+`$CONFIG_FILE` must be the name (*without* any parent directories) of a file in `$JBOSS_HOME/standalone/configuration`.
+
+If you are using the newer EmbeddedWildflyLauncher, add the following to `extraJvmArgs` instead:
+
+-----------------------------------------
+-Derrai.jboss.args="-c $CONFIG_FILE"
+-----------------------------------------
+
+=== How can I pass other options to the JVM running Jboss/WildFly?
+The older JBossLauncher ran WildFly in a separate JVM. To give it's JVM arguments: in your pom.xml add the following to the `extraJvmArgs`
+in the gwt-maven-plugin configuration (where `$JAVA_OPTS` is the string of options):
+
+-----------------------------------
+-Derrai.jboss.javaopts=$JAVA_OPTS
+-----------------------------------
+
+For the newer EmebeddedWildflyLauncher, arguments can be passed directly through `extraJvmArgs`.
+
+=== How do I change the port for remote debugging Jboss/WildFly?
+For the older JBossLauncher, you can configure the debug port of the JVM running wildfly in your pom.xml, by adding the following to the
+`extraJvmArgs` in the gwt-maven-plugin configuration (where `$PORT` is the desired port number):
+
+------------------------------
+-Derrai.jboss.debug.port=$PORT
+------------------------------
+
+With the newer EmbeddedWildflyLauncher, WildFly runs in the same JVM as the gwt compiler.
+
+=== Can I use my own instance of Jboss/WildFly instead of the one provided?
+Absolutely. If your project is based off of the errai-tutorial project, there are only two steps:
+* Set the `errai.jboss.home` property at the top of the pom.xml to the absolute path of your `$WILDFLY_HOME`
+* In the plugins tag in the pom.xml, remove the maven-dependency-plugin configuration
+The Dev Mode launcher will now start the WildFly instance located at `$WILDFLY_HOME`.

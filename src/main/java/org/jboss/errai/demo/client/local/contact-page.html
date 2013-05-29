@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--
+  This HTML file is a single template file for all UI components in this app.
+  All stylesheets used in the app are linked in the head so that it can be rendered in a web-browser without GWT compilation.
+ -->
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../webapp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="contact-page.css">
+    <link rel="stylesheet" type="text/css" href="../../../../../../../webapp/css/application.css">
+    <link rel="stylesheet" href="../../../../../../../webapp/css/shop-homepage.css">
+    <script src="../../../../../../../webapp/js/jquery.js"></script>
+    <script src="../../../../../../../webapp/js/bootstrap.js"></script>
+    <script src="../../../../../../../webapp/bower_components/platform/platform.js"></script>
+    <script src="../../../../../../../webapp/bower_components/webcomponentsjs/webcomponents.js"></script>
+
+    <link href="../../../../../../../webapp/bower_components/polymer/polymer.html" rel="import">
+    <link href="../../../../../../../webapp/bower_components/paper-input/paper-input.html" rel="import">
+    <link href="../../../../../../../webapp/bower_components/paper-input/paper-textarea.html" rel="import">
+
+    <!-- When this file is opened in a browser this performs some simple tasks
+         that make it easier to fully view the template without running the entire application.
+         Since the head and body tag are not used by Errai's templating engine,
+         this code never runs in the actual application. -->
+    <script type="text/javascript">
+      function translateImgSrc() {
+        var imgs = document.getElementsByTagName("img")
+        for (var i = 0; i < imgs.length; i++) {
+          imgs[i].src = "../../../../../../../webapp/" + imgs[i].getAttribute("src");
+        }
+      }
+      function toggleModal() {
+        var modal = document.getElementsByTagName("form")[0];
+        modal.classList.toggle("displayed");
+      }
+      function init() {
+        translateImgSrc();
+        var buttons = document.getElementsByTagName("button");
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].onclick = toggleModal;
+        }
+      }
+    </script>
+  </head>
+  <body onload="init();">
+    <!-- Navigation -->
+    <nav data-field="navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://erraiframework.org">
+            <span>
+              <img src="img/errai.png"/>Errai Framework
+            </span>
+          </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul data-field="navlist" class="nav navbar-nav">
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+
+    <div class="container">
+      <div id="contact-list" class="row">
+
+        <!-- START Modal Form -->
+        <form class="modal container" action="javascript:void(0);">
+
+            <div data-field="modal-fields" class="modal-fields">
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-input data-field="nickname" class="nickname" type="text" label="Nickname" placeholder="Nickname" required></paper-input>
+              </div>
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-input data-field="fullname" class="fullname" type="text" label="Full Name" placeholder="Full Name"></paper-input>
+              </div>
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-input data-field="phonenumber" class="phonenumber" type="tel" label="Telephone" placeholder="1 234 567 8910"></paper-input>
+              </div>
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-input data-field="email" class="email" type="email" label="Email" placeholder="email@domain.tld"></paper-input>
+              </div>
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-input data-field="birthday" class="birthday" type="date" label="Birthdate" placeholder="2016-01-01"></paper-input>
+              </div>
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-textarea data-field="notes" class="notes" label="Notes" placeholder="I met so-and-so at..."></paper-textarea>
+              </div>
+            </div>
+
+            <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+              <div class="col-xs-4">
+                <button class="modal-button modal-submit">Submit</button>
+              </div>
+              <div class="col-xs-4">
+                <button class="modal-button modal-cancel" formnovalidate>Cancel</button>
+              </div>
+              <div class="col-xs-4">
+                <button class="modal-button modal-delete" formnovalidate>Delete</button>
+              </div>
+            </div>
+
+        </form>
+        <!-- END Modal Form -->
+
+        <div class="col-md-12">
+          <div class="row header">
+            <div class="col-md-12">
+              <div class="header">
+                <h1><img src="img/errai_logo.png" alt=""> Errai Tutorial</h1>
+                <p>This simple demo app is a contact book that allows users to create, update, and delete contacts.
+                <p>Click "Create Contact" to display a form for adding new contacts.
+                <p>Double-click on an existing contact to edit it.
+                <button id="new-contact">Create Contact</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" data-field="list">
+            <div data-field="contact" class="contact col-sm-4 col-lg-4 col-md-4">
+              <div class="thumbnail">
+                <div class="wrapper-2x1">
+                  <img src="img/rodentia-icons_x-office-address-book.svg" alt="">
+                </div>
+                <div class="caption">
+                  <h4 class="nickname" title="Nickname">Nickname</h4>
+                  <div class="fullname" title="Full Name">Full Name</div>
+                  <div><a class="phonenumber" title="Telephone" href="tel:1 234 567 8910">1 234 567 8910</a></div>
+                  <div><a class="email" title="Email" href="mailto:email@domain.tld">email@domain.tld</a></div>
+                  <div class="birthday" title="Birthdate">2016-01-01</div>
+                  <div class="notes" title="Notes">I met so-and-so at...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

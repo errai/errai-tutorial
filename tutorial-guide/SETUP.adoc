@@ -1,0 +1,80 @@
+Setup
+-----
+
+An Inventory of Tools
+~~~~~~~~~~~~~~~~~~~~~
+
+In this section we will go through how to acquire and use the following
+tools, which will be necessary for developing Errai and following along
+with the rest of the tutorial:
+
+* JDK (6 or 7)
+* Maven (3.x)
+* WildFly 10 (Optional -- necessary for production, but not development mode)
+* Eclipse IDE (with the M2E plugin)
+
+Although it is possible to use counterparts for some of these tools, we
+encourage you to use the suggested tools on your first go.
+
+JDK
+~~~
+
+We recommend you use a version 7 of the Oracle JDK or the OpenJDK.
+
+You can find Oracle's JDK
+http://www.oracle.com/technetwork/java/javase/downloads/index.html[here].
+
+You can find instructions for installing the OpenJDK on several Linux
+distributions
+http://www.oracle.com/technetwork/java/javase/downloads/index.html[here].
+
+Maven
+~~~~~
+
+Maven is a dependency management tool that we will use to build our
+Errai Application. In order to install and use Maven, you will need to
+have the JDK installed. It's important to make sure you have version 3
+installed. Run `mvn --version` on the command line to check.
+
+Go http://maven.apache.org/download.cgi[here] to download the latest
+version of Maven and follow the
+http://maven.apache.org/download.cgi#Installation_Instructions[installation
+instructions].
+
+WildFly
+~~~~~~~
+
+Wildlfy is an Application Server which we will use to host our Errai
+Application locally. In the tutorial we will be using
+WildFly 10.0.0.Final.
+
+You can download a zip file with WildFly 10 
+http://download.jboss.org/wildfly/10.0.0.Final/wildfly-10.0.0.Final.zip[here].
+No installation is necessary. Simply unzip it to wherever you would like
+the application's directory to be located.
+
+Eclipse IDE with the M2E Plugin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Eclipse is an Integrated Development Environment that you can use to
+develop an Errai Application. It is not necessary to use Eclipse for
+development, but specific features of Eclipse will be used in parts of
+this tutorial. The M2E plugin adds support for Maven integration with
+Eclipse.
+
+If you do not have Eclipse, you can find a version of Eclipse Kepler
+with the M2E plugin
+http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplersr1[here].
+
+If you already have Eclipse installed but do not have the M2E plugin,
+you can find it in the Eclipse Marketplace (Help > Eclipse Marketplace)
+by searching for "Maven Integration" or by going
+http://marketplace.eclipse.org/content/maven-integration-eclipse-juno-and-newer[here]
+and dragging the "install" link into your running instance of Eclipse.
+
+What's Next?
+~~~~~~~~~~~~
+
+Now that you have everything installed, you're ready to try running an
+Errai Application locally. To find out how, go to the link:RUN.adoc[next
+section].

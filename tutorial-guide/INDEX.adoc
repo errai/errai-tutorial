@@ -1,0 +1,25 @@
+Introduction
+------------
+
+What's on the Agenda
+~~~~~~~~~~~~~~~~~~~~
+
+Welcome to the Errai tutorial. This tutorial is designed to walk you
+through getting started with Errai. What exactly does that entail? Here
+is an index of the files in this tutorial guide and what they cover:
+
+1.  link:SETUP.adoc[*SETUP*] : Get the tools you need (such as Git, Maven, and Wildfly)
+2.  link:RUN.adoc[*RUN*] : Run an Errai Application in production mode 
+3.  link:DEVELOP.adoc[*DEVELOP*] : Import the project into your IDE and make use of 
+development mode. Super Dev Mode runs a faster draft-compile of your client-side code
+that allows for a quick "code-test-debug" cycle. Simply refresh your browser in Super Dev Mode
+to update client-side code. Super Dev Mode usese source maps so that it you can
+debug your client-side code with the original source even after it has been compiled.
+With the right Eclipse or IntelliJ plugin you can debug client-side code from your IDE.
+4.  link:FAQ.adoc[*FAQ*] : Answers to frequently asked questions about the dev mode 
+setup.
+
+Would you like to contribute information you've learned to this
+tutorial? Send a pull request on
+https://github.com/errai/errai-tutorial[github]. Community contributions
+are cheerfully reviewed and accepted.

@@ -1,0 +1,154 @@
+== Development Mode with Errai
+
+In this section we will configure GWT development mode to use the WildFly Application Server so that it is NOT necessary to manually start the server and deploy a war file before running an Application in dev mode.
+
+Before starting this, you should:
+
+* Have downloaded the errai-tutorial
+
+* Have installed eclipse with the m2e plugin
+
+=== Importing the Project to Eclipse
+
+First we'll need to get the project into Eclipse:
+
+* In the menu, go to "File" > "Import..."
+* In the popup window, select "Maven" > "Existing Maven Projects" and
+click "Next"
+* Click "Browse", find and select the errai-tutorial folder
+* Check that there is only one checkbox listed under "Projects" and that
+it is selected
+* Click "Finished"
+
+=== Setting up DevMode for WildFly 10
+
+Note that you will only need to go through this step if you're upgrading an existing Errai App. If you've just downloaded the errai-tutorial this configuration is already set up for you.
+
+Currently to use this feature, you must be using errai 3.0.0 or greater. Here is the main dependency for the DevMode setup.
+
+-------------------------------------------------------------------------------
+<dependency>
+  <groupId>org.jboss.errai</groupId>
+  <artifactId>errai-cdi-jboss</artifactId>
+  <version>${errai.version}</version>
+</dependency>
+-------------------------------------------------------------------------------
+
+This new dependency contains a ServletLauncher, which the gwt-maven-plugin will use to control the WildFly AS instance.
+
+Additionally, the plugin configuration has changed. First we have the new gwt-maven-plugin configuration:
+
+-------------------------------------------------------------------------------
+<plugin>
+  <groupId>org.codehaus.mojo</groupId>
+  <artifactId>gwt-maven-plugin</artifactId>
+  <version>${gwt.version}</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>resources</goal>
+        <goal>compile</goal>
+      </goals>
+    </execution>
+  </executions>
+  <configuration>
+    <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -Derrai.jboss.home=${errai.jboss.home}</extraJvmArgs>
+    <logLevel>INFO</logLevel>
+    <noServer>false</noServer>
+    <server>org.jboss.errai.cdi.server.gwt.EmbeddedWildflyLauncher</server>
+    <disableCastChecking>true</disableCastChecking>
+    <runTarget>webapp/index.html</runTarget>
+    <soyc>false</soyc>
+    <hostedWebapp>src/main/webapp</hostedWebapp>
+  </configuration>
+</plugin>
+-------------------------------------------------------------------------------
+
+The main differences in this configuration are:
+
+* the *noServer* option has been set to false
+* there is a new *server* property with the fully-qualified classpath of the JBossLauncher
+* we've passed some extra properties through *extraJvmArgs*
+
+Additionally, we have added a new execution for the maven-dependency plugin:
+
+-------------------------------------------------------------------------------
+<!-- Unpack wildfly from maven. Remove this if you wish to use your own wildfly instance. -->
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-dependency-plugin</artifactId>
+  <executions>
+    <execution>
+      <id>unpack</id>
+      <phase>process-resources</phase>
+      <goals>
+        <goal>unpack</goal>
+      </goals>
+      <configuration>
+        <artifactItems>
+          <artifactItem>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-dist</artifactId>
+            <version>${as.version}</version>
+            <type>zip</type>
+            <overWrite>false</overWrite>
+            <outputDirectory>${project.build.directory}</outputDirectory>
+          </artifactItem>
+        </artifactItems>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
+-------------------------------------------------------------------------------
+
+This new execution will unpack a WildFly Application Server and unzip it into your target directory.
+
+Finally, at the top of the pom we've included the following necessary properties:
+
+-------------------------------------------------------------------------------
+<properties>
+  <errai.version>4.0.0-SNAPSHOT</errai.version>
+  <gwt.version>2.8.0-beta1</gwt.version>
+  <errai.dev.context>${project.artifactId}</errai.dev.context>
+  <as.version>8.1.0.Final</as.version>
+  <!-- Add the absolute path for $WILDFLY_HOME below to manage another instance -->
+  <errai.jboss.home>${project.build.directory}/wildfly-${as.version}</errai.jboss.home>
+</properties>
+-------------------------------------------------------------------------------
+
+=== Managing an External WildFly Instance (**Optional**)
+
+One of the extra JVM arguments we gave to the gwt-maven-plugin, errai.jboss.home, is used to tell the launcher where $WILDFLY_HOME is located. *It is necessary to set this to the path of your $WILDFLY_HOME.* In the configuration above, this is done for you for the WildFly installation that is provided by maven.
+
+But if you wish to use a different application server, you can do so by changing the pom property *errai.jboss.home* near the top of the *pom.xml*.
+
+Just find the comment:
+
+-------------------------------------------------------------------------------
+<!-- Add the absolute path for $WILDFLY_HOME below to manage another instance -->
+-------------------------------------------------------------------------------
+
+Then replace the line below with the following, where $WILDFLY_HOME is the absolute path to your AS home folder:
+
+-------------------------------------------------------------------------------
+<errai.jboss.home>$WILDFLY_HOME</errai.jboss.home>
+-------------------------------------------------------------------------------
+
+=== Running SuperDevMode
+
+If you're using the Google Plugin for Eclipse or IntelliJ Ultimate Edition follow http://docs.jboss.org/errai/latest/errai/reference/html_single/#_running_and_debugging_in_your_ide_using_gwt_tooling[these instructions].
+
+Alternatively, you should now be able to start the demo in super dev mode with this single command:
+
+-------------------------------------------------------------------------------
+mvn clean gwt:run
+-------------------------------------------------------------------------------
+
+When the GWT Dev Mode window opens, press "Launch Default Browser" to start the app.
+
+=== Debugging with SuperDevMode
+
+With Super DevMode, you can debug client-side code directly in your web browser using source-maps. You can also configure a debug environment for Eclipse by installing.
+
+- the Google Plugin for Eclipse: https://developers.google.com/eclipse/docs/download
+- the SDBG plugin: http://sdbg.github.io/
