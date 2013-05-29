@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Java Regex Tester | OCPsoft</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Live Regular Expression Tester for Java">
+	<meta name="author" content="Lincoln Baxter, III">
+	
+	<!-- Le styles -->
+	<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+	<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+	<style type="text/css">
+		body {
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+	</style>
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+	<!-- Le fav and touch icons -->
+	<link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+</head>
+
+<body>
+
+	<div data-field="app-template" class="container">
+		<div class="row inputs">
+			<div class="span8 cols offset2">
+				<form onsubmit="false">
+					<fieldset>
+						<center><h1>Visual Regex Tester</h1></center>
+						<textarea id="text" data-field="text" rows="1" placeholder="Target text" type="text" name="text" tabindex="1" autofocus="autofocus"></textarea>
+						<textarea id="regex" data-field="regex" rows="1" placeholder="Regular expression" type="text" name="regex" tabindex="2" ></textarea>
+						<textarea id="replacement" data-field="replacement" rows="1" placeholder="Replacement (optional)" type="text" name="replacement" tabindex="3"></textarea>
+						<center>
+						    <div class="btn-group flags">
+							    <button data-field="ignoreCase" class="btn btn-mini">Ignore case</button>
+							    <button data-field="dotAll" class="btn btn-mini">Dot-all</button>
+							    <button data-field="multiLine" class="btn btn-mini">Multi-line</button>
+							    <button data-field="unixLines" class="btn btn-mini disabled">UNIX-lines</button>
+							    <div class="mobile"></div>
+							    <button data-field="commentsMode" class="btn btn-mini">Comments</button>
+							    <button data-field="unicodeCase" class="btn btn-mini">Unicode case</button>
+						    </div>
+						</center>
+						
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div data-field="result" class="span8 cols offset2 result"></div>
+			<div data-field="replaced" class="span8 cols offset2 replaced result"></div>
+			<div data-field="error" class="span8 cols offset2 error"></div>
+		</div>
+		<div class="row faded footer">
+			<center>&copy; <a href="http://ocpsoft.org">ocpsoft.org</a> 2013, powered by <a href="http://jboss.org/errai">errai</a>, hosted on <a href="http://openshift.com">openshift by red hat</a>.</center>
+		</div>
+
+	</div>
+	<!-- /container -->
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tab.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js"></script>
+
+</body>
+</html>

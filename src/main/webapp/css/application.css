@@ -1,0 +1,92 @@
+/*
+ * Debugging styles
+ */
+.gwt-DialogBox {
+	z-index: 10000;
+}
+
+/*
+ * Application styles
+ */
+body {
+	font-family: 'Gudea', monospace;
+}
+
+h1 {
+	font-size: 40px;
+	margin-bottom: 25px;
+}
+
+input,textarea,.result,.error,.replaced {
+	padding: 10px;
+	font-size: 25px;
+	line-height: 25px;
+	font-family: monospace;
+	white-space: pre-wrap;
+	overflow: hidden;
+	word-wrap: break-word;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+input,textarea {
+	display: block;
+	width: 100%;
+	min-height: 51px;
+}
+
+.disabled {
+	cursor: pointer !important;
+}
+
+.faded {
+	opacity: .5;
+}
+
+.footer {
+	margin-top: 50px;
+}
+
+.error {
+	background-color: #FFB3B3;
+}
+
+.flags button {
+	
+}
+
+.inputs {
+	margin-bottom: 25px;
+}
+
+.matches {
+	background-color: #D9FFE5;
+}
+
+.replaced {
+	background-color: #BFE0FF;
+}
+
+.highlight {
+	padding-bottom: 2px;
+	border-color: #888888;
+	border-bottom: solid 2px;
+	margin-bottom: 2px;
+	display: inline-block;
+}
+
+.group {
+	display: inline;
+}
+
+
+.mobile {
+	display: none;
+}
+
+@media (max-width: 480px) {
+	.mobile {
+		display: block;
+	}
+}
