@@ -184,6 +184,13 @@
                </plugin>
             </plugins>
          </build>
+         <dependencies>
+            <dependency>
+               <groupId>org.jboss.errai</groupId>
+               <artifactId>errai-jboss-as-support</artifactId>
+               <version>${errai.version}</version>               
+            </dependency>
+         </dependencies>
       </profile>
    </profiles>
 </project>
