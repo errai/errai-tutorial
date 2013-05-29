@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Java Regular Expression Tester | OCPsoft</title>
+<title>Errai - Red Hat Summit & JUDCon 2013</title>
 <meta name="description" content="">
 <meta name="author" content="">
 

@@ -5,16 +5,30 @@
 	z-index: 10000;
 }
 
+html {
+	background-image: url("../images/background.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100%;
+}
+
 /*
  * Application styles
  */
 body {
 	font-family: 'Gudea', monospace;
+	background: none;
+	color: #ffffff;
 }
 
 h1 {
 	font-size: 40px;
 	margin-bottom: 25px;
+	background-color: #000;
+	padding: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 input,textarea,.result,.error,.replaced {
@@ -34,6 +48,13 @@ input,textarea {
 	display: block;
 	width: 100%;
 	min-height: 51px;
+}
+
+.blackened {
+	background-color: #000;
+	padding: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .disabled {
@@ -80,12 +101,15 @@ input,textarea {
 	display: inline;
 }
 
-
 .mobile {
 	display: none;
 }
 
-@media (max-width: 480px) {
+.static {
+	position: static;
+}
+
+@media ( max-width : 480px) {
 	.mobile {
 		display: block;
 	}

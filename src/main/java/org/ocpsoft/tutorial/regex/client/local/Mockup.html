@@ -33,12 +33,12 @@
 
 <body>
 
-	<div data-field="app-template" class="container">
+	<div data-field="app-template" class="container static">
 		<div class="row inputs">
 			<div class="span8 cols offset2">
 				<form onsubmit="false">
 					<fieldset>
-						<center><h1>Visual Regex Tester</h1></center>
+						<center><h1><span class="blackened">Complain About It</span></h1></center>
 						<textarea id="text" data-field="text" rows="1" placeholder="Target text" type="text" name="text" tabindex="1" autofocus="autofocus"></textarea>
 						<textarea id="regex" data-field="regex" rows="1" placeholder="Regular expression" type="text" name="regex" tabindex="2" ></textarea>
 						<textarea id="replacement" data-field="replacement" rows="1" placeholder="Replacement (optional)" type="text" name="replacement" tabindex="3"></textarea>
@@ -63,7 +63,7 @@
 			<div data-field="replaced" class="span8 cols offset2 replaced result"></div>
 			<div data-field="error" class="span8 cols offset2 error"></div>
 		</div>
-		<div class="row faded footer">
+		<div class="row footer span5 cols offset3 blackened">
 			<center>&copy; <a href="http://ocpsoft.org">ocpsoft.org</a> 2013, powered by <a href="http://jboss.org/errai">errai</a>, hosted on <a href="http://openshift.com">openshift by red hat</a>.</center>
 		</div>
 
