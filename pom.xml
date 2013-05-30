@@ -41,6 +41,11 @@
          </exclusions>
       </dependency>
       <dependency>
+        <groupId>org.jboss.errai</groupId>
+        <artifactId>errai-cordova</artifactId>
+        <version>${errai.version}</version>               
+      </dependency>
+      <dependency>
          <groupId>org.jboss.spec</groupId>
          <artifactId>jboss-javaee-6.0</artifactId>
          <version>${javaee.version}</version>
@@ -191,6 +196,39 @@
                <version>${errai.version}</version>               
             </dependency>
          </dependencies>
+      </profile>       
+      
+      <profile>
+         <id>mobile</id>
+         <build>
+           <plugins>
+             <plugin>
+        	   <groupId>org.jboss.errai</groupId>
+        	   <artifactId>cordova-maven-plugin</artifactId>
+        	   <version>3.0-SNAPSHOT</version>
+        	    <executions>
+	              <execution>
+		            <id>build</id>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>build-project</goal>
+		            </goals>
+	            	</execution>
+        		</executions>
+      			</plugin>
+            </plugins>
+         </build>
+         <pluginRepositories>
+        <pluginRepository>
+          <id>snapshots.jboss.org</id>
+          <name>JBoss Snapshot Repository</name>
+          <url>http://snapshots.jboss.org/maven2</url>
+          <layout>default</layout>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
       </profile>
    </profiles>
 </project>

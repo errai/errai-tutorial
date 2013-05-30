@@ -1,2 +1,4 @@
 # Module app
 # RPC service class, partial path of RPC policy file
+com.googlecode.gwtphonegap.client.log.shared.PhoneGapLogService, 7269889C68B554BA56FCCFC9D88C993D.gwt.rpc
+com.googlecode.gwtphonegap.client.file.browser.service.FileRemoteService, 08ED290A8A1BA34B7BB9E2F7392DD0D4.gwt.rpc

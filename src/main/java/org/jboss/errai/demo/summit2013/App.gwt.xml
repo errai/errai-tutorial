@@ -9,6 +9,11 @@
    <inherits name="org.jboss.errai.ui.UI" />
    <inherits name="org.jboss.errai.databinding.DataBinding" />
    <inherits name="org.jboss.errai.enterprise.CDI" />
+   <inherits name="org.jboss.errai.ui.Cordova"/>
+
+    <replace-with class="org.jboss.errai.demo.summit2013.client.local.Config">
+        <when-type-is class="org.jboss.errai.bus.client.framework.Configuration"/>
+    </replace-with>
 
    <!-- Something wrong when no internet connectivity? <inherits name="org.jboss.errai.enterprise.All" 
       /> -->
