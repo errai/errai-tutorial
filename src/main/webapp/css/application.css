@@ -6,7 +6,7 @@
 }
 
 html {
-	background-image: url("../images/background2.jpg");
+	background-image: url("../images/background.jpg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -24,13 +24,16 @@ body {
 
 h1 {
 	font-size: 40px;
-	margin-bottom: 25px;
+	margin-bottom: 55px;
+	text-align: center;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 input,textarea,.result,.error,.replaced {
 	padding: 10px;
-	font-size: 25px;
-	line-height: 25px;
+	font-size: 25px !important;
+	line-height: 25px !important;
 	font-family: monospace;
 	white-space: pre-wrap;
 	overflow: hidden;
@@ -47,7 +50,8 @@ input,textarea {
 }
 
 .blackened {
-	background-color: #000;
+	background-color: rgb(200,200,200);
+	background-color: rgba(200,200,200,.7);
 	padding: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -63,6 +67,7 @@ input,textarea {
 
 .footer {
 	margin-top: 50px;
+	text-align: center;
 }
 
 .error {
@@ -77,12 +82,26 @@ input,textarea {
 	margin-bottom: 25px;
 }
 
+.issue-done {
+	background-color: rgb(178, 0, 0);
+	background-color: rgba(178, 0, 0, .8);
+}
+
+.issue-open {
+	background-color: rgb(0,178,0);
+	background-color: rgba(0,178,0,.8);
+}
+
 .matches {
 	background-color: #D9FFE5;
 }
 
 .replaced {
 	background-color: #BFE0FF;
+}
+
+.spaced {
+	margin: 10px;
 }
 
 .highlight {

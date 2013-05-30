@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ocpsoft.tutorial.regex.server;
+package org.jboss.errai.demo.summit2013.server;
 
 /**
  * Utility methods for making precondition/postcondition assertions.
