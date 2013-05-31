@@ -17,10 +17,12 @@ package org.jboss.errai.demo.summit2013.client.local;
 
 import javax.inject.Inject;
 
+import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionAnchor;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
+import org.jboss.errai.ui.shared.api.annotations.AutoBound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
@@ -29,25 +31,44 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.TextBox;
 
 @Page(role = DefaultPage.class)
 @Templated("Complaint.html#app-template")
-public class Complaint extends Composite {
+public class Complaint extends Composite
+{
+   @Inject
+   @AutoBound
+   private UserComplaint model;
 
-	@Inject
-	@DataField
-	private Button submit;
+   @Inject
+   @DataField
+   private TextBox name;
 
-	@Inject
-	@DataField
-	private TransitionAnchor<Admin> admin;
-	
-    @Inject 
-    private TransitionTo<ComplaintSubmitted> complaintSubmittedPage;
+   @Inject
+   @DataField
+   private TextBox email;
 
-	@EventHandler("submit")
-	private void onSubmit(ClickEvent e) {
-		complaintSubmittedPage.go();
-	}
-	
+   @Inject
+   @DataField
+   private TextArea complaint;
+
+   @Inject
+   @DataField
+   private Button submit;
+
+   @Inject
+   @DataField
+   private TransitionAnchor<Admin> admin;
+
+   @Inject
+   private TransitionTo<ComplaintSubmitted> complaintSubmittedPage;
+
+   @EventHandler("submit")
+   private void onSubmit(ClickEvent e)
+   {
+      Window.alert(model.getComplaint());
+      complaintSubmittedPage.go();
+   }
 }
