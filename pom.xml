@@ -64,9 +64,19 @@
       </repository>
    </repositories>
 
-   <build>
+   <build>   
       <finalName>${project.artifactId}-${project.version}</finalName>
+      <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
+      <resources>
+        <resource>
+          <directory>src/main/java</directory>
+        </resource>
+        <resource>
+          <directory>src/main/resources</directory>
+        </resource>
+     </resources>
+   
       <pluginManagement>
          <plugins>
             <plugin>
