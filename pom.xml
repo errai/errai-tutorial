@@ -32,10 +32,6 @@
          <exclusions>
             <exclusion>
                <groupId>org.jboss.errai</groupId>
-               <artifactId>errai-navigation</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.jboss.errai</groupId>
                <artifactId>errai-jpa-client</artifactId>
             </exclusion>
          </exclusions>
