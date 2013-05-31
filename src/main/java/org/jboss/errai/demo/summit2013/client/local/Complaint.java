@@ -44,18 +44,18 @@ public class Complaint extends Composite
    private UserComplaint model;
 
    @Inject
-   @DataField
    @Bound
+   @DataField
    private TextBox name;
 
    @Inject
-   @DataField
    @Bound
+   @DataField
    private TextBox email;
 
    @Inject
-   @DataField
    @Bound
+   @DataField
    private TextArea complaint;
 
    @Inject
