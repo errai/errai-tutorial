@@ -17,7 +17,10 @@ package org.jboss.errai.demo.summit2013.client.local;
 
 import javax.inject.Inject;
 
+import org.jboss.errai.common.client.api.Caller;
+import org.jboss.errai.common.client.api.RemoteCallback;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
+import org.jboss.errai.demo.summit2013.client.shared.UserComplaintEndpoint;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionAnchor;
@@ -29,7 +32,6 @@ import org.jboss.errai.ui.shared.api.annotations.Model;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextArea;
@@ -37,7 +39,7 @@ import com.google.gwt.user.client.ui.TextBox;
 
 @Page(role = DefaultPage.class)
 @Templated("Complaint.html#app-template")
-public class Complaint extends Composite
+public class ComplaintEntry extends Composite
 {
    @Inject
    @Model
@@ -67,12 +69,20 @@ public class Complaint extends Composite
    private TransitionAnchor<Admin> admin;
 
    @Inject
+   private Caller<UserComplaintEndpoint> endpoint;
+
+   @Inject
    private TransitionTo<ComplaintSubmitted> complaintSubmittedPage;
 
    @EventHandler("submit")
    private void onSubmit(ClickEvent e)
    {
-      Window.alert(model.getComplaint());
-      complaintSubmittedPage.go();
+      endpoint.call(new RemoteCallback<Void>() {
+         @Override
+         public void callback(Void response)
+         {
+            complaintSubmittedPage.go();
+         }
+      }).create(model);
    }
 }
