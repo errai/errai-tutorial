@@ -27,7 +27,7 @@ public class UserComplaintEndpointImpl implements UserComplaintEndpoint
    {
       em.persist(entity);
       return Response.created(
-               UriBuilder.fromResource(UserComplaintEndpointImpl.class).path(String.valueOf(entity.getId())).build())
+               UriBuilder.fromResource(UserComplaintEndpoint.class).path(String.valueOf(entity.getId())).build())
                .build();
    }
 

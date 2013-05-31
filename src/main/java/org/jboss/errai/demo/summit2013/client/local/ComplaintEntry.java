@@ -18,9 +18,9 @@ package org.jboss.errai.demo.summit2013.client.local;
 import javax.inject.Inject;
 
 import org.jboss.errai.common.client.api.Caller;
-import org.jboss.errai.common.client.api.RemoteCallback;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaintEndpoint;
+import org.jboss.errai.enterprise.client.jaxrs.api.ResponseCallback;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionAnchor;
@@ -32,6 +32,7 @@ import org.jboss.errai.ui.shared.api.annotations.Model;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextArea;
@@ -77,9 +78,9 @@ public class ComplaintEntry extends Composite
    @EventHandler("submit")
    private void onSubmit(ClickEvent e)
    {
-      endpoint.call(new RemoteCallback<Void>() {
+      endpoint.call(new ResponseCallback() {
          @Override
-         public void callback(Void response)
+         public void callback(Response response)
          {
             complaintSubmittedPage.go();
          }
