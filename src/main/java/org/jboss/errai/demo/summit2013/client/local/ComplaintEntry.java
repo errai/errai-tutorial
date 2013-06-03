@@ -33,57 +33,96 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.safehtml.shared.UriUtils;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
+import com.googlecode.gwtphonegap.client.camera.Camera;
+import com.googlecode.gwtphonegap.client.camera.PictureCallback;
+import com.googlecode.gwtphonegap.client.camera.PictureOptions;
 
 @Page(role = DefaultPage.class)
 @Templated("Complaint.html#app-template")
-public class ComplaintEntry extends Composite
-{
-   @Inject
-   @Model
-   private UserComplaint model;
+public class ComplaintEntry extends Composite {
+	
+	@Inject
+	@Model
+	private UserComplaint model;
 
-   @Inject
-   @Bound
-   @DataField
-   private TextBox name;
+	@Inject
+	@Bound
+	@DataField
+	private TextBox name;
 
-   @Inject
-   @Bound
-   @DataField
-   private TextBox email;
+	@Inject
+	@Bound
+	@DataField
+	private TextBox email;
 
-   @Inject
-   @Bound
-   @DataField
-   private TextArea complaint;
+	@Inject
+	@Bound
+	@DataField
+	private TextArea complaint;
 
-   @Inject
-   @DataField
-   private Button submit;
+	@Inject
+	@DataField
+	private Button submit;
 
-   @Inject
-   @DataField
-   private TransitionAnchor<Admin> admin;
+	@Inject
+	@DataField
+	private TransitionAnchor<Admin> admin;
 
-   @Inject
-   private Caller<UserComplaintEndpoint> endpoint;
+	@Inject
+	private Caller<UserComplaintEndpoint> endpoint;
 
-   @Inject
-   private TransitionTo<ComplaintSubmitted> complaintSubmittedPage;
+	@Inject
+	private TransitionTo<ComplaintSubmitted> complaintSubmittedPage;
 
-   @EventHandler("submit")
-   private void onSubmit(ClickEvent e)
-   {
-      endpoint.call(new ResponseCallback() {
-         @Override
-         public void callback(Response response)
-         {
-            complaintSubmittedPage.go();
-         }
-      }).create(model);
-   }
+	@Inject
+	private Camera camera;
+
+	@Inject
+	@DataField
+	private Button takePicture;
+
+	@Inject
+	@DataField
+	private Image image;
+
+	@EventHandler("submit")
+	private void onSubmit(ClickEvent e) 
+	{
+		model.setImage(image.getUrl());
+		endpoint.call(new ResponseCallback() {
+			@Override
+			public void callback(Response response) {
+				complaintSubmittedPage.go();
+			}
+		}).create(model);
+	}
+
+	@EventHandler("submit")
+	private void onTakePictureClick(ClickEvent e) 
+	{
+		PictureOptions options = new PictureOptions(25);
+		options.setDestinationType(PictureOptions.DESTINATION_TYPE_DATA_URL);
+		options.setSourceType(PictureOptions.PICTURE_SOURCE_TYPE_CAMERA);
+
+		camera.getPicture(options, new PictureCallback() {
+
+			@Override
+			public void onSuccess(String data) {
+				image.setVisible(true);
+				image.setUrl(UriUtils.fromSafeConstant("data:image/jpeg;base64," + data));
+			}
+
+			@Override
+			public void onFailure(String error) {
+				Window.alert("Could not take picture: " + error);
+			}
+		});
+	}
 }
