@@ -44,6 +44,7 @@ public class Admin extends Composite
          @Override
          public void callback(List<UserComplaint> userComplaints)
          {
+        	Window.alert(userComplaints.toString());
             complaints.setItems(userComplaints);
          }
       }).listAll();

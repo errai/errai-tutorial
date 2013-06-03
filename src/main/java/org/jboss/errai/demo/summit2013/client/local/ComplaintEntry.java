@@ -21,6 +21,7 @@ import org.jboss.errai.common.client.api.Caller;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaintEndpoint;
 import org.jboss.errai.enterprise.client.jaxrs.api.ResponseCallback;
+import org.jboss.errai.ui.client.widget.ValueImage;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionAnchor;
@@ -37,7 +38,6 @@ import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.googlecode.gwtphonegap.client.camera.Camera;
@@ -89,13 +89,13 @@ public class ComplaintEntry extends Composite {
 	private Button takePicture;
 
 	@Inject
+	@Bound
 	@DataField
-	private Image image;
+	private ValueImage image;
 
 	@EventHandler("submit")
 	private void onSubmit(ClickEvent e) 
 	{
-		model.setImage(image.getUrl());
 		endpoint.call(new ResponseCallback() {
 			@Override
 			public void callback(Response response) {
@@ -104,7 +104,7 @@ public class ComplaintEntry extends Composite {
 		}).create(model);
 	}
 
-	@EventHandler("submit")
+	@EventHandler("takePicture")
 	private void onTakePictureClick(ClickEvent e) 
 	{
 		PictureOptions options = new PictureOptions(25);
@@ -116,7 +116,7 @@ public class ComplaintEntry extends Composite {
 			@Override
 			public void onSuccess(String data) {
 				image.setVisible(true);
-				image.setUrl(UriUtils.fromSafeConstant("data:image/jpeg;base64," + data));
+				image.setValue("data:image/jpeg;base64," + data, true);
 			}
 
 			@Override

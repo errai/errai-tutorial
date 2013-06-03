@@ -8,7 +8,8 @@ import org.jboss.errai.bus.client.framework.Configuration;
 public class Config implements Configuration {
     @Override
     public String getRemoteLocation() {
-        //return "http://10.15.16.207:8080/errai-summit-2013/";
+        // We need to comment this in for the mobile version
+    	//return "http://10.15.16.207:8080/errai-summit-2013/";
     	return "";
     }
 }

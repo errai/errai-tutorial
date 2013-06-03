@@ -12,6 +12,7 @@ import org.jboss.errai.ui.shared.api.annotations.AutoBound;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
+import org.jboss.errai.ui.client.widget.ValueImage;
 
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
@@ -38,6 +39,10 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
    @Bound
    @DataField
    private Element complaint = DOM.createTD();
+   @Inject
+   @Bound
+   @DataField
+   private ValueImage image;
 
    @PostConstruct
    private void init()

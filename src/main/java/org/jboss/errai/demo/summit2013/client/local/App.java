@@ -23,6 +23,8 @@ public class App
    public void clientMain()
    {
       RestClient.setApplicationRoot("/errai-summit-2013/rest");
+      // We need to comment this in for the mobile version
+	  //RestClient.setApplicationRoot("http://10.15.16.207:8080/errai-summit-2013/rest");
       RootPanel.get().add(navigation.getContentPanel());
    }
 
