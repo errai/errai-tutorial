@@ -82,12 +82,12 @@ input,textarea {
 	margin-bottom: 25px;
 }
 
-.issue-done {
+.issue-open {
 	background-color: rgb(178, 0, 0);
 	background-color: rgba(178, 0, 0, .8);
 }
 
-.issue-open {
+.issue-closed {
 	background-color: rgb(0,178,0);
 	background-color: rgba(0,178,0,.8);
 }
