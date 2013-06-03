@@ -3,6 +3,8 @@ package org.jboss.errai.demo.summit2013.server.rest;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -23,9 +25,13 @@ public class UserComplaintEndpointImpl implements UserComplaintEndpoint
    @PersistenceContext(unitName = "forge-default")
    private EntityManager em;
 
+   @Inject
+   private Event<UserComplaint> created;
+
    public Response create(UserComplaint entity)
    {
       em.persist(entity);
+      created.fire(entity);
       return Response.created(
                UriBuilder.fromResource(UserComplaintEndpoint.class).path(String.valueOf(entity.getId())).build())
                .build();

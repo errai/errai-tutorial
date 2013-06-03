@@ -28,6 +28,8 @@ public class UserComplaint
    private String email;
    private String complaint;
 
+   private boolean done;
+
    @Lob
    private String image;
 
@@ -89,5 +91,15 @@ public class UserComplaint
    public void setVersion(Long version)
    {
       this.version = version;
+   }
+
+   public boolean isDone()
+   {
+      return done;
+   }
+
+   public void setDone(boolean done)
+   {
+      this.done = done;
    }
 }

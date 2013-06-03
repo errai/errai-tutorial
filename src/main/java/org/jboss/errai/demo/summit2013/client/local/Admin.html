@@ -52,13 +52,13 @@ body {
 							<th>Complaint</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr valign="top" class="issue-open">
+					<tbody data-field="complaints">
+						<tr data-field="complaint" valign="top" class="issue-open">
 							<td width="10%">#1</td>
-							<td width="10%"><input type="checkbox" data-field="handled"></td>
-							<td>Lincoln Baxter, III</td>
-							<td>lincolnbaxter@gmail.com</td>
-							<td>My cat left a hairball in the kitchen. Could you clean
+							<td width="10%"><input type="checkbox" data-field="done"></td>
+							<td data-field="name">Lincoln Baxter, III</td>
+							<td data-field="email">lincolnbaxter@gmail.com</td>
+							<td data-field="complaint">My cat left a hairball in the kitchen. Could you clean
 								it up for me please?</td>
 						</tr>
 						<tr valign="top" class="issue-open">
@@ -84,7 +84,6 @@ body {
 							<td>My developer are slacking again. It's whipping time!</td>
 						</tr>
 					</tbody>
-					</li>
 				</table>
 			</div>
 		</div>
