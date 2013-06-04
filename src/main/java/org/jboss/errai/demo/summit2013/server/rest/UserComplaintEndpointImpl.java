@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
@@ -37,7 +36,7 @@ public class UserComplaintEndpointImpl implements UserComplaintEndpoint
                .build();
    }
 
-   public Response deleteById(@PathParam("id") Long id)
+   public Response deleteById(Long id)
    {
       UserComplaint entity = em.find(UserComplaint.class, id);
       if (entity == null)
@@ -48,7 +47,7 @@ public class UserComplaintEndpointImpl implements UserComplaintEndpoint
       return Response.noContent().build();
    }
 
-   public Response findById(@PathParam("id") Long id)
+   public Response findById(Long id)
    {
       TypedQuery<UserComplaint> findByIdQuery = em.createQuery("SELECT u FROM UserComplaint u WHERE u.id = :entityId",
                UserComplaint.class);
@@ -68,7 +67,7 @@ public class UserComplaintEndpointImpl implements UserComplaintEndpoint
       return results;
    }
 
-   public Response update(@PathParam("id") Long id, UserComplaint entity)
+   public Response update(Long id, UserComplaint entity)
    {
       entity.setId(id);
       entity = em.merge(entity);
