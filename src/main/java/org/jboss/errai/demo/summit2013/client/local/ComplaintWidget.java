@@ -9,7 +9,6 @@ import org.jboss.errai.databinding.client.api.PropertyChangeEvent;
 import org.jboss.errai.databinding.client.api.PropertyChangeHandler;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaintEndpoint;
-import org.jboss.errai.enterprise.client.jaxrs.api.ResponseCallback;
 import org.jboss.errai.ui.client.widget.HasModel;
 import org.jboss.errai.ui.client.widget.ValueImage;
 import org.jboss.errai.ui.shared.api.annotations.AutoBound;
@@ -17,7 +16,6 @@ import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
-import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.CheckBox;
@@ -62,11 +60,7 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
          public void onPropertyChange(PropertyChangeEvent<Boolean> event)
          {
             updateDoneStyle();
-            endpoint.call(new ResponseCallback() {
-               @Override
-               public void callback(Response response)
-               {}
-            }).update(getModel().getId(), getModel());
+            endpoint.call().update(getModel().getId(), getModel());
          }
       });
    }
@@ -83,17 +77,18 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
       userComplaint.setModel(model);
       updateDoneStyle();
    }
-   
-   private void updateDoneStyle() {
-	   if (userComplaint.getModel().isDone())
-       {
-          removeStyleName("issue-open");
-          addStyleName("issue-closed");
-       }
-       else
-       {
-          removeStyleName("issue-closed");
-          addStyleName("issue-open");
-       }
+
+   private void updateDoneStyle()
+   {
+      if (userComplaint.getModel().isDone())
+      {
+         removeStyleName("issue-open");
+         addStyleName("issue-closed");
+      }
+      else
+      {
+         removeStyleName("issue-closed");
+         addStyleName("issue-open");
+      }
    }
 }
