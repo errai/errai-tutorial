@@ -20,7 +20,6 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 
@@ -30,7 +29,6 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
    @Inject
    @AutoBound
    private DataBinder<UserComplaint> userComplaint;
-
 
    @Bound
    @DataField
@@ -76,12 +74,8 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
             endpoint.call(new ResponseCallback() {
                @Override
                public void callback(Response response)
-               {
-                  Window.alert("Callback received." + response.getStatusCode() + ": " + response.getStatusText()
-                           + " - " + response.getText());
-               }
+               {}
             }).update(getModel().getId(), getModel());
-            Window.alert("Update sent.");
          }
       });
    }
