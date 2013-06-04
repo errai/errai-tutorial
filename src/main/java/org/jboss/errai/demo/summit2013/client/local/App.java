@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.jboss.errai.enterprise.client.jaxrs.api.RestClient;
+import org.jboss.errai.ioc.client.api.AfterInitialization;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.ui.nav.client.local.Navigation;
 
@@ -20,12 +21,17 @@ public class App
    private Navigation navigation;
 
    @PostConstruct
-   public void clientMain()
+   private void clientMain()
    {
       RestClient.setApplicationRoot("/errai-summit-2013/rest");
       // We need to comment this in for the mobile version
 	  //RestClient.setApplicationRoot("http://10.15.16.207:8080/errai-summit-2013/rest");
       RootPanel.get().add(navigation.getContentPanel());
+   }
+   
+   @AfterInitialization
+   private void afterInit() {
+	   Admin.initialized = true;
    }
 
 }

@@ -29,7 +29,7 @@ public class Admin extends Composite
    @DataField
    private ListWidget<UserComplaint, ComplaintWidget> complaints;
 
-   private static boolean initialized;
+   public static boolean initialized;
 
    public Admin()
    {
@@ -44,7 +44,6 @@ public class Admin extends Composite
          @Override
          public void callback(List<UserComplaint> userComplaints)
          {
-        	Window.alert(userComplaints.toString());
             complaints.setItems(userComplaints);
          }
       }).listAll();
@@ -53,7 +52,6 @@ public class Admin extends Composite
    @SuppressWarnings("unused")
    private void complaintCreated(@Observes UserComplaint created)
    {
-      Window.alert("Complaint received!");
       complaints.getValue().add(created);
    }
 
