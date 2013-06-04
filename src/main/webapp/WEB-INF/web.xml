@@ -5,13 +5,8 @@
 
 	<servlet>
 		<servlet-name>ErraiServlet</servlet-name>
-		<servlet-class>org.jboss.errai.bus.server.servlet.StandardAsyncServlet</servlet-class>
-		<init-param>
-			<param-name>service-locator</param-name>
-			<param-value>org.jboss.errai.cdi.server.CDIServiceLocator</param-value>
-		</init-param>
+		<servlet-class>org.jboss.errai.bus.server.servlet.DefaultBlockingServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
-		<async-supported>true</async-supported>
 	</servlet>
 
 	<servlet-mapping>
