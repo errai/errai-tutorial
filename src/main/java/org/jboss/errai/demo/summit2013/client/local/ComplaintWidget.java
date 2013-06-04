@@ -31,6 +31,10 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
    @AutoBound
    private DataBinder<UserComplaint> userComplaint;
 
+
+   @Bound
+   @DataField
+   private Element id = DOM.createTD();
    @Inject
    @Bound
    @DataField
