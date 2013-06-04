@@ -26,12 +26,12 @@ public class UserComplaintEndpointImpl implements UserComplaintEndpoint
    private EntityManager em;
 
    @Inject
-   private Event<UserComplaint> created;
+   private Event<UserComplaint> updated;
 
    public Response create(UserComplaint entity)
    {
       em.persist(entity);
-      created.fire(entity);
+      updated.fire(entity);
       return Response.created(
                UriBuilder.fromResource(UserComplaintEndpoint.class).path(String.valueOf(entity.getId())).build())
                .build();
@@ -72,6 +72,7 @@ public class UserComplaintEndpointImpl implements UserComplaintEndpoint
    {
       entity.setId(id);
       entity = em.merge(entity);
+      updated.fire(entity);
       return Response.noContent().build();
    }
 }

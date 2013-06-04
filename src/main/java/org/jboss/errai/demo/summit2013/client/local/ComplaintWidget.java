@@ -3,19 +3,24 @@ package org.jboss.errai.demo.summit2013.client.local;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.jboss.errai.common.client.api.Caller;
 import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.databinding.client.api.PropertyChangeEvent;
 import org.jboss.errai.databinding.client.api.PropertyChangeHandler;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
+import org.jboss.errai.demo.summit2013.client.shared.UserComplaintEndpoint;
+import org.jboss.errai.enterprise.client.jaxrs.api.ResponseCallback;
 import org.jboss.errai.ui.client.widget.HasModel;
+import org.jboss.errai.ui.client.widget.ValueImage;
 import org.jboss.errai.ui.shared.api.annotations.AutoBound;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.jboss.errai.ui.client.widget.ValueImage;
 
+import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 
@@ -44,6 +49,9 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
    @DataField
    private ValueImage image;
 
+   @Inject
+   private Caller<UserComplaintEndpoint> endpoint;
+
    @PostConstruct
    private void init()
    {
@@ -61,6 +69,15 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
                removeStyleName("issue-closed");
                addStyleName("issue-open");
             }
+            endpoint.call(new ResponseCallback() {
+               @Override
+               public void callback(Response response)
+               {
+                  Window.alert("Callback received." + response.getStatusCode() + ": " + response.getStatusText()
+                           + " - " + response.getText());
+               }
+            }).update(getModel().getId(), getModel());
+            Window.alert("Update sent.");
          }
       });
    }

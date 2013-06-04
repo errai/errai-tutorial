@@ -16,7 +16,6 @@ import org.jboss.errai.ui.nav.client.local.PageShown;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 
 @Page
@@ -50,9 +49,9 @@ public class Admin extends Composite
    }
 
    @SuppressWarnings("unused")
-   private void complaintCreated(@Observes UserComplaint created)
+   private void complaintChanged(@Observes UserComplaint created)
    {
-      complaints.getValue().add(created);
+      refresh();
    }
 
    @PageShown
