@@ -61,16 +61,7 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
          @Override
          public void onPropertyChange(PropertyChangeEvent<Boolean> event)
          {
-            if (event.getNewValue())
-            {
-               removeStyleName("issue-open");
-               addStyleName("issue-closed");
-            }
-            else
-            {
-               removeStyleName("issue-closed");
-               addStyleName("issue-open");
-            }
+            updateDoneStyle();
             endpoint.call(new ResponseCallback() {
                @Override
                public void callback(Response response)
@@ -90,5 +81,19 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
    public void setModel(UserComplaint model)
    {
       userComplaint.setModel(model);
+      updateDoneStyle();
+   }
+   
+   private void updateDoneStyle() {
+	   if (userComplaint.getModel().isDone())
+       {
+          removeStyleName("issue-open");
+          addStyleName("issue-closed");
+       }
+       else
+       {
+          removeStyleName("issue-closed");
+          addStyleName("issue-open");
+       }
    }
 }

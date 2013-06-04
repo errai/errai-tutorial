@@ -15,119 +15,109 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Bindable
 @Portable
 @XmlRootElement
-public class UserComplaint
-{
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   private Long id;
+public class UserComplaint {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-   @Version
-   private Long version;
+	@Version
+	private Long version;
 
-   private String name;
-   private String email;
-   private String complaint;
+	private String name;
+	private String email;
+	private String complaint;
 
-   private boolean done;
+	private boolean done;
 
-   @Lob
-   private String image;
+	@Lob
+	private String image;
 
-   public String getImage()
-   {
-      return image;
-   }
+	public String getImage() {
+		return image;
+	}
 
-   public void setImage(String image)
-   {
-      this.image = image;
-   }
+	public void setImage(String image) {
+		this.image = image;
+	}
 
-   public String getName()
-   {
-      return name;
-   }
+	public String getName() {
+		return name;
+	}
 
-   public void setName(String name)
-   {
-      this.name = name;
-   }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-   public String getEmail()
-   {
-      return email;
-   }
+	public String getEmail() {
+		return email;
+	}
 
-   public void setEmail(String email)
-   {
-      this.email = email;
-   }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-   public String getComplaint()
-   {
-      return complaint;
-   }
+	public String getComplaint() {
+		return complaint;
+	}
 
-   public void setComplaint(String complaint)
-   {
-      this.complaint = complaint;
-   }
+	public void setComplaint(String complaint) {
+		this.complaint = complaint;
+	}
 
-   public Long getId()
-   {
-      return id;
-   }
+	public Long getId() {
+		return id;
+	}
 
-   public void setId(Long id)
-   {
-      this.id = id;
-   }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-   public Long getVersion()
-   {
-      return version;
-   }
+	public Long getVersion() {
+		return version;
+	}
 
-   public void setVersion(Long version)
-   {
-      this.version = version;
-   }
+	public void setVersion(Long version) {
+		this.version = version;
+	}
 
-   public boolean isDone()
-   {
-      return done;
-   }
+	public boolean isDone() {
+		return done;
+	}
 
-   public void setDone(boolean done)
-   {
-      this.done = done;
-   }
+	public void setDone(boolean done) {
+		this.done = done;
+	}
 
-   @Override
-   public int hashCode()
-   {
-      final int prime = 31;
-      int result = 1;
-      result = prime * result + ((id == null) ? 0 : id.hashCode());
-      return result;
-   }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
 
-   @Override
-   public boolean equals(Object obj)
-   {
-      if (this == obj)
-         return true;
-      if (obj == null)
-         return false;
-      if (getClass() != obj.getClass())
-         return false;
-      UserComplaint other = (UserComplaint) obj;
-      if (id == null) {
-         if (other.id != null)
-            return false;
-      }
-      else if (!id.equals(other.id))
-         return false;
-      return true;
-   }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserComplaint other = (UserComplaint) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "UserComplaint [id=" + id + ", version=" + version + ", name="
+				+ name + ", email=" + email + ", complaint=" + complaint
+				+ ", done=" + done + ", image=" + image + "]";
+	}
+
 }
