@@ -5,16 +5,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Version;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.jboss.errai.common.client.api.annotations.Portable;
 import org.jboss.errai.databinding.client.api.Bindable;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Bindable
 @Portable
 @XmlRootElement
+@NamedQueries({
+	  @NamedQuery(name="allComplaints", query="SELECT c FROM UserComplaint c ORDER BY c.id")
+	})
 public class UserComplaint {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

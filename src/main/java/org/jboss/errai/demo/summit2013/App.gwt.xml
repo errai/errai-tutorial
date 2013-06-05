@@ -12,6 +12,7 @@
 	<inherits name="org.jboss.errai.ui.Cordova" />
 	<inherits name="org.jboss.errai.ui.nav.Navigation" />
 	<inherits name="org.jboss.errai.enterprise.Jaxrs" />
+	<inherits name="org.jboss.errai.jpa.sync.DataSync"/>
 
 	<replace-with class="org.jboss.errai.demo.summit2013.client.local.Config">
 		<when-type-is class="org.jboss.errai.bus.client.framework.Configuration" />

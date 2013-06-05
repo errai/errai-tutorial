@@ -46,82 +46,80 @@ import com.googlecode.gwtphonegap.client.camera.PictureOptions;
 @Page(role = DefaultPage.class)
 @Templated("Complaint.html#app-template")
 public class ComplaintEntry extends Composite {
-	
-	@Inject
-	@Model
-	private UserComplaint model;
 
-	@Inject
-	@Bound
-	@DataField
-	private TextBox name;
+  @Inject
+  @Model
+  private UserComplaint model;
 
-	@Inject
-	@Bound
-	@DataField
-	private TextBox email;
+  @Inject
+  @Bound
+  @DataField
+  private TextBox name;
 
-	@Inject
-	@Bound
-	@DataField
-	private TextArea complaint;
+  @Inject
+  @Bound
+  @DataField
+  private TextBox email;
 
-	@Inject
-	@DataField
-	private Button submit;
+  @Inject
+  @Bound
+  @DataField
+  private TextArea complaint;
 
-	@Inject
-	@DataField
-	private TransitionAnchor<Admin> admin;
+  @Inject
+  @DataField
+  private Button submit;
 
-	@Inject
-	private Caller<UserComplaintEndpoint> endpoint;
+  @Inject
+  @DataField
+  private TransitionAnchor<Admin> admin;
 
-	@Inject
-	private TransitionTo<ComplaintSubmitted> complaintSubmittedPage;
+  @Inject
+  private Caller<UserComplaintEndpoint> endpoint;
 
-	@Inject
-	private Camera camera;
+  @Inject
+  private TransitionTo<ComplaintSubmitted> complaintSubmittedPage;
 
-	@Inject
-	@DataField
-	private Button takePicture;
+  @Inject
+  private Camera camera;
 
-	@Inject
-	@Bound
-	@DataField
-	private ValueImage image;
+  @Inject
+  @DataField
+  private Button takePicture;
 
-	@EventHandler("submit")
-	private void onSubmit(ClickEvent e) 
-	{
-		endpoint.call(new ResponseCallback() {
-			@Override
-			public void callback(Response response) {
-				complaintSubmittedPage.go();
-			}
-		}).create(model);
-	}
+  @Inject
+  @Bound
+  @DataField
+  private ValueImage image;
 
-	@EventHandler("takePicture")
-	private void onTakePictureClick(ClickEvent e) 
-	{
-		PictureOptions options = new PictureOptions(25);
-		options.setDestinationType(PictureOptions.DESTINATION_TYPE_DATA_URL);
-		options.setSourceType(PictureOptions.PICTURE_SOURCE_TYPE_CAMERA);
+  @EventHandler("submit")
+  private void onSubmit(ClickEvent e) {
+    endpoint.call(new ResponseCallback() {
+      @Override
+      public void callback(Response response) {
+        complaintSubmittedPage.go();
+      }
+    }).create(model);
+  }
 
-		camera.getPicture(options, new PictureCallback() {
+  @EventHandler("takePicture")
+  private void onTakePictureClick(ClickEvent e) {
+    PictureOptions options = new PictureOptions(25);
+    options.setDestinationType(PictureOptions.DESTINATION_TYPE_DATA_URL);
+    options.setSourceType(PictureOptions.PICTURE_SOURCE_TYPE_CAMERA);
 
-			@Override
-			public void onSuccess(String data) {
-				image.setVisible(true);
-				image.setValue("data:image/jpeg;base64," + data, true);
-			}
+    camera.getPicture(options, new PictureCallback() {
 
-			@Override
-			public void onFailure(String error) {
-				Window.alert("Could not take picture: " + error);
-			}
-		});
-	}
+      @Override
+      public void onSuccess(String data) {
+        image.setVisible(true);
+        image.setValue("data:image/jpeg;base64," + data, true);
+      }
+
+      @Override
+      public void onFailure(String error) {
+        Window.alert("Could not take picture: " + error);
+      }
+    });
+  }
 }
