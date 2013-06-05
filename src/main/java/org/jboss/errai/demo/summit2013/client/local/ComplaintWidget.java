@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import org.jboss.errai.common.client.api.Caller;
+import org.jboss.errai.common.client.util.LogUtil;
 import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.databinding.client.api.PropertyChangeEvent;
 import org.jboss.errai.databinding.client.api.PropertyChangeHandler;
@@ -48,6 +49,10 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
   @Bound
   @DataField
   private ValueImage image;
+  
+  @Bound
+  @DataField
+  private Element version = DOM.createTD();
 
   @Inject
   private Caller<UserComplaintEndpoint> endpoint;
