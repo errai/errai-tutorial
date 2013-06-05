@@ -51,10 +51,7 @@ public class Admin extends Composite {
   private void complaintChanged(@Observes UserComplaint created) {
     LogUtil.log("Got complaint from server:" + created);
     try {
-      syncManager.getExpectedStateEm().merge(created);
-      syncManager.getExpectedStateEm().flush();
-      syncManager.getDesiredStateEm().merge(created);
-      syncManager.getDesiredStateEm().flush();
+      mergeInLocalStorage(created);
       loadComplaints();
     } catch (Throwable t) {
       LogUtil.log(t.getMessage());
@@ -69,11 +66,7 @@ public class Admin extends Composite {
       public void callback(List<SyncResponse<UserComplaint>> response) {
         LogUtil.log("Received sync response:" + response);
         loadComplaints();
-        // TODO should be done by data sync manager internally
-        syncManager.getDesiredStateEm().flush();
-        syncManager.getDesiredStateEm().clear();
-        syncManager.getExpectedStateEm().flush();
-        syncManager.getExpectedStateEm().clear();
+        flushToLocalStorage();
       }
     });
   }
@@ -83,5 +76,20 @@ public class Admin extends Composite {
     if (init) {
       sync();
     }
+  }
+  
+  private void flushToLocalStorage() {
+    // TODO should be done by data sync manager internally
+    syncManager.getDesiredStateEm().flush();
+    syncManager.getDesiredStateEm().clear();
+    syncManager.getExpectedStateEm().flush();
+    syncManager.getExpectedStateEm().clear();
+  }
+  
+  private void mergeInLocalStorage(UserComplaint created) {
+    syncManager.getExpectedStateEm().merge(created);
+    syncManager.getExpectedStateEm().flush();
+    syncManager.getDesiredStateEm().merge(created);
+    syncManager.getDesiredStateEm().flush();
   }
 }
