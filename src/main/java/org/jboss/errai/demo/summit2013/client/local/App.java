@@ -60,7 +60,8 @@ public class App {
             callback, null);
   }
   
-  private void online(@Observes OnlineEvent onlineEvent) {
+  @SuppressWarnings("unused")
+private void online(@Observes OnlineEvent onlineEvent) {
     sync();
   }
 }

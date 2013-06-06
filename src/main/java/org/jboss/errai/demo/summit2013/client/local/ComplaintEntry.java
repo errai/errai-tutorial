@@ -120,6 +120,6 @@ public class ComplaintEntry extends Composite {
       public void onFailure(String error) {
         Window.alert("Could not take picture: " + error);
       }
-    });
-  }
+      });
+   }
 }

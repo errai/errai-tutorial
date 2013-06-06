@@ -26,9 +26,13 @@ import com.google.gwt.user.client.ui.Composite;
 
 @Page
 @Templated("ComplaintSubmitted.html#app-template")
-public class ComplaintSubmitted extends Composite {
+public class ComplaintSubmitted extends Composite
+{
+   @Inject
+   @DataField
+   private TransitionAnchor<Admin> admin;
 
-  @Inject
-  @DataField
-  private TransitionAnchor<Admin> admin;
+   @Inject
+   @DataField
+   private TransitionAnchor<ComplaintEntry> entry;
 }
