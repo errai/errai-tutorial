@@ -116,16 +116,20 @@ input,textarea {
 	display: inline;
 }
 
-.mobile {
-	display: none;
-}
-
 .static {
 	position: static;
 }
 
-@media ( max-width : 480px) {
-	.mobile {
-		display: block;
-	}
+@media (max-width: 767px) {
+    html {
+        background-image: url("../images/background-mobile.jpg");
+        background-position: top;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    html {
+        background-image: url("../images/background-tablet.jpg");
+        background-position: top;
+    }
 }
