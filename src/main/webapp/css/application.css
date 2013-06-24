@@ -122,14 +122,12 @@ input,textarea {
 
 @media (max-width: 767px) {
     html {
-        background-image: url("../images/background-mobile.jpg");
-        background-position: top;
+        background: #4d3b29 url("../images/background-mobile.jpg") top;
     }
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
     html {
-        background-image: url("../images/background-tablet.jpg");
-        background-position: top;
+        background: #4d3b29 url("../images/background-tablet.jpg") top;
     }
 }
