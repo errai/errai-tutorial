@@ -11,8 +11,8 @@
 	<name>Demo::Errai Summit</name>
 
 	<properties>
-		<errai.version>3.0.0.20130604-M1</errai.version>
-		<gwt.version>2.5.0</gwt.version>
+		<errai.version>2.4.0.Beta1</errai.version>
+		<gwt.version>2.5.1</gwt.version>
 		<slf4j.version>1.5.11</slf4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<javaee.version>3.0.1.Final</javaee.version>
@@ -59,7 +59,7 @@
 	</repositories>
 
 	<build>
-		<finalName>${project.artifactId}-${project.version}</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
 		<resources>
@@ -127,8 +127,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 \
-						-XX:MaxPermSize=128M</extraJvmArgs>
+					<extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M</extraJvmArgs>
 					<logLevel>INFO</logLevel>
 					<noServer>true</noServer>
 					<disableCastChecking>true</disableCastChecking>

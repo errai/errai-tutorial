@@ -28,30 +28,26 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
   @AutoBound
   private DataBinder<UserComplaint> userComplaint;
 
-  @Bound
-  @DataField
-  private Element id = DOM.createTD();
-  @Inject
-  @Bound
-  @DataField
+  @Bound @DataField
+  private final Element id = DOM.createTD();
+  
+  @Inject @Bound @DataField
   private CheckBox done;
-  @Bound
-  @DataField
-  private Element name = DOM.createTD();
-  @Bound
-  @DataField
-  private Element email = DOM.createTD();
-  @Bound
-  @DataField
-  private Element complaint = DOM.createTD();
-  @Inject
-  @Bound
-  @DataField
+  
+  @Bound @DataField
+  private final Element name = DOM.createTD();
+  
+  @Bound @DataField
+  private final Element email = DOM.createTD();
+  
+  @Bound @DataField
+  private final Element complaint = DOM.createTD();
+  
+  @Inject @Bound @DataField
   private ValueImage image;
   
-  @Bound
-  @DataField
-  private Element version = DOM.createTD();
+  @Bound @DataField
+  private final Element version = DOM.createTD();
 
   @Inject
   private Caller<UserComplaintEndpoint> endpoint;

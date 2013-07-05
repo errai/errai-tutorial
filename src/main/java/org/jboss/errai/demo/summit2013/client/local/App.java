@@ -28,7 +28,7 @@ public class App {
 
   @Inject
   private Navigation navigation;
-  
+
   @Inject
   private ClientSyncManager syncManager;
 
@@ -39,12 +39,12 @@ public class App {
     // RestClient.setApplicationRoot("http://10.15.16.207:8080/errai-summit-2013/rest");
     RootPanel.get().add(navigation.getContentPanel());
   }
-  
+
   @AfterInitialization
   private void afterInit() {
     Admin.init = true;
   }
-  
+
   public void sync() {
     sync(new RemoteCallback<List<SyncResponse<UserComplaint>>>() {
       @Override
@@ -53,15 +53,14 @@ public class App {
       }
     });
   }
-  
+
   public void sync(RemoteCallback<List<SyncResponse<UserComplaint>>> callback) {
     LogUtil.log("Sending sync:");
-    syncManager.coldSync("allComplaints", UserComplaint.class, Collections.<String, Object> emptyMap(),
-            callback, null);
+    syncManager.coldSync("allComplaints", UserComplaint.class, Collections.<String, Object> emptyMap(), callback, null);
   }
-  
+
   @SuppressWarnings("unused")
-private void online(@Observes OnlineEvent onlineEvent) {
+  private void online(@Observes OnlineEvent onlineEvent) {
     sync();
   }
 }

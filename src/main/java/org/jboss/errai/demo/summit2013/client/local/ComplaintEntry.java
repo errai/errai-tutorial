@@ -47,31 +47,22 @@ import com.googlecode.gwtphonegap.client.camera.PictureOptions;
 @Templated("Complaint.html#app-template")
 public class ComplaintEntry extends Composite {
 
-  @Inject
-  @Model
+  @Inject @Model 
   private UserComplaint model;
 
-  @Inject
-  @Bound
-  @DataField
+  @Inject @Bound @DataField
   private TextBox name;
 
-  @Inject
-  @Bound
-  @DataField
+  @Inject @Bound @DataField
   private TextBox email;
 
-  @Inject
-  @Bound
-  @DataField
+  @Inject @Bound @DataField
   private TextArea complaint;
 
-  @Inject
-  @DataField
+  @Inject @DataField
   private Button submit;
 
-  @Inject
-  @DataField
+  @Inject @DataField
   private TransitionAnchor<Admin> admin;
 
   @Inject
@@ -83,13 +74,10 @@ public class ComplaintEntry extends Composite {
   @Inject
   private Camera camera;
 
-  @Inject
-  @DataField
+  @Inject @DataField
   private Button takePicture;
 
-  @Inject
-  @Bound
-  @DataField
+  @Inject @Bound @DataField
   private ValueImage image;
 
   @EventHandler("submit")

@@ -18,12 +18,6 @@
 		<when-type-is class="org.jboss.errai.bus.client.framework.Configuration" />
 	</replace-with>
 
-	<!-- Something wrong when no internet connectivity? <inherits name="org.jboss.errai.enterprise.All" 
-		/> -->
-
-	<!-- Testing only <set-property name="user.agent" value="safari,gecko1_8" 
-		/> -->
-
 	<set-property name="compiler.useSourceMaps" value="true"></set-property>
 	<add-linker name="xsiframe" />
 
