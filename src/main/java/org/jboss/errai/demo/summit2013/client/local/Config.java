@@ -9,7 +9,7 @@ import org.jboss.errai.bus.client.framework.Configuration;
 public class Config implements Configuration {
   @Override
   public String getRemoteLocation() {
-    // When compiling to a native application the absulote path to the app (Errai bus endpoint) needs to be specified.
+    // When compiling to a native application the absolute path to the app (Errai bus endpoint) needs to be specified.
     // return "http://10.15.16.207:8080/errai-summit-2013/";
     return "";
   }

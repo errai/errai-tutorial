@@ -29,11 +29,11 @@ import com.googlecode.gwtphonegap.client.camera.PictureCallback;
 import com.googlecode.gwtphonegap.client.camera.PictureOptions;
 
 /**
- * This is the companion Java class of the complaint form HTML template as
- * specified by {@link Templated}. It refers to a data field called
- * "app-template" as its root and gains access to all data fields in the
- * template to add dynamic behavior to them (e.g. event handlers, data bindings,
- * page transitions).
+ * This is the companion Java class of the complaint form as specified by
+ * {@link Templated}. It refers to a data field called "app-template" in
+ * ComplaintForm.html as its root and gains access to all data fields in the
+ * template to add dynamic behavior (e.g. event handlers, data bindings, page
+ * transitions).
  * 
  * The {@link Page} annotation declares this form as a bookmarkable page that
  * can be transitioned to by other pages of this application. Further the

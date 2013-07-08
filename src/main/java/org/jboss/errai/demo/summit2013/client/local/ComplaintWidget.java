@@ -22,36 +22,68 @@ import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 
+/**
+ * A templated widget that will be used to display a row in a table of
+ * {@link UserComplaint}s (see {@link ComplaintListWidget}).
+ */
 @Templated("Admin.html#complaint")
 public class ComplaintWidget extends Composite implements HasModel<UserComplaint> {
+
+  /**
+   * Errai's data binding module will automatically bind the provided instance
+   * of the model (see {@link #setModel(UserComplaint)}) to all fields annotated
+   * with {@link Bound}. If not specified otherwise, the bindings occur based on
+   * matching field names (e.g. userComplaint.id will automatically be kept in
+   * sync with the data-field "id")
+   */
   @Inject
   @AutoBound
   private DataBinder<UserComplaint> userComplaint;
 
-  @Bound @DataField
+  @Bound
+  @DataField
   private final Element id = DOM.createTD();
-  
-  @Inject @Bound @DataField
+
+  @Inject
+  @Bound
+  @DataField
   private CheckBox done;
-  
-  @Bound @DataField
+
+  @Bound
+  @DataField
   private final Element name = DOM.createTD();
-  
-  @Bound @DataField
+
+  @Bound
+  @DataField
   private final Element email = DOM.createTD();
-  
-  @Bound @DataField
+
+  @Bound
+  @DataField
   private final Element complaint = DOM.createTD();
-  
-  @Inject @Bound @DataField
+
+  @Inject
+  @Bound
+  @DataField
   private ValueImage image;
-  
-  @Bound @DataField
+
+  @Bound
+  @DataField
   private final Element version = DOM.createTD();
 
+  /**
+   * Errai's JAX-RS module generates a stub class that makes AJAX calls back to
+   * the server for each resource method on the {@link UserComplaintEndpoint}
+   * interface. The paths and HTTP methods for the AJAX calls are determined
+   * automatically based on the JAX-RS annotations ({@code @Path}, {@code @GET},
+   * {@code @POST}, and so on) on the resource.
+   */
   @Inject
   private Caller<UserComplaintEndpoint> endpoint;
 
+  /**
+   * Errai's JPA module allows persisting objects into the browser's offline
+   * storage.
+   */
   @Inject
   private EntityManager em;
 
@@ -60,11 +92,17 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
 
   @PostConstruct
   private void init() {
+    // We attach a property change handler to get notified when the user clicks
+    // the done checkbox. We can attach the handler to the model directly
+    // because it is automatically kept in sync by Errai's data binder.
     userComplaint.addPropertyChangeHandler("done", new PropertyChangeHandler<Boolean>() {
       @Override
       public void onPropertyChange(PropertyChangeEvent<Boolean> event) {
+        // Update the style to reflect the change.
         updateDoneStyle();
+        // Persist the change state into the browsers offline storage.
         em.merge(getModel());
+        // Attempt to synchronize the change with the server.
         app.sync();
       }
     });
@@ -81,6 +119,10 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
     updateDoneStyle();
   }
 
+  /**
+   * Updates the CSS style of this row according to the done state of the
+   * corresponding {@link UserComplaint}.
+   */
   private void updateDoneStyle() {
     if (userComplaint.getModel().isDone()) {
       removeStyleName("issue-open");

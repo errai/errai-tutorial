@@ -9,8 +9,4 @@
 	<replace-with class="org.jboss.errai.demo.summit2013.client.local.Config">
 		<when-type-is class="org.jboss.errai.bus.client.framework.Configuration" />
 	</replace-with>
-
-	<set-property name="compiler.useSourceMaps" value="true"></set-property>
-	<add-linker name="xsiframe" />
-
 </module>
