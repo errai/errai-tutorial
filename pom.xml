@@ -126,9 +126,12 @@
         <configuration>
           <filesets>
             <fileset>
-              <directory>src/main/webapp</directory>
+              <directory>${basedir}</directory>
               <includes>
-                <include>app/**</include>
+                <include>src/main/webapp/app/</include>
+                <include>src/main/webapp/WEB-INF/deploy/</include>
+                <include>**/gwt-unitCache/**</include>
+                <include>.errai/</include>
               </includes>
             </fileset>
           </filesets>
