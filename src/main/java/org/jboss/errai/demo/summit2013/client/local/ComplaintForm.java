@@ -132,13 +132,13 @@ public class ComplaintForm extends Composite {
     endpoint.call(new ResponseCallback() {
       @Override
       public void callback(Response response) {
-        // Navigate to the "ComplaintSubmitted" after we received an response
-        // from the server.
+        // Navigate to the "ComplaintSubmitted" page after we received an
+        // response from the server.
         if (response.getStatusCode() == Response.SC_CREATED) {
           complaintSubmittedPage.go();
         }
         else {
-          Window.alert("Unexpected response code from server:" + response.getStatusCode());          
+          Window.alert("Unexpected response code from server:" + response.getStatusCode());
         }
       }
     }).create(userComplaint);
