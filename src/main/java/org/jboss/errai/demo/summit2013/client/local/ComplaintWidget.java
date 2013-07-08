@@ -4,12 +4,10 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import org.jboss.errai.common.client.api.Caller;
 import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.databinding.client.api.PropertyChangeEvent;
 import org.jboss.errai.databinding.client.api.PropertyChangeHandler;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
-import org.jboss.errai.demo.summit2013.client.shared.UserComplaintEndpoint;
 import org.jboss.errai.ui.client.widget.HasModel;
 import org.jboss.errai.ui.client.widget.ValueImage;
 import org.jboss.errai.ui.shared.api.annotations.AutoBound;
@@ -71,16 +69,6 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
   private final Element version = DOM.createTD();
 
   /**
-   * Errai's JAX-RS module generates a stub class that makes AJAX calls back to
-   * the server for each resource method on the {@link UserComplaintEndpoint}
-   * interface. The paths and HTTP methods for the AJAX calls are determined
-   * automatically based on the JAX-RS annotations ({@code @Path}, {@code @GET},
-   * {@code @POST}, and so on) on the resource.
-   */
-  @Inject
-  private Caller<UserComplaintEndpoint> endpoint;
-
-  /**
    * Errai's JPA module allows persisting objects into the browser's offline
    * storage.
    */
@@ -100,7 +88,7 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
       public void onPropertyChange(PropertyChangeEvent<Boolean> event) {
         // Update the style to reflect the change.
         updateDoneStyle();
-        // Persist the change state into the browsers offline storage.
+        // Persist the changed state into the browsers offline storage.
         em.merge(getModel());
         // Attempt to synchronize the change with the server.
         app.sync();

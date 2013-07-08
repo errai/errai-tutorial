@@ -137,6 +137,9 @@ public class ComplaintForm extends Composite {
         if (response.getStatusCode() == Response.SC_CREATED) {
           complaintSubmittedPage.go();
         }
+        else {
+          Window.alert("Unexpected response code from server:" + response.getStatusCode());          
+        }
       }
     }).create(userComplaint);
   }
