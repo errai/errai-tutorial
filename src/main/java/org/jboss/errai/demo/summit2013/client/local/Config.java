@@ -3,12 +3,13 @@ package org.jboss.errai.demo.summit2013.client.local;
 import org.jboss.errai.bus.client.framework.Configuration;
 
 /**
- * Overriding the remote location of the server-side bus.
+ * Provides the ability to override the remote location of Errai's message bus.
+ * This is needed when compiling to a native app which requires an absolute URL.
  */
 public class Config implements Configuration {
   @Override
   public String getRemoteLocation() {
-    // We need to comment this in for the mobile version
+    // When compiling to a native application the absulote path to the app (Errai bus endpoint) needs to be specified.
     // return "http://10.15.16.207:8080/errai-summit-2013/";
     return "";
   }
