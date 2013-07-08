@@ -132,7 +132,7 @@ public class ComplaintForm extends Composite {
     endpoint.call(new ResponseCallback() {
       @Override
       public void callback(Response response) {
-        // Navigate to the "ComplaintSubmitted" page after we received an
+        // Navigate to the "ComplaintSubmitted" page after we received a
         // response from the server.
         if (response.getStatusCode() == Response.SC_CREATED) {
           complaintSubmittedPage.go();
@@ -146,7 +146,7 @@ public class ComplaintForm extends Composite {
 
   /**
    * This method is registered as an event handler for click events on the
-   * "takePicture" button of the complaint form. When running on devices that
+   * takePicture button of the complaint form. When running on devices that
    * have camera support, it will cause the camera app to open and allow you to
    * take a picture.
    * 

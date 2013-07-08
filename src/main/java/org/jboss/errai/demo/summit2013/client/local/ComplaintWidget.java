@@ -38,6 +38,8 @@ public class ComplaintWidget extends Composite implements HasModel<UserComplaint
   @AutoBound
   private DataBinder<UserComplaint> userComplaint;
 
+  // You can also choose to instantiate your own widgets. Injection is not
+  // required. In case of Element, direct injection is not supported.
   @Bound
   @DataField
   private final Element id = DOM.createTD();
