@@ -7,7 +7,7 @@ Creating complaints is done using a simple JAX-RS endpoint and Errai's typesafe 
 
 The filed complaints are persisted on the server as well as in the browser's offline storage (using Errai JPA), so that admin users can access all complaints while offline. The complaints are automatically kept in sync with the server using Errai's data sync capabilities (see `Admin.java`).
 
-The demo can also be packaged as a native mobile app using Errai's Cordova module which also allows for the simple injection of integrated mobile hardware (see the injection of the Camera object in `ComplaintForm.java` for an example).
+The demo can be packaged as a native mobile app using Errai's Cordova module which also allows for the simple injection of integrated mobile hardware (see the injection of the Camera object in `ComplaintForm.java` for an example).
 
 This demo is designed to work with a full Java EE 6 server such as JBoss EAP 6 or AS 7. Although it should be possible to craft a deployment of this demo to a simpler web server, it's much simpler to deploy to an EE 6 capable app server.
 
@@ -54,4 +54,4 @@ To produce the native applications run:
 After that you can simply install the native app on your phone or tablet. 
 
 e.g for Android run:
-adb install target/template/platforms/android/bin/HelloCordova-debug.apk
+% adb install target/template/platforms/android/bin/HelloCordova-debug.apk
