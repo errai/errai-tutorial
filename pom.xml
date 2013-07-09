@@ -161,11 +161,6 @@
             <configuration>
               <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
               <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
-              <archive>
-                <manifestEntries>
-                  <Dependencies>org.jboss.as.naming,org.jboss.as.server,org.jboss.msc</Dependencies>
-                </manifestEntries>
-              </archive>
             </configuration>
           </plugin>
           <plugin>
