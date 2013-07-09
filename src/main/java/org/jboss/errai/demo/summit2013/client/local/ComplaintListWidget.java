@@ -7,10 +7,10 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 
 /**
  * A custom list widget implementation that will display an {@link HTMLPanel}
- * containing a {@link ComplaintWidget} for each {@link UserComplaint} in the
+ * containing a {@link ComplaintListItemWidget} for each {@link UserComplaint} in the
  * list passed to {@link #setItems(java.util.List)} .
  */
-public class ComplaintListWidget extends ListWidget<UserComplaint, ComplaintWidget> {
+public class ComplaintListWidget extends ListWidget<UserComplaint, ComplaintListItemWidget> {
 
   /**
    * Creates a new instance of this list widget using the provided type as root
@@ -24,7 +24,7 @@ public class ComplaintListWidget extends ListWidget<UserComplaint, ComplaintWidg
   }
 
   @Override
-  protected Class<ComplaintWidget> getItemWidgetType() {
-    return ComplaintWidget.class;
+  protected Class<ComplaintListItemWidget> getItemWidgetType() {
+    return ComplaintListItemWidget.class;
   }
 }

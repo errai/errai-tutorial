@@ -25,7 +25,7 @@ import com.google.gwt.user.client.ui.Composite;
  * {@link UserComplaint}s (see {@link ComplaintListWidget}).
  */
 @Templated("Admin.html#complaint")
-public class ComplaintWidget extends Composite implements HasModel<UserComplaint> {
+public class ComplaintListItemWidget extends Composite implements HasModel<UserComplaint> {
 
   /**
    * Errai's data binding module will automatically bind the provided instance

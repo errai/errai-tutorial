@@ -12,6 +12,12 @@ import javax.persistence.Version;
 import org.jboss.errai.common.client.api.annotations.Portable;
 import org.jboss.errai.databinding.client.api.Bindable;
 
+/**
+ * This is a JPA entity representing a user complaint. It is used on both the
+ * server and the client. On the server, it is persisted into the relational
+ * database that is configured as data source in META-INF/persistence.xml. On
+ * the client, it is persisted into the browser's offline storage.
+ */
 @Entity
 @Bindable
 @Portable

@@ -23,14 +23,15 @@ import org.jboss.errai.jpa.sync.client.shared.UpdateResponse;
 public class DataSyncServiceImpl implements DataSyncService {
 
   /**
-   * An EJB responsible for getting the JPA EntityManager and for transaction demarcation.
+   * An EJB responsible for getting the JPA EntityManager and for transaction
+   * demarcation.
    */
   @Inject
   private UserComplaintService userComplaintService;
 
   /**
-   * A CDI event source that fires UserComplaint instances to observers,
-   * both on the server and on clients.
+   * A CDI event source that fires UserComplaint instances to observers, both on
+   * the server and on clients.
    */
   @Inject
   private Event<UserComplaint> updated;
@@ -38,10 +39,12 @@ public class DataSyncServiceImpl implements DataSyncService {
   @Override
   public <X> List<SyncResponse<X>> coldSync(SyncableDataSet<X> dataSet, List<SyncRequestOperation<X>> remoteResults) {
 
-    // First, let the UserComplaintService EJB do the sync (it gets the correct EntityManager and also handles transactions)
+    // First, let the UserComplaintService EJB do the sync (it gets the correct
+    // EntityManager and also handles transactions)
     List<SyncResponse<X>> response = userComplaintService.sync(dataSet, remoteResults);
 
-    // Now fire a CDI event for each UserComplaint which was updated as a result of this sync
+    // Now fire a CDI event for each UserComplaint which was updated as a result
+    // of this sync
     for (SyncResponse<X> syncRequestResponse : response) {
       if (syncRequestResponse instanceof UpdateResponse) {
         UserComplaint newComplaint = (UserComplaint) ((UpdateResponse) syncRequestResponse).getEntity();
@@ -49,7 +52,8 @@ public class DataSyncServiceImpl implements DataSyncService {
       }
     }
 
-    // Finally, return the list of sync responses to the client, whose sync manager will update the client database
+    // Finally, return the list of sync responses to the client, whose sync
+    // manager will update the client database
     return response;
   }
 }

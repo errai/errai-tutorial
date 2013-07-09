@@ -33,7 +33,7 @@ public class Admin extends Composite {
    * The list of complaints that currently exist.
    */
   @DataField
-  private ListWidget<UserComplaint, ComplaintWidget> complaints;
+  private ListWidget<UserComplaint, ComplaintListItemWidget> complaints;
 
   /**
    * The EntityManager that interacts with client-local storage.
