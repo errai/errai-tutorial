@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import org.jboss.errai.bus.server.annotations.Service;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
+import org.jboss.errai.jpa.sync.client.shared.ConflictResponse;
 import org.jboss.errai.jpa.sync.client.shared.DataSyncService;
 import org.jboss.errai.jpa.sync.client.shared.SyncRequestOperation;
 import org.jboss.errai.jpa.sync.client.shared.SyncResponse;
@@ -47,7 +48,11 @@ public class DataSyncServiceImpl implements DataSyncService {
     // of this sync
     for (SyncResponse<X> syncRequestResponse : response) {
       if (syncRequestResponse instanceof UpdateResponse) {
-        UserComplaint newComplaint = (UserComplaint) ((UpdateResponse) syncRequestResponse).getEntity();
+        UserComplaint newComplaint = (UserComplaint) ((UpdateResponse<?>) syncRequestResponse).getEntity();
+        updated.fire(newComplaint);
+      }
+      else if (syncRequestResponse instanceof ConflictResponse) {
+        UserComplaint newComplaint = (UserComplaint) ((ConflictResponse<?>) syncRequestResponse).getActualNew();
         updated.fire(newComplaint);
       }
     }

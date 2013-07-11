@@ -11,7 +11,6 @@ import org.jboss.errai.common.client.api.RemoteCallback;
 import org.jboss.errai.common.client.util.LogUtil;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
 import org.jboss.errai.enterprise.client.jaxrs.api.RestClient;
-import org.jboss.errai.ioc.client.api.AfterInitialization;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.jpa.sync.client.local.ClientSyncManager;
 import org.jboss.errai.jpa.sync.client.shared.SyncResponse;
@@ -51,11 +50,6 @@ public class App {
     RootPanel.get().add(navigation.getContentPanel());
   }
 
-  @AfterInitialization
-  private void afterInit() {
-    Admin.init = true;
-  }
-
   public void sync() {
     sync(new RemoteCallback<List<SyncResponse<UserComplaint>>>() {
       @Override
@@ -74,8 +68,8 @@ public class App {
    * This method will be invoked when the client is back online after loosing
    * its connection. It triggers synchronization of the local data with the
    * server.
-   * 
-   * @param onlineEvent  The event object indicating that the client is back online. 
+   *
+   * @param onlineEvent  The event object indicating that the client is back online.
    */
   private void online(@Observes OnlineEvent onlineEvent) {
     sync();

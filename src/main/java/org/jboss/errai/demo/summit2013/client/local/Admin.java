@@ -11,7 +11,6 @@ import org.jboss.errai.common.client.api.RemoteCallback;
 import org.jboss.errai.common.client.util.LogUtil;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
 import org.jboss.errai.demo.summit2013.server.rest.UserComplaintService;
-import org.jboss.errai.ioc.client.api.AfterInitialization;
 import org.jboss.errai.jpa.sync.client.local.ClientSyncManager;
 import org.jboss.errai.jpa.sync.client.shared.SyncResponse;
 import org.jboss.errai.ui.client.widget.ListWidget;
@@ -49,8 +48,6 @@ public class Admin extends Composite {
    */
   @Inject
   private ClientSyncManager syncManager;
-
-  public static boolean init;
 
   public Admin() {
     complaints = new ComplaintListWidget("tbody");
@@ -91,9 +88,8 @@ public class Admin extends Composite {
    * server: the server gets all new and updated UserComplaint objects from us,
    * and we get all new and updated UserComplaint objects from the server.
    */
-  @AfterInitialization
+  @PageShown
   private void sync() {
-    Admin.init = true;
     app.sync(new RemoteCallback<List<SyncResponse<UserComplaint>>>() {
       @Override
       public void callback(List<SyncResponse<UserComplaint>> response) {
@@ -102,13 +98,6 @@ public class Admin extends Composite {
         flushToLocalStorage();
       }
     });
-  }
-
-  @PageShown
-  private void pageShown() {
-    if (init) {
-      sync();
-    }
   }
 
   private void flushToLocalStorage() {
