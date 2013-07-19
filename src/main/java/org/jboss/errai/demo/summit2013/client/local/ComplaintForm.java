@@ -1,6 +1,7 @@
 package org.jboss.errai.demo.summit2013.client.local;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 import org.jboss.errai.common.client.api.Caller;
 import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
@@ -120,6 +121,12 @@ public class ComplaintForm extends Composite {
   private Button takePicture;
 
   /**
+   * The EntityManager that interacts with client-local storage.
+   */
+  @Inject
+  private EntityManager em;
+
+  /**
    * This method is registered as an event handler for click events on the
    * submit button of the complaint form.
    * 
@@ -132,13 +139,10 @@ public class ComplaintForm extends Composite {
     endpoint.call(new ResponseCallback() {
       @Override
       public void callback(Response response) {
-        // Navigate to the "ComplaintSubmitted" page after we received a
-        // response from the server.
         if (response.getStatusCode() == Response.SC_CREATED) {
+          // Navigate to the "ComplaintSubmitted" page after we received a
+          // response from the server.
           complaintSubmittedPage.go();
-        }
-        else {
-          Window.alert("Unexpected response code from server:" + response.getStatusCode());
         }
       }
     }).create(userComplaint);
@@ -146,9 +150,9 @@ public class ComplaintForm extends Composite {
 
   /**
    * This method is registered as an event handler for click events on the
-   * takePicture button of the complaint form. When running on devices that
-   * have camera support, it will cause the camera app to open and allow you to
-   * take a picture.
+   * takePicture button of the complaint form. When running on devices that have
+   * camera support, it will cause the camera app to open and allow you to take
+   * a picture.
    * 
    * @param e
    *          the click event.

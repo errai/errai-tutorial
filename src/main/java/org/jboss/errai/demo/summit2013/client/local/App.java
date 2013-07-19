@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
 import org.jboss.errai.common.client.api.RemoteCallback;
@@ -14,7 +13,6 @@ import org.jboss.errai.enterprise.client.jaxrs.api.RestClient;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.jpa.sync.client.local.ClientSyncManager;
 import org.jboss.errai.jpa.sync.client.shared.SyncResponse;
-import org.jboss.errai.ui.cordova.events.OnlineEvent;
 import org.jboss.errai.ui.nav.client.local.Navigation;
 
 import com.google.gwt.user.client.ui.RootPanel;
@@ -30,9 +28,16 @@ import com.google.gwt.user.client.ui.RootPanel;
 @EntryPoint
 public class App {
 
+  /**
+   * Central control point for page navigation.
+   */
   @Inject
   private Navigation navigation;
 
+  /**
+   * The Errai Data Sync helper class which allows us to initiate a data
+   * synchronization with the server.
+   */
   @Inject
   private ClientSyncManager syncManager;
 
@@ -50,6 +55,11 @@ public class App {
     RootPanel.get().add(navigation.getContentPanel());
   }
 
+  /**
+   * Performs a full two-way data synchronization between the client and the
+   * server: the server gets all new and updated UserComplaint objects from us,
+   * and we get all new and updated UserComplaint objects from the server.
+   */
   public void sync() {
     sync(new RemoteCallback<List<SyncResponse<UserComplaint>>>() {
       @Override
@@ -59,19 +69,16 @@ public class App {
     });
   }
 
+  /**
+   * Performs a full two-way data synchronization between the client and the
+   * server: the server gets all new and updated UserComplaint objects from us,
+   * and we get all new and updated UserComplaint objects from the server.
+   * 
+   * @param callback
+   *          the callback to invoked upon completion of the data sync request.
+   */
   public void sync(RemoteCallback<List<SyncResponse<UserComplaint>>> callback) {
     LogUtil.log("Sending sync:");
     syncManager.coldSync("allComplaints", UserComplaint.class, Collections.<String, Object> emptyMap(), callback, null);
-  }
-
-  /**
-   * This method will be invoked when the client is back online after loosing
-   * its connection. It triggers synchronization of the local data with the
-   * server.
-   *
-   * @param onlineEvent  The event object indicating that the client is back online.
-   */
-  private void online(@Observes OnlineEvent onlineEvent) {
-    sync();
   }
 }
