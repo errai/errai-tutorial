@@ -9,11 +9,11 @@
   <name>Demo::Errai Summit</name>
 
   <properties>
-    <errai.version>2.4.0-SNAPSHOT</errai.version>
+    <errai.version>2.4.0.CR1</errai.version>
     <gwt.version>2.5.1</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <javaee.version>3.0.1.Final</javaee.version>
+    <javaee.version>3.0.2.Final</javaee.version>
   </properties>
 
   <dependencyManagement>
@@ -35,11 +35,10 @@
         <scope>import</scope>
       </dependency>
 
-      <!-- Question: should a project have to import this too? Could errai-bom should import it recursively? -->
       <dependency>
         <groupId>org.jboss.spec</groupId>
         <artifactId>jboss-javaee-6.0</artifactId>
-        <version>3.0.2.Final</version> <!-- FIXME should use a property here I think -->
+        <version>${javaee.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
