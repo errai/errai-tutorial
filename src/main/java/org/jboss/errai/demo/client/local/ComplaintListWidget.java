@@ -1,6 +1,6 @@
-package org.jboss.errai.demo.summit2013.client.local;
+package org.jboss.errai.demo.client.local;
 
-import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
+import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.ui.client.widget.ListWidget;
 
 import com.google.gwt.user.client.ui.HTMLPanel;

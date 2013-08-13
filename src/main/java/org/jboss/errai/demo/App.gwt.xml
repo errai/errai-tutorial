@@ -6,7 +6,7 @@
     <inherits name="org.jboss.errai.enterprise.All" />
 	<inherits name="org.jboss.errai.ui.Cordova" />
 	
-	<replace-with class="org.jboss.errai.demo.summit2013.client.local.Config">
+	<replace-with class="org.jboss.errai.demo.client.local.Config">
 		<when-type-is class="org.jboss.errai.bus.client.framework.Configuration" />
 	</replace-with>
 </module>

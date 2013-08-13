@@ -1,11 +1,11 @@
-package org.jboss.errai.demo.summit2013.client.local;
+package org.jboss.errai.demo.client.local;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import org.jboss.errai.common.client.api.Caller;
-import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
-import org.jboss.errai.demo.summit2013.client.shared.UserComplaintEndpoint;
+import org.jboss.errai.demo.client.shared.UserComplaint;
+import org.jboss.errai.demo.client.shared.UserComplaintEndpoint;
 import org.jboss.errai.enterprise.client.jaxrs.api.ResponseCallback;
 import org.jboss.errai.ui.client.widget.ValueImage;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;

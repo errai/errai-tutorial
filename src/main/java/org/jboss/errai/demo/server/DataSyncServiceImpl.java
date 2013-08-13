@@ -1,4 +1,4 @@
-package org.jboss.errai.demo.summit2013.server.rest;
+package org.jboss.errai.demo.server;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import org.jboss.errai.bus.server.annotations.Service;
-import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
+import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.jpa.sync.client.shared.ConflictResponse;
 import org.jboss.errai.jpa.sync.client.shared.DataSyncService;
 import org.jboss.errai.jpa.sync.client.shared.SyncRequestOperation;

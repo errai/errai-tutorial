@@ -1,4 +1,4 @@
-package org.jboss.errai.demo.summit2013.client.local;
+package org.jboss.errai.demo.client.local;
 
 import javax.inject.Inject;
 

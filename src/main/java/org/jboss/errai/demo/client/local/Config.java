@@ -1,4 +1,4 @@
-package org.jboss.errai.demo.summit2013.client.local;
+package org.jboss.errai.demo.client.local;
 
 import org.jboss.errai.bus.client.framework.Configuration;
 
@@ -11,7 +11,7 @@ public class Config implements Configuration {
   public String getRemoteLocation() {
     // When compiling to a native application the absolute path to the server
     // side errai bus endpoint needs to be specified.
-    // return "http://10.15.16.207:8080/errai-summit-2013/";
+    // return "http://10.15.16.207:8080/errai-tutorial/";
     return "";
   }
 }

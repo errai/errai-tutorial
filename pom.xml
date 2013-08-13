@@ -157,7 +157,7 @@
           <logLevel>INFO</logLevel>
           <noServer>true</noServer>
           <disableCastChecking>true</disableCastChecking>
-          <runTarget>http://localhost:8080/errai-summit-2013</runTarget>
+          <runTarget>http://localhost:8080/errai-tutorial</runTarget>
           <soyc>false</soyc>
           <webappDirectory>src/main/webapp</webappDirectory>
         </configuration>

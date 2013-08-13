@@ -1,4 +1,4 @@
-package org.jboss.errai.demo.summit2013.client.local;
+package org.jboss.errai.demo.client.local;
 
 import java.util.Collections;
 import java.util.List;
@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import org.jboss.errai.common.client.api.RemoteCallback;
 import org.jboss.errai.common.client.util.LogUtil;
-import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
+import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.enterprise.client.jaxrs.api.RestClient;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.jpa.sync.client.local.ClientSyncManager;
@@ -46,8 +46,8 @@ public class App {
     // This is specifying the relative path to the REST endpoint used to store
     // complaints on the server. When compiling the native mobile app of this
     // demo, this needs to be changed to an absolute URL.
-    RestClient.setApplicationRoot("/errai-summit-2013/rest");
-    // RestClient.setApplicationRoot("http://10.15.16.207:8080/errai-summit-2013/rest");
+    RestClient.setApplicationRoot("/errai-tutorial/rest");
+    // RestClient.setApplicationRoot("http://10.15.16.207:8080/errai-tutorial/rest");
 
     // Add the navigation panel to make our @Pages visible. The first page that
     // is to be displayed is ComplaintForm, since it is annotated with

@@ -1,4 +1,4 @@
-package org.jboss.errai.demo.summit2013.server.rest;
+package org.jboss.errai.demo.server;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
@@ -6,9 +6,13 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
-import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
-import org.jboss.errai.demo.summit2013.client.shared.UserComplaintEndpoint;
+import org.jboss.errai.demo.client.shared.UserComplaint;
+import org.jboss.errai.demo.client.shared.UserComplaintEndpoint;
 
+/**
+ * A stateless EJB implementing the REST endpoint to create, update and delete {@link UserComplaint}
+ * objects.
+ */
 @Stateless
 public class UserComplaintEndpointImpl implements UserComplaintEndpoint {
 

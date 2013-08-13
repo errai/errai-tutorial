@@ -1,4 +1,4 @@
-package org.jboss.errai.demo.summit2013.client.local;
+package org.jboss.errai.demo.client.local;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.databinding.client.api.PropertyChangeEvent;
 import org.jboss.errai.databinding.client.api.PropertyChangeHandler;
-import org.jboss.errai.demo.summit2013.client.shared.UserComplaint;
+import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.ui.client.widget.HasModel;
 import org.jboss.errai.ui.client.widget.ValueImage;
 import org.jboss.errai.ui.shared.api.annotations.AutoBound;
