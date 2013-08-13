@@ -3,10 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.jboss.errai.demo</groupId>
-  <artifactId>errai-summit-2013</artifactId>
+  <artifactId>errai-tutorial</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>Demo::Errai Summit</name>
+  <name>Errai::Tutorial</name>
 
   <properties>
     <errai.version>2.4.0.CR1</errai.version>

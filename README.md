@@ -26,7 +26,7 @@ To build a .war file and deploy it to the local running JBoss EAP 6 or AS 7 inst
 
 Once the above command has completed, you should be able to access the app at the following URL:
 
-    http://localhost:8080/errai-summit-2013
+    http://localhost:8080/errai-tutorial
 
 Code-and-Refresh
 ----------------
