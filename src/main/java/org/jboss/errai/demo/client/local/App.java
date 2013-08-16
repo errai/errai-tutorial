@@ -13,9 +13,6 @@ import org.jboss.errai.enterprise.client.jaxrs.api.RestClient;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.jpa.sync.client.local.ClientSyncManager;
 import org.jboss.errai.jpa.sync.client.shared.SyncResponse;
-import org.jboss.errai.ui.nav.client.local.Navigation;
-
-import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * This is the entry point to the client portion of the web application. At
@@ -27,12 +24,6 @@ import com.google.gwt.user.client.ui.RootPanel;
  */
 @EntryPoint
 public class App {
-
-  /**
-   * Central control point for page navigation.
-   */
-  @Inject
-  private Navigation navigation;
 
   /**
    * The Errai Data Sync helper class which allows us to initiate a data
@@ -48,11 +39,6 @@ public class App {
     // demo, this needs to be changed to an absolute URL.
     RestClient.setApplicationRoot("/errai-tutorial/rest");
     // RestClient.setApplicationRoot("http://10.15.16.207:8080/errai-tutorial/rest");
-
-    // Add the navigation panel to make our @Pages visible. The first page that
-    // is to be displayed is ComplaintForm, since it is annotated with
-    // @Page(role = DefaultPage.class).
-    RootPanel.get().add(navigation.getContentPanel());
   }
 
   /**
