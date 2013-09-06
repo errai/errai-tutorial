@@ -1,7 +1,6 @@
 package org.jboss.errai.demo.client.local;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
 import org.jboss.errai.common.client.api.Caller;
 import org.jboss.errai.demo.client.shared.UserComplaint;
