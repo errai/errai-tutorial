@@ -121,12 +121,6 @@ public class ComplaintForm extends Composite {
   private Button takePicture;
 
   /**
-   * The EntityManager that interacts with client-local storage.
-   */
-  @Inject
-  private EntityManager em;
-
-  /**
    * This method is registered as an event handler for click events on the
    * submit button of the complaint form.
    * 
