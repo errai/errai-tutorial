@@ -59,6 +59,12 @@ public class Admin extends Composite {
     });
   }
 
+  @SuppressWarnings("unused")
+  private void complaintChanged(@Observes UserComplaint created) {
+    mergeInLocalStorage(created);
+    loadComplaints();
+  }
+  
   public void mergeInLocalStorage(UserComplaint userComplaint) {
     syncManager.getExpectedStateEm().merge(userComplaint);
     syncManager.getExpectedStateEm().flush();
