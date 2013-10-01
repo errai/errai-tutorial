@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Errai - Red Hat Summit & JUDCon 2013</title>
+<title>Errai - Tutorial</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -30,9 +30,6 @@
 
   <iframe src="javascript:''" id="__gwt_historyFrame" style="width: 0; height: 0; border: 0"></iframe>
 
-  <script src="<%=contextPath%>/js/jquery.min.js"></script>
-  <script src="<%=contextPath%>/js/jquery-expandable.js"></script>
   <script src="<%=contextPath%>/bootstrap/js/bootstrap.min.js"></script>
-
 </body>
 </html>
