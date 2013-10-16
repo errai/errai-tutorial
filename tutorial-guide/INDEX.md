@@ -10,6 +10,4 @@ Welcome to the Errai tutorial. This tutorial is designed to walk you through get
 
 3. **DEVELOP.md** : Start your very own Errai Application
 
-4. **FAQ.md** : Answers to common questions and problems
-
 Would you like to contribute information you've learned to this tutorial? Send a pull request on [github](https://github.com/errai/errai-tutorial). Community contributions are cheerfully reviewed and accepted.
