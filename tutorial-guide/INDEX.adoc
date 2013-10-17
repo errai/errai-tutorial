@@ -1,0 +1,19 @@
+Introduction
+------------
+
+What's on the Agenda
+~~~~~~~~~~~~~~~~~~~~
+
+Welcome to the Errai tutorial. This tutorial is designed to walk you
+through getting started with Errai. What exactly does that entail? Here
+is an index the files in this tutorial guide and what they cover:
+
+1.  *SETUP.adoc* : Get the tools you need (such as Git, Maven, and Jboss)
+2.  *RUN.adoc* : Run an Errai Application in production and development
+mode
+3.  *DEVELOP.adoc* : Start your very own Errai Application
+
+Would you like to contribute information you've learned to this
+tutorial? Send a pull request on
+https://github.com/errai/errai-tutorial[github]. Community contributions
+are cheerfully reviewed and accepted.
