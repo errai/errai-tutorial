@@ -141,3 +141,30 @@ Now that we have a project setup, we can make a remote debug configuration:
 * Name the configuration, click "Close", and save the changes when prompted
 
 You will now be able run this configuration to debug client-side code after running `mvn gwt:debug` in the command line.
+
+### Debugging Server-Side Code
+
+To debug the server-side code, we will need to run JBoss AS in debug mode and remote connect to it as well. Here is a script we can add to `$JBOSS_HOME/bin` to start JBoss in debug mode with a single command:
+
+```bash
+# Allow remote debugging connections on port 8001
+export JAVA_OPTS="-Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n"
+# Make sure to replace $JBOSS_HOME with the root folder of your JBoss installation
+$JBOSS_HOME/bin/standalone.sh -c standalone-full.xml
+```
+
+After that, setup a new remote debugger in your IDE exactly as before, but change the port to 8001.
+
+### Putting it All Together
+
+To debug the whole application from scratch should now involve two commands:
+
+1. Start JBoss AS with the debug script above.
+
+2. Run the following command to build, package, and deploy your server-side code, and then start GWT code-server for debugging:
+
+```
+    mvn clean package jboss-as:deploy gwt:debug
+```
+
+
