@@ -1,19 +1,16 @@
-Running Errai
--------------
+== Running Errai
 
 This section of the tutorial will show you how to deploy an Errai
 Application locally for development. By the end of this section you will
 be able to run the errai-tutorial demo in Development mode.
 
-Prerequisites
-~~~~~~~~~~~~~
+=== Prerequisites
 
 Before attempting this you should have installed all the necessary
 software. For a list of required software with links and instructions,
 check out the link:SETUP.adoc[setup section].
 
-Regarding Commands
-~~~~~~~~~~~~~~~~~~
+=== Regarding Commands
 
 Any commands in these instructions are targetted towards users of
 Unix-based operating systems (namely Linux and Mac OSX). If you are a
@@ -22,8 +19,7 @@ described. (Please consider enhancing these instructions by submitting a
 https://github.com/errai/errai-tutorial[pull request] or starting a
 discussion on the https://community.jboss.org/en/errai[forum].)
 
-Getting Started
-~~~~~~~~~~~~~~~
+=== Getting Started
 
 As mentioned above, we will be working with the errai-tutorial demo. So
 the first thing we need to do is get a copy of the project. To clone the
@@ -35,8 +31,7 @@ git clone https://github.com/errai/errai-tutorial.git $HOME/errai-tutorial
 
 You should now have a folder `errai-tutorial` in your home directory.
 
-Maven Project Structure
-~~~~~~~~~~~~~~~~~~~~~~~
+=== Maven Project Structure
 
 For those new to Maven, here's a quick overview of the project structure
 in errai-tutorial:
@@ -54,8 +49,7 @@ Errai.
 ** The location of html and css files, and any other resources to be
 served to clients.
 
-Starting JBoss
-~~~~~~~~~~~~~~
+=== Starting JBoss
 
 To run this demo, we'll be deploying it to the JBoss Application Server.
 To start a standalone instance of JBoss, run
@@ -71,8 +65,7 @@ Now go to http://localhost:8080 in your web browser. If the server is
 running correctly, you should see a page saying "Your JBoss Application
 Server 7 is running."
 
-Building and Deploying
-~~~~~~~~~~~~~~~~~~~~~~
+=== Building and Deploying
 
 It's time to really get things started. While the JBoss server is still
 running, run the command
@@ -86,8 +79,7 @@ This is because Maven must fetch all the dependencies required to
 compile the project. This is only necessary the first time you build,
 making subsequent builds much faster.
 
-For Other Application Servers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=== For Other Application Servers
 
 If you are using a different Application Server you should be able to
 manually deploy the demo by running
@@ -99,22 +91,23 @@ mvn clean package
 and then copying `errai-tutorial/target/errai-tutorial.war` to the
 proper deployments folder.
 
-Verify Deployment
-~~~~~~~~~~~~~~~~~
+[[verify-deployment]]
+=== Verify Deployment
 
 Once Maven is done building and deploying the demo, verify that it is
 running at http://localhost:8080/errai-tutorial . This demo features a
 simple complaint form application. Users can submit complaints from the
 main page, and view submitted complaints from an administrative page
-(linked at the bottom of the home page).
+(linked at the bottom of the home page). See link:../README.md[README] for more 
+details.
 
-To really see the demo in action, you should run two test it with at
+To really see the demo in action, you should run it with at
 least two browser windows open. Try submitting complaints with one
 window and see them live update to the admin screen. Or open two admin
 windows and completing complaints.
 
 *Note*: By default, JBoss will only serve the application locally. If
-you would like to try the demo on mutliple devices, you can configure
+you would like to try the demo on multiple devices, you can configure
 JBoss to bind to all addresses by editing
 `$JBOSS_HOME/standalone/configuration/standalone.xml`. Just these lines:
 
@@ -132,12 +125,12 @@ And replace them with this:
 </interface>
 -------------------------
 
-Run Development Mode
-~~~~~~~~~~~~~~~~~~~~
+=== Run Development Mode
 
 Development mode allows us to see the results of changes in our code
-without having to recompile the whole app. It will also allow us to
-debug the Java source code that is being run in the browser.
+without having to recompile the whole app, simply by asking the browser 
+to refresh the page. It will also allow us to debug the Java source 
+code that is being run in the browser.
 
 To run the demo in development mode, run the following command *while
 JBoss is running with errai-tutorial deployed*:
@@ -149,8 +142,7 @@ mvn gwt:run
 When the _GWT Development Mode_ window appears, click "Launch Default
 Browser".
 
-Debugging with Development Mode and Eclipse
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Debugging with Development Mode and Eclipse
 
 To debug client-side code, you can simply run:
 
@@ -161,8 +153,7 @@ mvn gwt:debug
 and attach your IDE's remote debugger. Below are more detailed
 instructions on how to set this up with Eclipse (Kepler).
 
-Importing the Project to Eclipse
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=== Importing the Project to Eclipse
 
 First we'll need to get the project into Eclipse:
 
@@ -174,8 +165,7 @@ click "Next"
 it is selected
 * Click "Finished"
 
-Creating a Remote Debug Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=== Creating a Remote Debug Configuration
 
 Now that we have a project setup, we can make a remote debug
 configuration:
@@ -190,15 +180,14 @@ prompted
 You will now be able run this configuration to debug client-side code
 after running `mvn gwt:debug` in the command line.
 
-Debugging Server-Side Code
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+=== Debugging Server-Side Code
 
 To debug the server-side code, we will need to run JBoss AS in debug
 mode and remote connect to it as well. Here is a script we can add to
 `$JBOSS_HOME/bin` to start JBoss in debug mode with a single command:
 
-code,bash----------------------------------------------------------------------------------
-code,bash
+[source,bash]
+----------------------------------------------------------------------------------
 # Allow remote debugging connections on port 8001
 export JAVA_OPTS="-Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n"
 # Make sure to replace $JBOSS_HOME with the root folder of your JBoss installation
@@ -208,8 +197,7 @@ $JBOSS_HOME/bin/standalone.sh -c standalone-full.xml
 After that, setup a new remote debugger in your IDE exactly as before,
 but change the port to 8001.
 
-Putting it All Together
-^^^^^^^^^^^^^^^^^^^^^^^
+=== Putting it All Together
 
 To debug the whole application from scratch should now involve two
 commands:
@@ -219,5 +207,31 @@ commands:
 server-side code, and then start GWT code-server for debugging:
 
 -----------------------------------------------
-    mvn clean package jboss-as:deploy gwt:debug
+mvn clean package jboss-as:deploy gwt:debug
 -----------------------------------------------
+
+=== Build and deploy as native app to your mobile device
+
+The native application will have to know the absolute path to your 
+server or cluster. For this demo you will have to change the REST 
+and Errai Bus endpoint URL in Config.java and App.java (see comments) 
+before building the native application. Make sure that your application
+server instance is bound to an IP address that can be reached from your 
+mobile device. The section <<verify-deployment, Verify Deployment>> 
+desribes how to change the binding address of JBoss AS.
+
+To produce the native applications run:
+
+----
+% mvn clean package -Pmobile,jboss7
+----
+
+After that you can simply install the native app on your phone or tablet.
+
+Note that you will need to enable development options on your device and 
+have the Android SDK installed on your local machine.
+
+For deploying the native application to your Android device simply execute:
+----
+% adb install target/template/platforms/android/bin/HelloCordova-debug.apk
+----
