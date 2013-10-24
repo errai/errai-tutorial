@@ -89,6 +89,12 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+
+		<dependency>
+			<groupId>org.jboss.errai</groupId>
+			<artifactId>errai-cdi-jboss</artifactId>
+			<version>${errai.version}</version>
+		</dependency>
   </dependencies>
 
   <repositories>
