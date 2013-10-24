@@ -163,6 +163,7 @@
           <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M -Derrai.jboss.home=${errai.jboss.home}</extraJvmArgs>
           <logLevel>INFO</logLevel>
           <noServer>false</noServer>
+					<server>org.jboss.errai.cdi.server.gwt.JBossLauncher</server>
           <disableCastChecking>true</disableCastChecking>
           <runTarget>App.html</runTarget>
           <soyc>false</soyc>
