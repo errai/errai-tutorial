@@ -14,6 +14,7 @@
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javaee.version>3.0.2.Final</javaee.version>
+		<errai.jboss.home>/home/yyz/mbarkley/jboss-as-7.1.1.Final</errai.jboss.home>
   </properties>
 
   <dependencyManagement>
@@ -153,7 +154,7 @@
           </execution>
         </executions>
         <configuration>
-          <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M</extraJvmArgs>
+          <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M -Derrai.jboss.home=${errai.jboss.home}</extraJvmArgs>
           <logLevel>INFO</logLevel>
           <noServer>true</noServer>
           <disableCastChecking>true</disableCastChecking>
