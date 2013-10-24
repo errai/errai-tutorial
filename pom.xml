@@ -156,11 +156,11 @@
         <configuration>
           <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M -Derrai.jboss.home=${errai.jboss.home}</extraJvmArgs>
           <logLevel>INFO</logLevel>
-          <noServer>true</noServer>
+          <noServer>false</noServer>
           <disableCastChecking>true</disableCastChecking>
-          <runTarget>http://localhost:8080/errai-tutorial</runTarget>
+          <runTarget>App.html</runTarget>
           <soyc>false</soyc>
-          <webappDirectory>src/main/webapp</webappDirectory>
+          <hostedWebapp>src/main/webapp</hostedWebapp>
         </configuration>
       </plugin>
       <plugin>
