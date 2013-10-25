@@ -165,7 +165,7 @@
           <noServer>false</noServer>
 					<server>org.jboss.errai.cdi.server.gwt.JBossLauncher</server>
           <disableCastChecking>true</disableCastChecking>
-          <runTarget>App.html</runTarget>
+          <runTarget>webapp/index.html</runTarget>
           <soyc>false</soyc>
           <hostedWebapp>src/main/webapp</hostedWebapp>
         </configuration>
