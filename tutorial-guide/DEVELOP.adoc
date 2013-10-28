@@ -96,6 +96,8 @@ mvn clean gwt:debug
 
 You will have to setup to remote debuggers (as described in the link:RUN.adoc[run section]): one on port 8000 for the client-side code, and one on port 8001 for the server-side.
 
+TIP: You will need to first run the maven command, then start client-side debugger, and then the server-side debugger (**in that order**).
+
 === Refreshing Server Code
 
 Now server code can be updated in two steps:
