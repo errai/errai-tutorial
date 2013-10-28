@@ -1,1 +1,105 @@
-Under Construction
+== Developing with Errai
+
+In this section we will configure gwt devmode to use control the JBoss Application Server so that it is not necessary to manually start the server and deploy a war file before running an Application in dev mode.
+
+=== Checkout the DevMode Branch
+
+The dev-mode branch of errai-tutorial already includes most of the changes necessary for this setup. To switch to this branch run:
+
+---------------------
+git checkout dev-mode
+---------------------
+
+=== What's Different
+
+In the dev-mode branch, we've added a couple new dependencies to the pom:
+
+-------------------------------------------------------------------------------
+<dependency>
+  <groupId>org.jboss.errai</groupId>
+  <artifactId>errai-cdi-jboss</artifactId>
+  <version>${errai.version}</version>
+</dependency>
+
+<dependency>
+  <groupId>org.jboss.errai</groupId>
+  <artifactId>client-local-class-hider</artifactId>
+  <version>${errai.version}</version>
+</dependency>
+-------------------------------------------------------------------------------
+
+The first dependency is for the ServletLauncher, which the gwt-maven-plugin will use to control the JBoss AS instance. The second hides client-side classes from JBoss AS, which is necessary since we will be deploying directly from the webapp directory.
+
+Additionally, the configuration for the gwt-maven-plugin has changed:
+
+-------------------------------------------------------------------------------
+<plugin>
+  <groupId>org.codehaus.mojo</groupId>
+  <artifactId>gwt-maven-plugin</artifactId>
+  <version>${gwt.version}</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>resources</goal>
+        <goal>compile</goal>
+      </goals>
+    </execution>
+  </executions>
+  <configuration>
+    <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M -Derrai.jboss.home=${errai.jboss.home} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/client-local-class-hider/${errai.version}/client-local-class-hider-${errai.version}.jar</extraJvmArgs>
+    <logLevel>INFO</logLevel>
+    <noServer>false</noServer>
+    <server>org.jboss.errai.cdi.server.gwt.JBossLauncher</server>
+    <disableCastChecking>true</disableCastChecking>
+    <runTarget>webapp/index.html</runTarget>
+    <soyc>false</soyc>
+    <hostedWebapp>src/main/webapp</hostedWebapp>
+  </configuration>
+</plugin>
+-------------------------------------------------------------------------------
+
+The main differences in this configuration are:
+
+* the *noServer* option has been set to false
+* there is a new *server* property with the fully-qualified classpath of the JBossLauncher
+* we've passed some extra properties through *extraJvmArgs*
+
+=== Configuring errai.jboss.home
+
+One of the extra JVM arguments we gave to the gwt-maven-plugin, errai.jboss.home, is used to tell the launcher where $JBOSS_HOME is located. It is necessary to supply a value for this.
+
+To set your $JBOSS_HOME to this value, find the *properties* tag near the top of the *pom.xml*. You should see a comment:
+
+-------------------------------------------------------------------------------
+<!-- Add the absolute path for $JBOSS_HOME here as errai.jboss.home -->
+-------------------------------------------------------------------------------
+
+Replace this comment with the following (where $JBOSS_HOME is the absolute path to your JBoss AS installation):
+
+-------------------------------------------------------------------------------
+<errai.jboss.home>$JBOSS_HOME</errai.jboss.home>
+-------------------------------------------------------------------------------
+
+=== Running Dev Mode
+
+You should now be able to start the demo in dev mode with this single command:
+
+-------------------------------------------------------------------------------
+mvn clean gwt:run
+-------------------------------------------------------------------------------
+
+And to debug run:
+
+-------------------------------------------------------------------------------
+mvn clean gwt:debug
+-------------------------------------------------------------------------------
+
+You will have to setup to remote debuggers (as described in the link:RUN.adoc[run section]): one on port 8000 for the client-side code, and one on port 8001 for the server-side.
+
+=== Refreshing Server Code
+
+Now server code can be updated in two steps:
+
+* Open a new terminal in the project and run `mvn compile`
+* Click the "Restart Server" button in the server tab of the gwt dev mode window
+

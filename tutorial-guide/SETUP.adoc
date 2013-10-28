@@ -108,5 +108,5 @@ What's Next?
 ~~~~~~~~~~~~
 
 Now that you have everything installed, you're ready to try running an
-Errai Application locally. To find out how, go to next link:RUN.adoc[next
+Errai Application locally. To find out how, go to the link:RUN.adoc[next
 section].

@@ -16,7 +16,7 @@
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javaee.version>3.0.2.Final</javaee.version>
-    <errai.jboss.home>/home/yyz/mbarkley/jboss-as-7.1.1.Final</errai.jboss.home>
+    <!-- Add the absolute path for $JBOSS_HOME here as errai.jboss.home -->
   </properties>
 
   <dependencyManagement>
