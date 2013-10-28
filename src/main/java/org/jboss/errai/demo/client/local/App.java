@@ -37,7 +37,7 @@ public class App {
     // This is specifying the relative path to the REST endpoint used to store
     // complaints on the server. When compiling the native mobile app of this
     // demo, this needs to be changed to an absolute URL.
-    RestClient.setApplicationRoot("/errai-tutorial/rest");
+    RestClient.setApplicationRoot("/webapp/rest");
     // RestClient.setApplicationRoot("http://10.15.16.207:8080/errai-tutorial/rest");
   }
 
