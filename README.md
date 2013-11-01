@@ -15,7 +15,7 @@ Prerequisites
 -------------
 
  * Maven 3 (run `mvn --version` on the command line to check)
- * JBoss AS 7 or EAP 6 running on your local machine
+ * An unzipped copy JBoss AS 7 or EAP 6
 
 Build and deploy (production mode)
 ----------------
