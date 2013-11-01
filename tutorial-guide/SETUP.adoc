@@ -8,7 +8,6 @@ In this section we will go through how to acquire and use the following
 tools, which will be necessary for developing Errai and following along
 with the rest of the tutorial:
 
-* Git
 * JDK (6 or 7)
 * Maven (3.x)
 * JBoss AS (7.1)
@@ -17,16 +16,6 @@ with the rest of the tutorial:
 
 Although it is possible to use counterparts for some of these tools, we
 encourage you to use the suggested tools on your first go.
-
-Git
-~~~
-
-Git is a Source Control Management (SCM) software. In this tutorial we
-will use Git to download the tutorial and eventually to start a new
-Errai Application.
-
-You can download Git for Mac, Windows, or Linux
-http://git-scm.com/downloads[here].
 
 JDK
 ~~~
