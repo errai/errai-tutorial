@@ -1,6 +1,6 @@
 == Developing with Errai
 
-In this section we will configure gwt devmode to use control the JBoss Application Server so that it is not necessary to manually start the server and deploy a war file before running an Application in dev mode.
+In this section we will configure GWT devmode to use the JBoss Application Server so that it is not necessary to manually start the server and deploy a war file before running an Application in dev mode.
 
 Before starting this, you should:
 
