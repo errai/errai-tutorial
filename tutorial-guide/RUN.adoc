@@ -1,0 +1,155 @@
+== Running Errai
+
+This section of the tutorial will show you how to deploy an Errai
+Application locally for development. By the end of this section you will
+be able to run the errai-tutorial demo in production mode.
+
+=== Prerequisites
+
+Before attempting this you should have installed all the necessary
+software. For a list of required software with links and instructions,
+check out the link:SETUP.adoc[setup section].
+
+=== Regarding Commands
+
+Any commands in these instructions are targeted towards users of
+Unix-based operating systems (namely Linux and Mac OSX). If you are a
+Windows user, the commands shown may need to be modified to work as
+described. (Please consider enhancing these instructions by submitting a
+https://github.com/errai/errai-tutorial[pull request] or starting a
+discussion on the https://community.jboss.org/en/errai[forum].)
+
+=== Getting Started
+
+As mentioned above, we will be working with the errai-tutorial demo. So
+the first thing we need to do is get a copy of the project. If you have
+git installed on your computer, to clone the errai-tutorial project run
+
+--------------------------------------------------------------------------
+git clone https://github.com/errai/errai-tutorial.git $HOME/errai-tutorial
+--------------------------------------------------------------------------
+
+If you don't have git, you can download the zip file
+https://github.com/errai/errai-tutorial/archive/dev-mode.zip[here].
+
+You should now have a folder `errai-tutorial` in your home directory.
+
+=== Maven Project Structure
+
+For those new to Maven, here's a quick overview of the project structure
+in errai-tutorial:
+
+* *pom.xml*
+** This XML file contains all the dependency and plugin information
+required for Maven to build this project.
+* *src/main/java*
+** The root folder for Java source code.
+* *src/main/resources*
+** The location of resources to be available to be provided to the
+application at run time. This folder contains configurations used by
+Errai.
+* *src/main/webapp*
+** The location of html and css files, and any other resources to be
+served to clients.
+
+=== Starting JBoss
+
+To run this demo, we'll be deploying it to the JBoss Application Server.
+To start a standalone instance of JBoss, run
+
+----------------------------------------
+$JBOSS_HOME/standalone/bin/standalone.sh
+----------------------------------------
+
+where `$JBOSS_HOME` is the path to JBoss folder you unzipped from the
+link:SETUP.adoc[setup] instructions.
+
+Now go to http://localhost:8080 in your web browser. If the server is
+running correctly, you should see a page saying "Your JBoss Application
+Server 7 is running."
+
+=== Building and Deploying
+
+It's time to really get things started. While the JBoss server is still
+running, run the command
+
+---------------------------------
+mvn clean package jboss-as:deploy
+---------------------------------
+
+*Note*: This command may take a while the first time it is executed.
+This is because Maven must fetch all the dependencies required to
+compile the project. This is only necessary the first time you build,
+making subsequent builds much faster.
+
+=== For Other Application Servers
+
+If you are using a different Application Server you should be able to
+manually deploy the demo by running
+
+-----------------
+mvn clean package
+-----------------
+
+and then copying `$HOME/errai-tutorial/target/errai-tutorial.war` to the
+proper deployments folder.
+
+[[verify-deployment]]
+=== Verify Deployment
+
+Once Maven is done building and deploying the demo, verify that it is
+running at http://localhost:8080/errai-tutorial . This demo features a
+simple complaint form application. Users can submit complaints from the
+main page, and view submitted complaints from an administrative page
+(linked at the bottom of the home page). See link:../README.md[README] for more 
+details.
+
+To really see the demo in action, you should run it with at
+least two browser windows open. Try submitting complaints with one
+window and see them live update to the admin screen. Or open two admin
+windows and completing complaints.
+
+*Note*: By default, JBoss will only serve the application locally. If
+you would like to try the demo on multiple devices, you can configure
+JBoss to bind to all addresses by editing
+`$JBOSS_HOME/standalone/configuration/standalone.xml`. Just these lines:
+
+-----------------------------------------------------------------
+<interface name="public">
+   <inet-address value="${jboss.bind.address.public:127.0.0.1}"/>
+</interface>
+-----------------------------------------------------------------
+
+And replace them with this:
+
+-------------------------
+<interface name="public">
+    <any-address/>
+</interface>
+-------------------------
+
+=== Build and deploy as native app to your mobile device
+
+The native application will have to know the absolute path to your 
+server or cluster. For this demo you will have to change the REST 
+and Errai Bus endpoint URL in Config.java and App.java (see comments) 
+before building the native application. Make sure that your application
+server instance is bound to an IP address that can be reached from your 
+mobile device. The section <<verify-deployment, Verify Deployment>> 
+desribes how to change the binding address of JBoss AS.
+
+To produce the native applications run:
+
+----
+% mvn clean package -Pmobile,jboss7
+----
+
+After that you can simply install the native app on your phone or tablet.
+
+Note that you will need to enable development options on your device and 
+have the Android SDK installed on your local machine.
+
+For deploying the native application to your Android device simply execute:
+----
+% adb install target/template/platforms/android/bin/HelloCordova-debug.apk
+----

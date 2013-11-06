@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.jboss.errai.demo</groupId>
@@ -10,10 +12,13 @@
 
   <properties>
     <errai.version>2.4.2.Final</errai.version>
+    <errai.devmode.version>3.0.0.20131101-M2</errai.devmode.version>
     <gwt.version>2.5.1</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javaee.version>3.0.2.Final</javaee.version>
+    <errai.dev.context>${project.artifactId}</errai.dev.context>
+    <errai.jboss.home><!-- Add the absolute path for $JBOSS_HOME here --></errai.jboss.home>
   </properties>
 
   <dependencyManagement>
@@ -53,6 +58,18 @@
         <artifactId>weld-servlet-core</artifactId>
         <version>1.1.5.Final</version>
       </dependency>
+      
+      <dependency>
+        <groupId>org.jboss.errai</groupId>
+        <artifactId>errai-cdi-jboss</artifactId>
+        <version>${errai.devmode.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.errai</groupId>
+        <artifactId>errai-client-local-class-hider</artifactId>
+        <version>${errai.devmode.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -87,6 +104,16 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-cdi-jboss</artifactId>    
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-client-local-class-hider</artifactId>      
     </dependency>
   </dependencies>
 
@@ -153,13 +180,14 @@
           </execution>
         </executions>
         <configuration>
-          <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M</extraJvmArgs>
+          <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M -Derrai.jboss.home=${errai.jboss.home} -Derrai.dev.context=${errai.dev.context} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${errai.version}/errai-client-local-class-hider-${errai.version}.jar</extraJvmArgs>
           <logLevel>INFO</logLevel>
-          <noServer>true</noServer>
+          <noServer>false</noServer>
+          <server>org.jboss.errai.cdi.server.gwt.JBossLauncher</server>
           <disableCastChecking>true</disableCastChecking>
-          <runTarget>http://localhost:8080/errai-tutorial</runTarget>
+          <runTarget>${errai.dev.context}/index.html</runTarget>
           <soyc>false</soyc>
-          <webappDirectory>src/main/webapp</webappDirectory>
+          <hostedWebapp>src/main/webapp</hostedWebapp>
         </configuration>
       </plugin>
       <plugin>
@@ -172,6 +200,7 @@
               <includes>
                 <include>src/main/webapp/app/</include>
                 <include>src/main/webapp/WEB-INF/deploy/</include>
+                <include>src/main/webapp/WEB-INF/lib/</include>
                 <include>**/gwt-unitCache/**</include>
                 <include>.errai/</include>
               </includes>
@@ -220,7 +249,7 @@
           <artifactId>errai-jboss-as-support</artifactId>
         </dependency>
 
-        <!-- TODO figure out how to force all these things to provided scope without doing it explicitly in EVERY SINGLE ERRAI PROJECT!!!!111!!!!1 -->
+         <!-- TODO figure out how to force all these things to provided scope without doing it explicitly in EVERY SINGLE ERRAI PROJECT!!!!111!!!!1 -->
         <!-- Don't deploy any of this -->
         <dependency><groupId>com.google.guava</groupId><artifactId>guava-gwt</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>hsqldb</groupId><artifactId>hsqldb</artifactId><scope>provided</scope></dependency>
@@ -237,6 +266,8 @@
         <dependency><groupId>org.hibernate</groupId><artifactId>hibernate-validator</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.hibernate</groupId><artifactId>hibernate-validator</artifactId><classifier>sources</classifier><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-cdi-jetty</artifactId><scope>provided</scope></dependency>
+        <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-cdi-jboss</artifactId><scope>provided</scope></dependency>
+        <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-client-local-class-hider</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-codegen-gwt</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-data-binding</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-javax-enterprise</artifactId><scope>provided</scope></dependency>
@@ -254,12 +285,7 @@
         <dependency><groupId>org.jboss.weld</groupId><artifactId>weld-spi</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>xml-apis</groupId><artifactId>xml-apis</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.errai.io.netty</groupId><artifactId>netty</artifactId><scope>provided</scope></dependency>
-        
-        <dependency>
-          <groupId>org.mortbay.jetty</groupId>
-          <artifactId>jetty-naming</artifactId>
-          <scope>provided</scope>
-        </dependency>
+        <dependency><groupId>org.mortbay.jetty</groupId><artifactId>jetty-naming</artifactId><scope>provided</scope></dependency>
       </dependencies>
     </profile>
 

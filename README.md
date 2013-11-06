@@ -15,9 +15,9 @@ Prerequisites
 -------------
 
  * Maven 3 (run `mvn --version` on the command line to check)
- * JBoss AS 7 or EAP 6 running on your local machine
+ * An unzipped copy of JBoss AS 7 or EAP 6
 
-Build and deploy
+Build and deploy (production mode)
 ----------------
 
 To build a .war file and deploy it to the local running JBoss EAP 6 or AS 7 instance:
@@ -31,17 +31,7 @@ Once the above command has completed, you should be able to access the app at th
 Code-and-Refresh
 ----------------
 
-To try it in GWT's dev mode, after completing the above steps, do this:
-
-    % mvn gwt:run
-
-Then click "Launch in Default Browser" on the GWT Dev Mode window that appears.
-
-Alternatively, to start debugging the client side code in your IDE, run:
-
-    % mvn gwt:debug
-
-and attach your IDE's remote debugger to localhost:8000.
+Using GWT Dev Mode, it is possible to instantly view changes to client code by refreshing the browser window. See our dev mode guide [here](tutorial-guide/DEVELOP.adoc) for instructions on setting up dev mode.
 
 Build and deploy as native app to your mobile device
 -----------------------------------------------------
