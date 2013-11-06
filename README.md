@@ -28,10 +28,10 @@ Once the above command has completed, you should be able to access the app at th
 
     http://localhost:8080/errai-tutorial
 
-Code-and-Refresh
+Code and Refresh (development mode)
 ----------------
 
-Using GWT Dev Mode, it is possible to instantly view changes to client code by refreshing the browser window. See our dev mode guide [here](tutorial-guide/DEVELOP.adoc) for instructions on setting up dev mode.
+Using GWT DevMode, it is possible to instantly view changes to client code by refreshing the browser window. See our dev mode guide [here](tutorial-guide/DEVELOP.adoc) for instructions on setting up dev mode.
 
 Build and deploy as native app to your mobile device
 -----------------------------------------------------

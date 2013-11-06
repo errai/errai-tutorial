@@ -1,12 +1,12 @@
-== Developing with Errai
+== Development Mode with Errai
 
-In this section we will configure GWT devmode to use the JBoss Application Server so that it is not necessary to manually start the server and deploy a war file before running an Application in dev mode.
+In this section we will configure GWT development mode to use the JBoss Application Server so that it is NOT necessary to manually start the server and deploy a war file before running an Application in dev mode.
 
 Before starting this, you should:
 
-* Have downloaded and unzipped JBoss AS 7.1.1.Final
+* Have downloaded and unzipped JBoss AS 7.1.1.Final or WildFly 8
 
-* Have downloaded errai-tutorial
+* Have downloaded the errai-tutorial
 
 * Have installed eclipse with the m2e plugin
 
@@ -22,7 +22,9 @@ click "Next"
 it is selected
 * Click "Finished"
 
-=== What's Different
+=== Setting up DevMode for JBoss AS7 and WildFly 8
+
+Note that you will only need to go through this step if you're upgrading an existing Errai App. If you've just downloaded the errai-tutorial this configuration is already set up for you.
 
 Errai Tutorial uses the 2.4.2.Final release of Errai, however, we've added a couple new dependencies to the pom from the newest 3.0 release:
 
@@ -91,7 +93,7 @@ To set this value to your $JBOSS_HOME, find the *properties* tag near the top of
 Replace this comment with the absolute path to $JBOSS_HOME so that it looks like:
 
 -------------------------------------------------------------------------------
-<errai.jboss.home>$JBOSS_HOME</errai.jboss.home>
+<errai.jboss.home>/path/to/jboss/home</errai.jboss.home>
 -------------------------------------------------------------------------------
 
 === Running Dev Mode
@@ -139,4 +141,3 @@ Server code can be updated in two steps:
 
 * Open a new terminal in the project and run `mvn compile`
 * Click the "Restart Server" button in the server tab of the gwt dev mode window
-
