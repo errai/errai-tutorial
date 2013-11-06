@@ -11,14 +11,14 @@
   <name>Errai::Tutorial</name>
 
   <properties>
-    <errai.version>2.4.2.Final</errai.version>
+    <errai.version>3.0-SNAPSHOT</errai.version>
     <errai.devmode.version>3.0.0.20131101-M2</errai.devmode.version>
     <gwt.version>2.5.1</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javaee.version>3.0.2.Final</javaee.version>
     <errai.dev.context>${project.artifactId}</errai.dev.context>
-    <errai.jboss.home><!-- Add the absolute path for $JBOSS_HOME here --></errai.jboss.home>
+    <errai.jboss.home>/Library/jboss-as-7.1.1.Final</errai.jboss.home>
   </properties>
 
   <dependencyManagement>

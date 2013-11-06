@@ -10,7 +10,6 @@ import org.jboss.errai.databinding.client.api.PropertyChangeHandler;
 import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.ui.client.widget.HasModel;
 import org.jboss.errai.ui.client.widget.ValueImage;
-import org.jboss.errai.ui.shared.api.annotations.AutoBound;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
@@ -35,38 +34,38 @@ public class ComplaintListItemWidget extends Composite implements HasModel<UserC
    * sync with the data-field "id")
    */
   @Inject
-  @AutoBound
+//  @AutoBound
   private DataBinder<UserComplaint> userComplaint;
 
   // You can also choose to instantiate your own widgets. Injection is not
   // required. In case of Element, direct injection is not supported.
-  @Bound
+//  @Bound
   @DataField
   private final Element id = DOM.createTD();
 
   @Inject
-  @Bound
+//  @Bound
   @DataField
   private CheckBox done;
 
-  @Bound
+//  @Bound
   @DataField
   private final Element name = DOM.createTD();
 
-  @Bound
+//  @Bound
   @DataField
   private final Element email = DOM.createTD();
 
-  @Bound
+//  @Bound
   @DataField
   private final Element complaint = DOM.createTD();
 
   @Inject
-  @Bound
+//  @Bound
   @DataField
   private ValueImage image;
 
-  @Bound
+//  @Bound
   @DataField
   private final Element version = DOM.createTD();
 

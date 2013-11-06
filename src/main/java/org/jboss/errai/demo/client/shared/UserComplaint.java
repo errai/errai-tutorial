@@ -10,7 +10,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Version;
 
 import org.jboss.errai.common.client.api.annotations.Portable;
-import org.jboss.errai.databinding.client.api.Bindable;
 
 /**
  * This is a JPA entity representing a user complaint. It is used on both the
@@ -19,7 +18,7 @@ import org.jboss.errai.databinding.client.api.Bindable;
  * the client, it is persisted into the browser's offline storage.
  */
 @Entity
-@Bindable
+//@Bindable
 @Portable
 @NamedQueries({ @NamedQuery(name = "allComplaints", query = "SELECT c FROM UserComplaint c ORDER BY c.id") })
 public class UserComplaint {
