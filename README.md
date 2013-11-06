@@ -17,6 +17,8 @@ Prerequisites
  * Maven 3 (run `mvn --version` on the command line to check)
  * An unzipped copy of JBoss AS 7 or EAP 6
 
+ More detailed instructions can be found in our [Setup Tutorial](tutorial-guide/SETUP.adoc)
+
 Build and deploy (production mode)
 ----------------
 
@@ -27,6 +29,8 @@ To build a .war file and deploy it to the local running JBoss EAP 6 or AS 7 inst
 Once the above command has completed, you should be able to access the app at the following URL:
 
     http://localhost:8080/errai-tutorial
+
+More detailed instructions can be found [here](tutorial-guide/RUN.adoc)
 
 Code and Refresh (development mode)
 ----------------
