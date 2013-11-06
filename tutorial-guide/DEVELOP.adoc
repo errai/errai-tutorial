@@ -6,7 +6,7 @@ Before starting this, you should:
 
 * Have downloaded and unzipped JBoss AS 7.1.1.Final
 
-* Have downloaded errai-tutorial (the dev-mode branch)
+* Have downloaded errai-tutorial
 
 * Have installed eclipse with the m2e plugin
 
@@ -22,29 +22,21 @@ click "Next"
 it is selected
 * Click "Finished"
 
-=== Verify you have the Dev Mode Branch
-
-The dev-mode branch of errai-tutorial already includes most of the changes necessary for this setup. If you cloned the project with git, you can switch to the dev-mode branch with:
-
----------------------
-git checkout dev-mode
----------------------
-
 === What's Different
 
-The dev-mode branch uses the newest release of errai. Additionally, we've added a couple new dependencies to the pom:
+Errai Tutorial uses the 2.4.2.Final release of Errai, however, we've added a couple new dependencies to the pom from the newest 3.0 release:
 
 -------------------------------------------------------------------------------
 <dependency>
   <groupId>org.jboss.errai</groupId>
   <artifactId>errai-cdi-jboss</artifactId>
-  <version>${errai.version}</version>
+  <version>${errai.devmode.version}</version>
 </dependency>
 
 <dependency>
   <groupId>org.jboss.errai</groupId>
   <artifactId>errai-client-local-class-hider</artifactId>
-  <version>${errai.version}</version>
+  <version>${errai.devmode.version}</version>
 </dependency>
 -------------------------------------------------------------------------------
 
@@ -66,7 +58,7 @@ Additionally, the configuration for the gwt-maven-plugin has changed:
     </execution>
   </executions>
   <configuration>
-    <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M -Derrai.jboss.home=${errai.jboss.home} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${errai.version}/errai-client-local-class-hider-${errai.version}.jar</extraJvmArgs>
+    <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M -Derrai.jboss.home=${errai.jboss.home} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${errai.devmode.version}/errai-client-local-class-hider-${errai.devmode.version}.jar</extraJvmArgs>
     <logLevel>INFO</logLevel>
     <noServer>false</noServer>
     <server>org.jboss.errai.cdi.server.gwt.JBossLauncher</server>
@@ -83,6 +75,8 @@ The main differences in this configuration are:
 * the *noServer* option has been set to false
 * there is a new *server* property with the fully-qualified classpath of the JBossLauncher
 * we've passed some extra properties through *extraJvmArgs*
+
+Note: If you are going to add devmode to an existing project of yours, take special care to add all the necessary properties found at the top of the errai-tutorial pom.
 
 === Configuring errai.jboss.home
 
