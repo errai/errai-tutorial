@@ -12,13 +12,15 @@
 
   <properties>
     <errai.version>2.4.2.Final</errai.version>
-    <errai.devmode.version>3.0.0.20131101-M2</errai.devmode.version>
+    <errai.devmode.version>3.0-SNAPSHOT</errai.devmode.version>
     <gwt.version>2.5.1</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javaee.version>3.0.2.Final</javaee.version>
     <errai.dev.context>${project.artifactId}</errai.dev.context>
-    <errai.jboss.home><!-- Add the absolute path for $JBOSS_HOME here --></errai.jboss.home>
+    <as.version>7.1.1.Final</as.version>
+    <!-- Add the absolute path for $JBOSS_HOME below -->
+    <errai.jboss.home>${project.build.directory}/jboss-as-${as.version}</errai.jboss.home>
   </properties>
 
   <dependencyManagement>
@@ -114,6 +116,13 @@
     <dependency>
       <groupId>org.jboss.errai</groupId>
       <artifactId>errai-client-local-class-hider</artifactId>      
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.as</groupId>
+      <artifactId>jboss-as-dist</artifactId>
+      <version>${as.version}</version>
+      <type>zip</type>
     </dependency>
   </dependencies>
 
@@ -215,6 +224,31 @@
           <source>1.6</source>
           <target>1.6</target>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.jboss.as</groupId>
+                  <artifactId>jboss-as-dist</artifactId>
+                  <version>${as.version}</version>
+                  <type>zip</type>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
