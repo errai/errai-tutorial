@@ -19,7 +19,7 @@
     <javaee.version>3.0.2.Final</javaee.version>
     <errai.dev.context>${project.artifactId}</errai.dev.context>
     <as.version>7.1.1.Final</as.version>
-    <!-- Add the absolute path for $JBOSS_HOME below -->
+    <!-- Add the absolute path for $JBOSS_HOME below to manage another instance -->
     <errai.jboss.home>${project.build.directory}/jboss-as-${as.version}</errai.jboss.home>
   </properties>
 
@@ -225,6 +225,7 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+      <!-- Unpack jboss-as from maven. Remove this if you wish to use your own jboss/wildfly instance. -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
