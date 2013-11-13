@@ -10,7 +10,7 @@ with the rest of the tutorial:
 
 * JDK (6 or 7)
 * Maven (3.x)
-* JBoss AS (7.1)
+* JBoss AS (7.1) (Optional -- necessary for production, but not development mode)
 * GWT Developer Plugin
 * Eclipse IDE (with the M2E plugin)
 
