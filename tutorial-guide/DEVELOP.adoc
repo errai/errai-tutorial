@@ -20,7 +20,7 @@ click "Next"
 it is selected
 * Click "Finished"
 
-=== Setting up DevMode for JBoss AS7 and WildFly 8
+=== Setting up DevMode for JBoss AS 7
 
 Note that you will only need to go through this step if you're upgrading an existing Errai App. If you've just downloaded the errai-tutorial this configuration is already set up for you.
 
