@@ -23,7 +23,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Errai Demo Summit 2013</title>
+  <title>Errai Tutorial</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link href="../../../../../../../webapp/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -42,7 +42,7 @@
 </head>
 
 <body>
-  <div data-field="app-template" class="container static">
+  <div id="app-template" class="container static">
     <div class="row span5 cols offset3">
       <h1 class="blackened">Get support now</h1>
     </div>
@@ -50,21 +50,22 @@
       <div class="span8 cols offset2">
         <form onsubmit="false">
           <fieldset>
-            <input type="text" id="name" data-field="name" placeholder="Full Name" name="text" tabindex="1" autofocus="autofocus" /> 
-            <input type="email" id="email" data-field="email" placeholder="you@example.com" name="regex" tabindex="2" />
-            <textarea id="complaint" data-field="complaint" rows="10" placeholder="What can we help you with?" name="replacement" tabindex="3"></textarea>
+            <input id="name" type="text" placeholder="Full Name" name="text" tabindex="1" autofocus="autofocus" /> 
+            <input id="email" type="email" placeholder="you@example.com" name="regex" tabindex="2" />
+            <textarea id="complaint" rows="10" placeholder="What can we help you with?" name="replacement" tabindex="3"></textarea>
 
-            <button type="button" class="btn" data-field="takePicture">Take picture</button><br />
-            <img data-field="image" src="#" class="img-polaroid" style="display: none" /><br />
+            <button type="button" class="btn" id="takePicture">Take picture</button><br />
+            <img id="image" src="#" class="img-polaroid" style="display: none" /><br />
 
-            <button class="btn btn-large pull-left" data-field="cancel">Cancel</button>
-            <button class="btn btn-large btn-primary pull-right" data-field="submit">Submit issue</button>
+            <button class="btn btn-large pull-left" id="cancel">Cancel</button>
+            <button class="btn btn-large btn-primary pull-right" id="submit">Submit issue</button>
           </fieldset>
         </form>
       </div>
     </div>
     <div class="row footer span5 cols offset3 blackened">
-      &copy; 2013, powered by <a href="http://jboss.org/errai">errai</a>, hosted on <a href="http://openshift.com">openshift by red hat</a> &raquo; <a href="#" data-field="admin">Admin</a>
+      &copy; 2013, powered by <a href="http://jboss.org/errai">errai</a>, hosted on 
+      <a href="http://openshift.com">openshift by red hat</a> &raquo; <a href="#" id="admin">Admin</a>
     </div>
   </div>
 </body>

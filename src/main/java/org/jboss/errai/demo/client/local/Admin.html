@@ -23,7 +23,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Errai Demo Summit 2013</title>
+  <title>Errai Tutorial</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link href="../../../../../../../webapp/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -41,7 +41,7 @@
 </head>
 
 <body>
-  <div data-field="app-template" class="container static">
+  <div id="app-template" class="container static">
     <div class="row span5 cols offset3">
       <h1 class="blackened">Admin: Current Issues</h1>
     </div>
@@ -59,10 +59,10 @@
               <th>Version</th>
             </tr>
           </thead>
-          <tbody data-field="complaints">
-            <tr data-field="complaint" valign="top" class="issue-open">
+          <tbody id="complaints">
+            <tr id="complaint" valign="top" class="issue-open">
               <td data-field="id" width="10%">#1</td>
-              <td width="10%"><input type="checkbox" data-field="done"></td>
+              <td width="10%"><input type="checkbox" id="done"></td>
               <td data-field="name">Lincoln Baxter, III</td>
               <td data-field="email">lincolnbaxter@gmail.com</td>
               <td data-field="complaint">My cat left a hairball in the kitchen. Could you clean it up for me please?</td>
@@ -71,21 +71,21 @@
             </tr>
             <tr valign="top" class="issue-open">
               <td width="10%">#2</td>
-              <td width="10%"><input type="checkbox" data-field="handled"></td>
+              <td width="10%"><input type="checkbox"></td>
               <td>Christian Sadilek</td>
               <td>csadilek@redhat.com</td>
               <td>I am having trouble getting my website done for the client. Could you please send Errai to help me?</td>
-              <td><img data-field="image" src="#" /></td>
-              <td data-field="version"></td>
+              <td><img src="#" /></td>
+              <td></td>
             </tr>
             <tr valign="top" class="issue-done">
               <td width="10%">#3</td>
-              <td width="10%"><input type="checkbox" checked="checked" data-field="handled"></td>
+              <td width="10%"><input type="checkbox" checked="checked"></td>
               <td>Lincoln's Clone</td>
               <td>lbaxter@redhat.com</td>
               <td>My cat left ANOTHER hairball in the kitchen. Could you clean it up for me please?</td>
-              <td><img data-field="image" src="#" /></td>
-              <td data-field="version"></td>
+              <td><img src="#" /></td>
+              <td></td>
             </tr>
           </tbody>
         </table>
@@ -93,7 +93,7 @@
     </div>
     <div class="row footer span5 cols offset3 blackened">
       &copy; 2013, powered by <a href="http://jboss.org/errai">errai</a>, hosted on <a href="http://openshift.com">openshift by red hat</a> &raquo; <a
-        href="#" data-field="admin">Home</a>
+        href="#" id="admin">Home</a>
     </div>
   </div>
 </body>
