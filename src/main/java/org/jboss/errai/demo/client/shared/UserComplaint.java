@@ -32,7 +32,7 @@ public class UserComplaint {
 
   private String name;
   private String email;
-  private String complaint;
+  private String text;
 
   private boolean done;
 
@@ -63,12 +63,12 @@ public class UserComplaint {
     this.email = email;
   }
 
-  public String getComplaint() {
-    return complaint;
+  public String getText() {
+    return text;
   }
 
-  public void setComplaint(String complaint) {
-    this.complaint = complaint;
+  public void setText(String complaint) {
+    this.text = complaint;
   }
 
   public Long getId() {
@@ -124,7 +124,7 @@ public class UserComplaint {
   @Override
   public String toString() {
     return "UserComplaint [id=" + id + ", version=" + version + ", name=" + name + ", email=" + email + ", complaint="
-            + complaint + ", done=" + done + ", image=" + image + "]";
+            + text + ", done=" + done + ", image=" + image + "]";
   }
 
 }

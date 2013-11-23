@@ -68,7 +68,7 @@ public class ComplaintForm extends Composite {
   @Inject
   @Bound
   @DataField
-  private TextArea complaint;
+  private TextArea text;
 
   @Inject
   @Bound
