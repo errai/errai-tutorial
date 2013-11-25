@@ -12,7 +12,7 @@
 
   <properties>
     <errai.version>2.4.2.Final</errai.version>
-    <errai.devmode.version>3.0.0.20131101-M2</errai.devmode.version>
+    <errai.devmode.version>3.0-SNAPSHOT</errai.devmode.version>
     <gwt.version>2.5.1</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
