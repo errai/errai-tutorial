@@ -24,13 +24,13 @@ it is selected
 
 Note that you will only need to go through this step if you're upgrading an existing Errai App. If you've just downloaded the errai-tutorial this configuration is already set up for you.
 
-Errai Tutorial uses the 2.4.2.Final release of Errai, however, we've added a new dependency to the pom from the newest 3.0 release:
+Currently to use this feature, you must be using errai 3.0-SNAPSHOT. Here is the main dependency for the DevMode setup.
 
 -------------------------------------------------------------------------------
 <dependency>
   <groupId>org.jboss.errai</groupId>
   <artifactId>errai-cdi-jboss</artifactId>
-  <version>${errai.devmode.version}</version>
+  <version>${errai.version}</version>
 </dependency>
 -------------------------------------------------------------------------------
 
@@ -52,7 +52,7 @@ Additionally, the plugin configuration has changed. First we have the new gwt-ma
     </execution>
   </executions>
   <configuration>
-    <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M -Derrai.jboss.home=${errai.jboss.home} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${errai.devmode.version}/errai-client-local-class-hider-${errai.devmode.version}.jar</extraJvmArgs>
+    <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M -Derrai.jboss.home=${errai.jboss.home} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${errai.version}/errai-client-local-class-hider-${errai.version}.jar</extraJvmArgs>
     <logLevel>INFO</logLevel>
     <noServer>false</noServer>
     <server>org.jboss.errai.cdi.server.gwt.JBossLauncher</server>
@@ -107,8 +107,7 @@ Finally, at the top of the pom we've included the following necessary properties
 
 -------------------------------------------------------------------------------
 <properties>
-  <errai.version>2.4.2.Final</errai.version>
-  <errai.devmode.version>3.0-SNAPSHOT</errai.devmode.version>
+  <errai.version>3.0-SNAPSHOT</errai.version>
   <gwt.version>2.5.1</gwt.version>
   <errai.dev.context>${project.artifactId}</errai.dev.context>
   <as.version>7.1.1.Final</as.version>
