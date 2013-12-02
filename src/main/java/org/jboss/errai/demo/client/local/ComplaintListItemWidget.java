@@ -59,7 +59,7 @@ public class ComplaintListItemWidget extends Composite implements HasModel<UserC
 
   @Bound
   @DataField
-  private final Element complaint = DOM.createTD();
+  private final Element text = DOM.createTD();
 
   @Inject
   @Bound
