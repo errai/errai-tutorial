@@ -35,19 +35,19 @@ More detailed instructions can be found [here](tutorial-guide/RUN.adoc)
 Code and Refresh (development mode)
 ----------------
 
-You should now be able to start the demo in dev mode with this single command:
+Using GWT DevMode, it is possible to instantly view changes to client code by simply refreshing the browser window. You should be able to start the demo in dev mode with this single command:
 
     % mvn clean gwt:run
 
 When the GWT Dev Mode window opens, press "Launch Default Browser" to start the app.
 
-To debug in dev mode, set up two remote debuggers: one on port 8000 for the client-side code, and one on port 8001 for the server-side code. Then:
+To debug in development mode, set up two remote debuggers: one on port 8000 for the client-side code, and one on port 8001 for the server-side code. Then:
 * Run `mvn clean gwt:debug`
 * Start your server remote debugger
 * Start your client remote debugger
 * Press "Launch Default Browser"
 
-Using GWT DevMode, it is possible to instantly view changes to client code by refreshing the browser window. See our dev mode guide [here](tutorial-guide/DEVELOP.adoc) for instructions on setting up dev mode and other details.
+See our development guide [here](tutorial-guide/DEVELOP.adoc) for more instructions on setting up dev mode and other details.
 
 Build and deploy as native app to your mobile device
 -----------------------------------------------------
