@@ -10,7 +10,7 @@ with the rest of the tutorial:
 
 * JDK (6 or 7)
 * Maven (3.x)
-* JBoss AS (7.1)
+* JBoss AS 7 or Wildfly 8 (Optional -- necessary for production, but not development mode)
 * GWT Developer Plugin
 * Eclipse IDE (with the M2E plugin)
 
@@ -42,12 +42,12 @@ version of Maven and follow the
 http://maven.apache.org/download.cgi#Installation_Instructions[installation
 instructions].
 
-JBoss AS
-~~~~~~~~
+JBoss AS and Wildfly
+~~~~~~~~~~~~~~~~~~~~
 
-JBoss AS is an Application Server. We will use it to host our Errai
-Application locally while developing. In the tutorial we will be using
-JBoss 7.1.1, but it should also be possible to use EAP 6 in a similar
+JBoss AS and Wildlfy are Application Servers. We will use one of them to host our Errai
+Application locally. In the tutorial we will be using
+JBoss 7.1.1, but it should also be possible to use EAP 6 or Wildfly 8 in a similar
 fashion.
 
 You can download a zip file with JBoss 7.1

@@ -4,8 +4,6 @@ In this section we will configure GWT development mode to use the JBoss Applicat
 
 Before starting this, you should:
 
-* Have downloaded and unzipped JBoss AS 7.1.1.Final or WildFly 8
-
 * Have downloaded the errai-tutorial
 
 * Have installed eclipse with the m2e plugin
@@ -22,11 +20,11 @@ click "Next"
 it is selected
 * Click "Finished"
 
-=== Setting up DevMode for JBoss AS7 and WildFly 8
+=== Setting up DevMode for JBoss AS 7
 
 Note that you will only need to go through this step if you're upgrading an existing Errai App. If you've just downloaded the errai-tutorial this configuration is already set up for you.
 
-Errai Tutorial uses the 2.4.2.Final release of Errai, however, we've added a couple new dependencies to the pom from the newest 3.0 release:
+Errai Tutorial uses the 2.4.2.Final release of Errai, however, we've added a new dependency to the pom from the newest 3.0 release:
 
 -------------------------------------------------------------------------------
 <dependency>
@@ -34,17 +32,11 @@ Errai Tutorial uses the 2.4.2.Final release of Errai, however, we've added a cou
   <artifactId>errai-cdi-jboss</artifactId>
   <version>${errai.devmode.version}</version>
 </dependency>
-
-<dependency>
-  <groupId>org.jboss.errai</groupId>
-  <artifactId>errai-client-local-class-hider</artifactId>
-  <version>${errai.devmode.version}</version>
-</dependency>
 -------------------------------------------------------------------------------
 
-The first dependency is for the ServletLauncher, which the gwt-maven-plugin will use to control the JBoss AS instance. The second hides client-side classes from JBoss AS, which is necessary since we will be deploying directly from the webapp directory.
+This new dependency is a ServletLauncher, which the gwt-maven-plugin will use to control the JBoss AS instance.
 
-Additionally, the configuration for the gwt-maven-plugin has changed:
+Additionally, the plugin configuration has changed. First we have the new gwt-maven-plugin configuration:
 
 -------------------------------------------------------------------------------
 <plugin>
@@ -78,22 +70,69 @@ The main differences in this configuration are:
 * there is a new *server* property with the fully-qualified classpath of the JBossLauncher
 * we've passed some extra properties through *extraJvmArgs*
 
-Note: If you are going to add devmode to an existing project of yours, take special care to add all the necessary properties found at the top of the errai-tutorial pom.
-
-=== Configuring errai.jboss.home
-
-One of the extra JVM arguments we gave to the gwt-maven-plugin, errai.jboss.home, is used to tell the launcher where $JBOSS_HOME is located. *It is necessary to set this to the path of your $JBOSS_HOME.*
-
-To set this value to your $JBOSS_HOME, find the *properties* tag near the top of the *pom.xml*. You should see a comment:
+Additionally, we have added a new execution for the maven-dependency plugin:
 
 -------------------------------------------------------------------------------
-<!-- Add the absolute path for $JBOSS_HOME here as errai.jboss.home -->
+<!-- Unpack jboss-as from maven. Remove this if you wish to use your own jboss/wildfly instance. -->
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-dependency-plugin</artifactId>
+  <executions>
+    <execution>
+      <id>unpack</id>
+      <phase>process-resources</phase>
+      <goals>
+        <goal>unpack</goal>
+      </goals>
+      <configuration>
+        <artifactItems>
+          <artifactItem>
+            <groupId>org.jboss.as</groupId>
+            <artifactId>jboss-as-dist</artifactId>
+            <version>${as.version}</version>
+            <type>zip</type>
+            <overWrite>false</overWrite>
+            <outputDirectory>${project.build.directory}</outputDirectory>
+          </artifactItem>
+        </artifactItems>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
 -------------------------------------------------------------------------------
 
-Replace this comment with the absolute path to $JBOSS_HOME so that it looks like:
+This new execution will unpack a Jboss Application Server and unzip it into your target directory.
+
+Finally, at the top of the pom we've included the following necessary properties:
 
 -------------------------------------------------------------------------------
-<errai.jboss.home>/path/to/jboss/home</errai.jboss.home>
+<properties>
+  <errai.version>2.4.2.Final</errai.version>
+  <errai.devmode.version>3.0-SNAPSHOT</errai.devmode.version>
+  <gwt.version>2.5.1</gwt.version>
+  <errai.dev.context>${project.artifactId}</errai.dev.context>
+  <as.version>7.1.1.Final</as.version>
+  <!-- Add the absolute path for $JBOSS_HOME below to manage another instance -->
+  <errai.jboss.home>${project.build.directory}/jboss-as-${as.version}</errai.jboss.home>
+</properties>
+-------------------------------------------------------------------------------
+
+=== Managing an External Jboss AS (or Wildfly) (**Optional**)
+
+One of the extra JVM arguments we gave to the gwt-maven-plugin, errai.jboss.home, is used to tell the launcher where $JBOSS_HOME is located. *It is necessary to set this to the path of your $JBOSS_HOME.* In the configuration above, this is done for you for the Jboss installation that is provided by maven.
+
+But if you wish to use a different application server (Jboss 7 or Wildfly 8), you can do so by changing the pom property *errai.jboss.home* near the top of the *pom.xml*.
+
+Just find the comment:
+
+-------------------------------------------------------------------------------
+<!-- Add the absolute path for $JBOSS_HOME below to manage another instance -->
+-------------------------------------------------------------------------------
+
+Then replace the line below with the following, where $JBOSS_HOME is the absolute path to your AS home folder:
+
+-------------------------------------------------------------------------------
+<errai.jboss.home>$JBOSS_HOME</errai.jboss.home>
 -------------------------------------------------------------------------------
 
 === Running Dev Mode

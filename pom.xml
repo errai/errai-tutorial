@@ -18,7 +18,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javaee.version>3.0.2.Final</javaee.version>
     <errai.dev.context>${project.artifactId}</errai.dev.context>
-    <errai.jboss.home><!-- Add the absolute path for $JBOSS_HOME here --></errai.jboss.home>
+    <as.version>7.1.1.Final</as.version>
+    <!-- Add the absolute path for $JBOSS_HOME below to manage another instance -->
+    <errai.jboss.home>${project.build.directory}/jboss-as-${as.version}</errai.jboss.home>
   </properties>
 
   <dependencyManagement>
@@ -65,11 +67,6 @@
         <version>${errai.devmode.version}</version>
       </dependency>
 
-      <dependency>
-        <groupId>org.jboss.errai</groupId>
-        <artifactId>errai-client-local-class-hider</artifactId>
-        <version>${errai.devmode.version}</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -111,10 +108,6 @@
       <artifactId>errai-cdi-jboss</artifactId>    
     </dependency>
 
-    <dependency>
-      <groupId>org.jboss.errai</groupId>
-      <artifactId>errai-client-local-class-hider</artifactId>      
-    </dependency>
   </dependencies>
 
   <repositories>
@@ -216,6 +209,32 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+      <!-- Unpack jboss-as from maven. Remove this if you wish to use your own jboss/wildfly instance. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.jboss.as</groupId>
+                  <artifactId>jboss-as-dist</artifactId>
+                  <version>${as.version}</version>
+                  <type>zip</type>
+                  <overWrite>false</overWrite>
+                  <outputDirectory>${project.build.directory}</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -267,7 +286,6 @@
         <dependency><groupId>org.hibernate</groupId><artifactId>hibernate-validator</artifactId><classifier>sources</classifier><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-cdi-jetty</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-cdi-jboss</artifactId><scope>provided</scope></dependency>
-        <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-client-local-class-hider</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-codegen-gwt</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-data-binding</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.errai</groupId><artifactId>errai-javax-enterprise</artifactId><scope>provided</scope></dependency>
