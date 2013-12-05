@@ -9,6 +9,7 @@ import org.jboss.errai.databinding.client.api.PropertyChangeEvent;
 import org.jboss.errai.databinding.client.api.PropertyChangeHandler;
 import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.ui.client.widget.HasModel;
+import org.jboss.errai.ui.client.widget.ValueImage;
 import org.jboss.errai.ui.shared.api.annotations.AutoBound;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
@@ -59,6 +60,11 @@ public class ComplaintListItemWidget extends Composite implements HasModel<UserC
   @Bound
   @DataField
   private final Element text = DOM.createTD();
+
+  @Inject
+  @Bound
+  @DataField
+  private ValueImage image;
 
   @Bound
   @DataField
