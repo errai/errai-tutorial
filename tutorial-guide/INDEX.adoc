@@ -14,6 +14,8 @@ is an index of the files in this tutorial guide and what they cover:
 development mode. DevMode skips the translation to JavaScript and lets you debug your 
 client and server-side logic as Java code in your IDE. It also allows for quick 
 "code-test-debug" cycles. Simply refresh your browser window to load changes.
+4.  link:FAQ.adoc[*FAQ*] : Answers to frequently asked questions about the dev mode 
+setup.
 
 Would you like to contribute information you've learned to this
 tutorial? Send a pull request on

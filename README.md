@@ -63,3 +63,11 @@ After that you can simply install the native app on your phone or tablet.
 e.g for Android run:
 
     % adb install target/template/platforms/android/bin/HelloCordova-debug.apk
+
+Troubleshooting
+---------------
+
+Here are some resources that may help if you encounter difficulties:
+* [FAQ](tutorial-guide/FAQ.adoc)
+* [Forum](https://community.jboss.org/en/errai)
+* [IRC](irc://freenode.net/errai)

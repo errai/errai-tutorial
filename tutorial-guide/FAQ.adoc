@@ -1,0 +1,38 @@
+= Frequently Asked Questions
+
+Would you like to share a solution to a problem? Send your pull request to https://github.com/errai/errai-tutorial[github]!
+
+== Dev Mode Questions
+
+=== Changes in standalone.xml don't seem to work in Dev Mode. What gives?
+By default, the Jboss/Wildfly instance is started using a copy of `$JBOSS_HOME/standalone/configuration/standalone-full.xml`.
+This is done because remote debugging of the AS requires configurations in addition to those found in `standalone.xml`.
+
+=== How can I specify a different configuration file for Jboss/Wildfly?
+In your pom.xml add the following to the `extraJvmArgs` in the gwt-maven-plugin configuration:
+
+-----------------------------------------
+-Derrai.jboss.config.file=$CONFIG_FILE
+-----------------------------------------
+
+`$CONFIG_FILE` must be the name (*without* any parent directories) of a file in `$JBOSS_HOME/standalone/configuration`.
+
+=== How can I pass other options to the JVM running Jboss/Wildfly?
+In your pom.xml add the following to the `extraJvmArgs` in the gwt-maven-plugin configuration (where `$JAVA_OPTS` is the string of options):
+
+-----------------------------------
+-Derrai.jboss.javaopts=$JAVA_OPTS
+-----------------------------------
+
+=== How do I change the port for remote debugging Jboss/Wildfly?
+In your pom.xml add the following to the `extraJvmArgs` in the gwt-maven-plugin configuration (where `$PORT` is the desired port number):
+
+------------------------------
+-Derrai.jboss.debug.port=$PORT
+------------------------------
+
+=== Can I use my own instance of Jboss/Wildfly instead of the one provided?
+Absolutely. If your project is based off of the errai-tutorial project, there are only two steps:
+* Set the `errai.jboss.home` property at the top of the pom.xml to the absolute path of your `$JBOSS_HOME`
+* In the plugins tag in the pom.xml, remove the maven-dependency-plugin configuration
+The Dev Mode launcher will now start the Jboss/Wildfly instance located at `$JBOSS_HOME`.
