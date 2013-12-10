@@ -70,4 +70,4 @@ Troubleshooting
 Here are some resources that may help if you encounter difficulties:
 * [FAQ](tutorial-guide/FAQ.adoc)
 * [Forum](https://community.jboss.org/en/errai)
-* [IRC](irc://freenode.net/errai)
+* [IRC](irc://freenode:6667/errai)
