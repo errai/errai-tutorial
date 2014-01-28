@@ -117,16 +117,7 @@
 
   <build>
     <finalName>${project.artifactId}</finalName>
-    <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
-
-    <resources>
-      <resource>
-        <directory>src/main/java</directory>
-      </resource>
-      <resource>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources>
+    <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>    
 
     <pluginManagement>
       <plugins>
@@ -147,7 +138,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <execute />
+                    <skip />
                   </action>
                 </pluginExecution>
               </pluginExecutions>
@@ -165,7 +156,6 @@
         <executions>
           <execution>
             <goals>
-              <goal>resources</goal>
               <goal>compile</goal>
             </goals>
           </execution>
