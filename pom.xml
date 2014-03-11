@@ -82,6 +82,7 @@
     <dependency>
       <groupId>org.jboss.errai</groupId>
       <artifactId>errai-cordova</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.spec</groupId>
