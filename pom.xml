@@ -304,7 +304,7 @@
           <plugin>
             <groupId>org.jboss.errai</groupId>
             <artifactId>cordova-maven-plugin</artifactId>
-            <version>2.4.1.Final</version>
+            <version>${errai.version}</version>
             <executions>
               <execution>
                 <id>build</id>
