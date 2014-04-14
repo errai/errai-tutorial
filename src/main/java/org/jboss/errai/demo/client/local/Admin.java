@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import org.jboss.errai.common.client.api.RemoteCallback;
-import org.jboss.errai.common.client.util.LogUtil;
 import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.jpa.sync.client.local.ClientSyncManager;
 import org.jboss.errai.jpa.sync.client.shared.SyncResponse;
@@ -19,6 +18,7 @@ import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.PageShown;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
+import org.slf4j.Logger;
 
 import com.google.gwt.user.client.ui.Composite;
 
@@ -51,6 +51,9 @@ public class Admin extends Composite {
 
   @Inject
   private App app;
+  
+  @Inject
+  private Logger logger;
 
   /**
    * Queries the list of complaints from the browser's local storage, and
@@ -74,12 +77,12 @@ public class Admin extends Composite {
    */
   @SuppressWarnings("unused")
   private void complaintChanged(@Observes UserComplaint created) {
-    LogUtil.log("Got complaint from server:" + created);
+    logger.debug("Got complaint from server:" + created);
     try {
       mergeInLocalStorage(created);
       loadComplaints();
     } catch (Throwable t) {
-      LogUtil.log(t.getMessage());
+      logger.error(t.getMessage());
     }
   }
 
@@ -95,7 +98,7 @@ public class Admin extends Composite {
     app.sync(new RemoteCallback<List<SyncResponse<UserComplaint>>>() {
       @Override
       public void callback(List<SyncResponse<UserComplaint>> response) {
-        LogUtil.log("Received sync response:" + response);
+        logger.debug("Received sync response:" + response);
         loadComplaints();
       }
     });
@@ -128,6 +131,7 @@ public class Admin extends Composite {
    * @param onlineEvent
    *          The event object indicating that the client is back online.
    */
+  @SuppressWarnings("unused")
   private void online(@Observes OnlineEvent onlineEvent) {
     sync();
   }

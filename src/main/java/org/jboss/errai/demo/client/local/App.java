@@ -7,12 +7,12 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.jboss.errai.common.client.api.RemoteCallback;
-import org.jboss.errai.common.client.util.LogUtil;
 import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.enterprise.client.jaxrs.api.RestClient;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.jpa.sync.client.local.ClientSyncManager;
 import org.jboss.errai.jpa.sync.client.shared.SyncResponse;
+import org.slf4j.Logger;
 
 /**
  * This is the entry point to the client portion of the web application. At
@@ -31,6 +31,9 @@ public class App {
    */
   @Inject
   private ClientSyncManager syncManager;
+  
+  @Inject
+  private Logger logger;
 
   @PostConstruct
   private void init() {
@@ -50,7 +53,7 @@ public class App {
     sync(new RemoteCallback<List<SyncResponse<UserComplaint>>>() {
       @Override
       public void callback(List<SyncResponse<UserComplaint>> response) {
-        LogUtil.log("Received sync response:" + response);
+        logger.debug("Received sync response:" + response);
       }
     });
   }
@@ -64,7 +67,7 @@ public class App {
    *          the callback to invoked upon completion of the data sync request.
    */
   public void sync(RemoteCallback<List<SyncResponse<UserComplaint>>> callback) {
-    LogUtil.log("Sending sync:");
+    logger.debug("Sending sync:");
     syncManager.coldSync("allComplaints", UserComplaint.class, Collections.<String, Object> emptyMap(), callback, null);
   }
 }
