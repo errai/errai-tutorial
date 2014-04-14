@@ -13,6 +13,7 @@ import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.jpa.sync.client.local.ClientSyncManager;
 import org.jboss.errai.jpa.sync.client.shared.SyncResponse;
 import org.jboss.errai.ui.client.widget.ListWidget;
+import org.jboss.errai.ui.client.widget.Table;
 import org.jboss.errai.ui.cordova.events.OnlineEvent;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.PageShown;
@@ -32,8 +33,8 @@ public class Admin extends Composite {
   /**
    * The list of complaints that currently exist.
    */
-  @DataField
-  private final ListWidget<UserComplaint, ComplaintListItemWidget> complaints;
+  @Inject @DataField @Table(root="tbody") 
+  private ListWidget<UserComplaint, ComplaintListItemWidget> complaints;
 
   /**
    * The EntityManager that interacts with client-local storage.
@@ -50,10 +51,6 @@ public class Admin extends Composite {
 
   @Inject
   private App app;
-
-  public Admin() {
-    complaints = new ComplaintListWidget("tbody");
-  }
 
   /**
    * Queries the list of complaints from the browser's local storage, and
