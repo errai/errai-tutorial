@@ -56,7 +56,7 @@ The native application will have to know the absolute path to your server or clu
 
 To produce the native applications run:
 
-    % mvn clean package -Pmobile,jboss7
+    % mvn clean package -Pmobile,jboss7 -Dplatform=android
 
 After that you can simply install the native app on your phone or tablet. 
 
