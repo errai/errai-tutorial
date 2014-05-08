@@ -11,7 +11,7 @@
   <name>Errai::Tutorial</name>
 
   <properties>
-    <errai.version>3.0.0.CR1</errai.version>
+    <errai.version>3.0-SNAPSHOT</errai.version>
     <gwt.version>2.5.1</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -304,9 +304,7 @@
         <dependency><groupId>org.jboss.spec.javax.interceptor</groupId><artifactId>jboss-interceptors-api_1.1_spec</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.spec.javax.transaction</groupId><artifactId>jboss-transaction-api_1.1_spec</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.jboss.weld.servlet</groupId><artifactId>weld-servlet-core</artifactId><scope>provided</scope></dependency>
-        <dependency><groupId>org.jboss.weld</groupId><artifactId>weld-core</artifactId><scope>provided</scope></dependency>
-        <dependency><groupId>org.jboss.weld</groupId><artifactId>weld-api</artifactId><scope>provided</scope></dependency>
-        <dependency><groupId>org.jboss.weld</groupId><artifactId>weld-spi</artifactId><scope>provided</scope></dependency>
+        <dependency><groupId>org.jboss.weld</groupId><artifactId>weld-core</artifactId><scope>provided</scope></dependency>        
         <dependency><groupId>xml-apis</groupId><artifactId>xml-apis</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>io.netty</groupId><artifactId>netty-codec-http</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.mortbay.jetty</groupId><artifactId>jetty-naming</artifactId><scope>provided</scope></dependency>
