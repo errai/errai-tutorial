@@ -21,7 +21,7 @@
     </feature>
     <name>Errai Tutorial</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        An Errai tutorial.
     </description>
     <author email="errai-dev@lists.jboss.org" href="http://erraiframework.org">
         Errai Dev Team
