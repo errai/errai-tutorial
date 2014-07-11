@@ -11,50 +11,26 @@
   <name>Errai::Tutorial</name>
 
   <properties>
-    <errai.version>3.0.1.Final</errai.version>
-    <gwt.version>2.5.1</gwt.version>
+    <errai.version>3.1.0-SNAPSHOT</errai.version>
+    <gwt.version>2.6.1</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javaee.version>3.0.2.Final</javaee.version>
     <errai.dev.context>${project.artifactId}</errai.dev.context>
-    <as.version>7.1.1.Final</as.version>
+    <as.version>8.1.0.Final</as.version>
     <!-- Add the absolute path for $JBOSS_HOME below to manage another instance -->
-    <errai.jboss.home>${project.build.directory}/jboss-as-${as.version}</errai.jboss.home>
+    <errai.jboss.home>${project.build.directory}/wildfly-${as.version}</errai.jboss.home>
   </properties>
 
   <dependencyManagement>
     <dependencies>
-
       <dependency>
         <groupId>org.jboss.errai.bom</groupId>
-        <artifactId>errai-version-master</artifactId>
+        <artifactId>errai-bom</artifactId>
         <version>${errai.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
-      <dependency>
-        <groupId>org.jboss.errai</groupId>
-        <artifactId>errai-parent</artifactId>
-        <version>${errai.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>org.jboss.spec</groupId>
-        <artifactId>jboss-javaee-6.0</artifactId>
-        <version>${javaee.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>org.jboss.errai</groupId>
-        <artifactId>errai-cdi-jboss</artifactId>
-        <version>${errai.version}</version>
-      </dependency>
-
     </dependencies>
   </dependencyManagement>
 
@@ -218,8 +194,8 @@
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>org.jboss.as</groupId>
-                  <artifactId>jboss-as-dist</artifactId>
+                  <groupId>org.wildfly</groupId>
+                  <artifactId>wildfly-dist</artifactId>
                   <version>${as.version}</version>
                   <type>zip</type>
                   <overWrite>false</overWrite>
@@ -250,9 +226,9 @@
             </configuration>
           </plugin>
           <plugin>
-            <groupId>org.jboss.as.plugins</groupId>
-            <artifactId>jboss-as-maven-plugin</artifactId>
-            <version>7.1.1.Final</version>
+            <groupId>org.wildfly.plugins</groupId>
+            <artifactId>wildfly-maven-plugin</artifactId>
+            <version>1.0.2.Final</version>
             <extensions>false</extensions>
           </plugin>
         </plugins>
