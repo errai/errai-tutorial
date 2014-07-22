@@ -134,7 +134,7 @@ Then replace the line below with the following, where $JBOSS_HOME is the absolut
 <errai.jboss.home>$JBOSS_HOME</errai.jboss.home>
 -------------------------------------------------------------------------------
 
-=== Running Dev Mode
+=== Running DevMode
 
 You should now be able to start the demo in dev mode with this single command:
 
@@ -144,7 +144,7 @@ mvn clean gwt:run
 
 When the GWT Dev Mode window opens, press "Launch Default Browser" to start the app.
 
-=== Debugging with Dev Mode
+=== Debugging with DevMode
 
 To debug in dev mode, we will need to set up two remote debuggers: one on port 8000 for the client-side code, and one on port 8001 for the server-side code.
 
@@ -179,3 +179,29 @@ Server code can be updated in two steps:
 
 * Open a new terminal in the project and run `mvn compile`
 * Click the "Restart Server" button in the server tab of the gwt dev mode window
+
+=== Running Super DevMode
+
+Running Super DevMode involves running Classic DevMode to host server-side code, but using Super DevMode for hosting client-side code.
+
+To do this, open two terminals. In the first run the command for Classic DevMode:
+
+-------------------------------------------------------------------------------
+mvn clean gwt:run
+-------------------------------------------------------------------------------
+
+In the second, run start the Super DevMode server:
+
+-------------------------------------------------------------------------------
+mvn gwt:run-codeserver
+-------------------------------------------------------------------------------
+
+When the Super DevMode codeserver is ready, visit link:$$http://127.0.0.1:9876$$[here] and copy the *Dev Mode On* and *Dev Mode Off* bookmarks.
+
+To run the application, go to the Classic DevMode window and click *Copy Link* button. Paste the link into your browser, but **remove** the query parameters before entering (i.e. remove `?gwt.codesvr=...`).
+
+If you see a warning saying your GWT module needs to be recompiled, click *OK*. Once the page has loaded, click the *Dev Mode On* bookmark you previously copied. A popup should appear on the page. Click *Compile* to draft compile your client-code. Once this is finished, the page will reload with the working application.
+
+=== Debugging Super DevMode
+
+With Super DevMode, you will need to debug code within a web browser. But by enabling source-maps, you should still be able to see lines of your original source code in supported browsers debugging tools.

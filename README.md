@@ -49,6 +49,29 @@ To debug in development mode, set up two remote debuggers: one on port 8000 for 
 
 See our development guide [here](tutorial-guide/DEVELOP.adoc) for more instructions on setting up dev mode and other details.
 
+Super Devmode
+-------------
+
+Use Super DevMode to try this application on browsers without the GWT DevMode plugin.
+
+To do so, open two terminals. In the first enter:
+
+    % mvn clean gwt:run
+
+In the second:
+
+    % mvn gwt:run-codeserver
+
+After the second command has finished, go [here](http://127.0.0.1:9876) in your browser and copy the *Dev Mode On* and *Dev Mode Off* bookmarks.
+
+Now you can run the demo by:
+
+* Going [here](http://127.0.0.1:8888/errai-tutorial). Wait until the page background has loaded. If you see a message saying your GWT module needs to be compiled, click *OK*.
+
+* Click the *Dev Mode On* bookmark you copied previously.
+
+* When the Super DevMode prompt appears on the page, click *Compile* to start a GWT compile. When the compile finishes the app will be ready.
+
 Build and deploy as native app to your mobile device
 -----------------------------------------------------
 
