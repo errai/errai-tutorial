@@ -8,7 +8,7 @@ Welcome to the Errai tutorial. This tutorial is designed to walk you
 through getting started with Errai. What exactly does that entail? Here
 is an index of the files in this tutorial guide and what they cover:
 
-1.  link:SETUP.adoc[*SETUP*] : Get the tools you need (such as Git, Maven, and JBoss)
+1.  link:SETUP.adoc[*SETUP*] : Get the tools you need (such as Git, Maven, and Wildfly)
 2.  link:RUN.adoc[*RUN*] : Run an Errai Application in production mode 
 3.  link:DEVELOP.adoc[*DEVELOP*] : Import the project into your IDE and make use of 
 development mode. DevMode skips the translation to JavaScript and lets you debug your 

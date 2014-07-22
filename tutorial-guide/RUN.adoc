@@ -52,29 +52,27 @@ Errai.
 ** The location of html and css files, and any other resources to be
 served to clients.
 
-=== Starting JBoss
+=== Starting Wildfly
 
-To run this demo, we'll be deploying it to the JBoss Application Server.
-To start a standalone instance of JBoss, run
+To run this demo, we'll be deploying it to the Wildfly Application Server.
+To start a standalone instance of Wildfly, run
 
 ----------------------------------------
-$JBOSS_HOME/standalone/bin/standalone.sh
+$WILDFLY_HOME/bin/standalone.sh
 ----------------------------------------
 
-where `$JBOSS_HOME` is the path to JBoss folder you unzipped from the
+where `$WILDFLY_HOME` is the path to Wildfly folder you unzipped from the
 link:SETUP.adoc[setup] instructions.
 
 Now go to http://localhost:8080 in your web browser. If the server is
-running correctly, you should see a page saying "Your JBoss Application
-Server 7 is running."
-
+running correctly, you should see a Wildfly welcome page.
 === Building and Deploying
 
-It's time to really get things started. While the JBoss server is still
+It's time to really get things started. While the Wildfly server is still
 running, run the command
 
 ---------------------------------
-mvn clean package jboss-as:deploy
+mvn clean package wildfly:deploy
 ---------------------------------
 
 *Note*: This command may take a while the first time it is executed.
@@ -109,10 +107,10 @@ least two browser windows open. Try submitting complaints with one
 window and see them live update to the admin screen. Or open two admin
 windows and completing complaints.
 
-*Note*: By default, JBoss will only serve the application locally. If
+*Note*: By default, Wildfly will only serve the application locally. If
 you would like to try the demo on multiple devices, you can configure
-JBoss to bind to all addresses by editing
-`$JBOSS_HOME/standalone/configuration/standalone.xml`. Just these lines:
+Wildfly to bind to all addresses by editing
+`$WILDFLY_HOME/standalone/configuration/standalone.xml`. Take just these lines:
 
 -----------------------------------------------------------------
 <interface name="public">
@@ -136,7 +134,7 @@ and Errai Bus endpoint URL in Config.java and App.java (see comments)
 before building the native application. Make sure that your application
 server instance is bound to an IP address that can be reached from your 
 mobile device. The section <<verify-deployment, Verify Deployment>> 
-desribes how to change the binding address of JBoss AS.
+desribes how to change the binding address of Wildfly AS.
 
 To produce the native applications run:
 
