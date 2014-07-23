@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 1.6//EN"
-        "http://google-web-toolkit.googlecode.com/svn/releases/1.6/distro-source/core/src/gwt-module.dtd">
-        
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.5.0//EN"
+            "http://google-web-toolkit.googlecode.com/svn/tags/2.5.0/distro-source/core/src/gwt-module.dtd">
+
 <module rename-to="app">
-    <inherits name="org.jboss.errai.enterprise.All" />
-	<inherits name="org.jboss.errai.ui.Cordova" />
-	
-	<replace-with class="org.jboss.errai.demo.client.local.Config">
-		<when-type-is class="org.jboss.errai.bus.client.framework.Configuration" />
-	</replace-with>
-  
-    <set-property name="phonegap.logging.consoleHandler" value="DISABLED" />
+  <inherits name="org.jboss.errai.enterprise.All" />
+  <inherits name="org.jboss.errai.ui.Cordova" />
+
+  <replace-with class="org.jboss.errai.demo.client.local.Config">
+    <when-type-is class="org.jboss.errai.bus.client.framework.Configuration" />
+  </replace-with>
+
+  <set-property name="phonegap.logging.consoleHandler" value="DISABLED" />
 
   <!-- These lines enable Super DevMode and source maps. -->
   <add-linker name="xsiframe" />
   <set-configuration-property name="devModeRedirectEnabled" value="true" />
-  <collapse-all-properties />
+  <collapse-all-properties/>
 
-    <!-- Uncomment the line below to enable all logging statements (default level is "INFO"). -->
-<!--     <set-property name="gwt.logging.logLevel" value="ALL"/> -->
+  <!-- Uncomment the line below to enable all logging statements (default level is "INFO"). -->
+  <!-- <set-property name="gwt.logging.logLevel" value="ALL"/> -->
 </module>
