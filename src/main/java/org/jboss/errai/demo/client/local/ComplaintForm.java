@@ -1,5 +1,6 @@
 package org.jboss.errai.demo.client.local;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.jboss.errai.common.client.api.Caller;
@@ -17,6 +18,8 @@ import org.jboss.errai.ui.shared.api.annotations.EventHandler;
 import org.jboss.errai.ui.shared.api.annotations.Model;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Window;
@@ -119,6 +122,11 @@ public class ComplaintForm extends Composite {
   @DataField
   private Button takePicture;
 
+  
+  @PostConstruct
+  public void postInit() {
+    
+  }
   /**
    * This method is registered as an event handler for click events on the
    * submit button of the complaint form.
