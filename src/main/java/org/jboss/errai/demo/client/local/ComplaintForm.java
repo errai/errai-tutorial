@@ -18,8 +18,6 @@ import org.jboss.errai.ui.shared.api.annotations.EventHandler;
 import org.jboss.errai.ui.shared.api.annotations.Model;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Window;

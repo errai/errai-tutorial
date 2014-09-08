@@ -30,7 +30,7 @@ h1 {
 	padding-right: 15px;
 }
 
-input,textarea,.result,.error,.replaced {
+input,textarea,core-input .result,.error,.replaced {
 	padding: 10px;
 	font-size: 25px !important;
 	line-height: 25px !important;
@@ -43,7 +43,7 @@ input,textarea,.result,.error,.replaced {
 	box-sizing: border-box;
 }
 
-input,textarea {
+input,textarea, core-input {
 	display: block;
 	width: 100%;	
 }
