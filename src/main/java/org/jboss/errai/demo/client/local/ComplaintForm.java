@@ -64,7 +64,7 @@ public class ComplaintForm extends Composite {
   @Inject
   @Bound
   @DataField
-  private TextBox email;
+  private CoreInputWidget email;
 
   @Inject
   @Bound

@@ -29,7 +29,7 @@ public class CoreInputWidget extends TextBoxBase {
   protected CoreInputWidget(Element elem) {
     super(elem);
     // Assert that the element is attached.
-    assert CoreInputElement.as(elem).getType().equalsIgnoreCase("text");
+    assert CoreInputElement.as(elem).getTagName().equalsIgnoreCase(CoreInputElement.TAG);
   }
 
   public static CoreInputWidget wrap(Element element) {
