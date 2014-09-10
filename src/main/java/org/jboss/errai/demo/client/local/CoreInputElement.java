@@ -105,6 +105,7 @@ public class CoreInputElement extends InputElement {
   public final native void setWillValidate(boolean willValidate) /*-{
     this.willValidate = willValidate;
   }-*/;
+
   public final native String getPlaceholder() /*-{
     return this.placeholder;
   }-*/;

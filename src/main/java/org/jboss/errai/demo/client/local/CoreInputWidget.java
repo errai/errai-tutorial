@@ -20,12 +20,6 @@ public class CoreInputWidget extends TextBoxBase {
     this(Document.get().createElement(CoreInputElement.TAG));
   }
 
-  protected CoreInputWidget(Element elem, String styleName) {
-    super(elem);
-    if (styleName != null)
-      setStyleName(elem, styleName);
-  }
-
   protected CoreInputWidget(Element elem) {
     super(elem);
     // Assert that the element is attached.
@@ -53,9 +47,9 @@ public class CoreInputWidget extends TextBoxBase {
     setValue(text);
   }
   
-  public String getValue() {
-    return getCoreElement().getValue();
-  }
+//  public String getValue() {
+//    return getCoreElement().getValue();
+//  }
 
   public void setValue(String value) {
     getCoreElement().setValue(value);
@@ -164,7 +158,9 @@ public class CoreInputWidget extends TextBoxBase {
     return addHandler(handler, ValueChangeEvent.getType());
   }
 
+
   private CoreInputElement getCoreElement() {
-    return getElement().cast();
+    Element elem = super.getElement();
+    return CoreInputElement.as(getElement());
   }
 }
