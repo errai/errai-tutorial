@@ -9,20 +9,20 @@ The filed complaints are persisted on the server as well as in the browser's off
 
 The demo can be packaged as a native mobile app using Errai's Cordova module which also allows for the simple injection of integrated mobile hardware (see the injection of the Camera object in `ComplaintForm.java` for an example).
 
-This demo is designed to work with a full Java EE 6 server such as JBoss EAP 6 or AS 7. Although it should be possible to craft a deployment of this demo to a simpler web server, it's much simpler to deploy to an EE 6 capable app server.
+This demo is designed to work with a full Java EE 6 server such as JBoss EAP 6, AS 7 or WildFly 8. Although it should be possible to craft a deployment of this demo to a simpler web server, it's much simpler to deploy to an EE 6 capable app server.
 
 Prerequisites
 -------------
 
  * Maven 3 (run `mvn --version` on the command line to check)
- * An unzipped copy of JBoss AS 7 or EAP 6
+ * An unzipped copy of WildFly 8, JBoss AS 7 or EAP 6
 
  More detailed instructions can be found in our [Setup Tutorial](tutorial-guide/SETUP.adoc)
 
 Build and deploy (production mode)
 ----------------
 
-To build a .war file and deploy it to the local running JBoss EAP 6 or AS 7 instance:
+To build a .war file and deploy it to the local running WildFly instance:
 
     % mvn clean package wildfly:deploy
 
