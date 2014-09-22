@@ -30,7 +30,7 @@ h1 {
 	padding-right: 15px;
 }
 
-input,textarea,core-input .result,.error,.replaced {
+input,textarea,core-input,paper-input .result,.error,.replaced {
 	padding: 10px;
 	font-size: 25px !important;
 	line-height: 25px !important;
@@ -43,10 +43,13 @@ input,textarea,core-input .result,.error,.replaced {
 	box-sizing: border-box;
 }
 
-input,textarea, core-input {
+input,textarea,core-input,paper-input {
 	display: block;
-	width: 100%;	
+	width: 100%;
+	background-color: white;
 }
+
+
 
 .blackened {
 	background-color: rgb(200,200,200);

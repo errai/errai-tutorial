@@ -15,13 +15,13 @@ public class CoreInputElement extends InputElement {
 	protected CoreInputElement() {
 	}
 
-  public static CoreInputElement as(Element elem) {
-//    System.out.println(elem);
-		String tagName = elem.getTagName();
-//		System.out.println("tagname " + tagName);
-		assert tagName.equalsIgnoreCase(TAG);
-		return (CoreInputElement) elem;
-	}
+//  public static CoreInputElement as(Element elem) {
+////    System.out.println(elem);
+//		String tagName = elem.getTagName();
+////		System.out.println("tagname " + tagName);
+//		assert tagName.equalsIgnoreCase(TAG);
+//		return (CoreInputElement) elem;
+//	}
 
 	public final native String getInputValue() /*-{
 	  return this.inputValue;

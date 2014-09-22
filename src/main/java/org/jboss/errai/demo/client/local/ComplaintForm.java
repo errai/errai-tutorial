@@ -59,17 +59,17 @@ public class ComplaintForm extends Composite {
   @Inject
   @Bound
   @DataField
-  private CoreInputWidget name;
+  private PaperInputWidget name;
 
   @Inject
   @Bound
   @DataField
-  private CoreInputWidget email;
+  private PaperInputWidget email;
 
   @Inject
   @Bound
   @DataField
-  private TextArea text;
+  private PaperInputWidget text;
 
   @Inject
   @Bound
