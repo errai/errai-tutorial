@@ -35,6 +35,7 @@
 
 	<script src="../../../../../../../webapp/components/platform/platform.js"></script>
 	<link rel="import" href="../../../../../../../webapp/components/paper-input/paper-input.html">
+    <link rel="import" href="../../../../../../../webapp/components/paper-button/paper-button.html">
 
   <style type="text/css">
   body {
@@ -58,11 +59,11 @@
             <paper-input id="email" type="email" label="you@example.com" name="regex" tabindex="2" style="min-height:51px"></paper-input>
             <paper-input multiline id="text" label="What can we help you with?" name="replacement" tabindex="3"></paper-input>
 
-            <button type="button" class="btn" id="takePicture">Take picture</button><br />
+            <paper-button class="btn" id="takePicture">Take picture</paper-button><br />
             <img id="image" src="#" class="img-polaroid" style="display: none" /><br />
 
-            <button class="btn btn-large pull-left" id="cancel">Cancel</button>
-            <button class="btn btn-large btn-primary pull-right" id="submit">Submit issue</button>
+            <paper-button class="btn btn-large pull-left" id="cancel">Cancel</paper-button>
+            <paper-button class="btn btn-large btn-primary pull-right" id="submit">Submit issue</paper-button>
           </fieldset>
         </form>
       </div>
