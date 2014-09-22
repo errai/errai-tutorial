@@ -24,7 +24,7 @@ Build and deploy (production mode)
 
 To build a .war file and deploy it to the local running JBoss EAP 6 or AS 7 instance:
 
-    % mvn clean package jboss-as:deploy
+    % mvn clean package wildfly:deploy
 
 Once the above command has completed, you should be able to access the app at the following URL:
 
