@@ -25,17 +25,18 @@
   <meta charset="utf-8">
   <title>Errai Tutorial</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link href="../../../../../../../webapp/bootstrap/css/bootstrap.css" rel="stylesheet">
-  <link href="../../../../../../../webapp/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-  <link href="../../../../../../../webapp/css/application.css" rel="stylesheet">
-  
-  <link href='http://fonts.googleapis.com/css?family=Gudea:400,700' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 
-	<script src="../../../../../../../webapp/components/platform/platform.js"></script>
-	<link rel="import" href="../../../../../../../webapp/components/paper-input/paper-input.html">
+    <script src="../../../../../../../webapp/components/platform/platform.js"></script>
+    <link rel="import" href="../../../../../../../webapp/components/paper-input/paper-input.html">
     <link rel="import" href="../../../../../../../webapp/components/paper-button/paper-button.html">
+
+    <link href="../../../../../../../webapp/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../../../../webapp/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../../../../../../../webapp/css/application.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Gudea:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+
 
   <style type="text/css">
   body {
@@ -54,22 +55,21 @@
       <div class="span8 cols offset2">
         <form onsubmit="false">
           <fieldset>
-            <paper-input id="name" class="gwt-TextBox" type="text" label="Full Name" name="text" tabindex="1" autofocus="autofocus"
-                     style="min-height:51px"></paper-input>
-            <paper-input id="email" type="email" label="you@example.com" name="regex" tabindex="2" style="min-height:51px"></paper-input>
+            <paper-input id="name" class=".name" type="text" label="Full Name" name="text" tabindex="1" autofocus="autofocus"></paper-input>
+            <paper-input id="email" type="email" label="you@example.com" name="regex" tabindex="2"></paper-input>
             <paper-input multiline id="text" label="What can we help you with?" name="replacement" tabindex="3"></paper-input>
 
-            <paper-button class="btn" id="takePicture">Take picture</paper-button><br />
+            <paper-button id="takePicture">Take picture</paper-button><br />
             <img id="image" src="#" class="img-polaroid" style="display: none" /><br />
 
-            <paper-button class="btn btn-large pull-left" id="cancel">Cancel</paper-button>
-            <paper-button class="btn btn-large btn-primary pull-right" id="submit">Submit issue</paper-button>
+            <paper-button id="cancel">Cancel</paper-button>
+            <paper-button id="submit">Submit issue</paper-button>
           </fieldset>
         </form>
       </div>
     </div>
     <div class="row footer span5 cols offset3 blackened">
-      &copy; 2013, powered by <a href="http://erraiframework.org/">errai</a>, hosted on 
+      &copy; 2013, powered by <a href="http://erraiframework.org/">errai</a>, hosted on
       <a href="http://openshift.com">openshift by red hat</a> &raquo; <a href="#" id="admin">Admin</a>
     </div>
   </div>
