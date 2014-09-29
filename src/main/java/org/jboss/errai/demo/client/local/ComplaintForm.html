@@ -55,15 +55,17 @@
       <div class="span8 cols offset2">
         <form onsubmit="false">
           <fieldset>
-            <paper-input id="name" class=".name" type="text" label="Full Name" name="text" tabindex="1" autofocus="autofocus"></paper-input>
+            <paper-input id="name" type="text" label="Full Name" name="text" tabindex="1"
+                         autofocus="autofocus"></paper-input>
             <paper-input id="email" type="email" label="you@example.com" name="regex" tabindex="2"></paper-input>
-            <paper-input multiline id="text" label="What can we help you with?" name="replacement" tabindex="3"></paper-input>
+            <paper-input multiline id="text" label="What can we help you with?" name="replacement"
+              tabindex="3"></paper-input>
 
-            <paper-button id="takePicture">Take picture</paper-button><br />
+            <paper-button type="button" class="btn" id="takePicture">Take picture</paper-button><br />
             <img id="image" src="#" class="img-polaroid" style="display: none" /><br />
 
-            <paper-button id="cancel">Cancel</paper-button>
-            <paper-button id="submit">Submit issue</paper-button>
+            <paper-button class="btn btn-large pull-left" id="cancel">Cancel</paper-button>
+            <paper-button class="btn btn-large btn-primary pull-right" id="submit">Submit issue</paper-button>
           </fieldset>
         </form>
       </div>

@@ -10,16 +10,16 @@ import com.google.gwt.dom.client.TagName;
 public class PaperInputElement extends CoreInputElement {
   public static final String TAG = "PAPER-INPUT";
 
-	protected PaperInputElement() {
-	}
+  protected PaperInputElement() {
+  }
 
   public static PaperInputElement as(Element elem) {
-//    System.out.println(elem);
-		String tagName = elem.getTagName();
-//		System.out.println("tagname " + tagName);
-		assert tagName.equalsIgnoreCase(TAG);
-		return (PaperInputElement) elem;
-	}
+    //    System.out.println(elem);
+    String tagName = elem.getTagName();
+    //		System.out.println("tagname " + tagName);
+    assert tagName.equalsIgnoreCase(TAG);
+    return (PaperInputElement) elem;
+  }
 
   public final native String getLabel() /*-{
     return this.label;
