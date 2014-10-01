@@ -3,6 +3,7 @@ package org.jboss.errai.demo.client.local;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import com.google.gwt.user.client.ui.*;
 import org.jboss.errai.common.client.api.Caller;
 import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.demo.client.shared.UserComplaintEndpoint;
@@ -21,10 +22,6 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.TextBox;
 import com.googlecode.gwtphonegap.client.camera.Camera;
 import com.googlecode.gwtphonegap.client.camera.PictureCallback;
 import com.googlecode.gwtphonegap.client.camera.PictureOptions;
@@ -78,7 +75,7 @@ public class ComplaintForm extends Composite {
 
   @Inject
   @DataField
-  private Button submit;
+  private PaperButtonWidget submit;
 
   /**
    * Errai's JAX-RS module generates a stub class that makes AJAX calls back to
@@ -118,12 +115,10 @@ public class ComplaintForm extends Composite {
 
   @Inject
   @DataField
-  private Button takePicture;
+  private PaperButtonWidget takePicture;
 
-  
   @PostConstruct
   public void postInit() {
-    
   }
   /**
    * This method is registered as an event handler for click events on the

@@ -1,21 +1,16 @@
 paper-input {
 	display: block;
-	width: 100%;
-}
-paper-input /deep/ textarea {
-  rows = 10;
-  background-color: red;
-}
-paper-input /deep/ #input {
-	padding: 10px;
-	font-family: monospace;
-	white-space: pre-wrap;
+    padding: 1.5%;
+	width: 97%;
+	font-size: 25px;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 1em;
+	line-height: 30px;
 	overflow: hidden;
 	word-wrap: break-word;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	background-color: white;
-    color: black;
-    border-radius: 5px;
+}
+
+paper-button {
+  text-transform: none;
 }
