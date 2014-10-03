@@ -14,9 +14,7 @@ public class PaperInputElement extends CoreInputElement {
   }
 
   public static PaperInputElement as(Element elem) {
-    //    System.out.println(elem);
     String tagName = elem.getTagName();
-    //		System.out.println("tagname " + tagName);
     assert tagName.equalsIgnoreCase(TAG);
     return (PaperInputElement) elem;
   }

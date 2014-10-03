@@ -9,22 +9,13 @@ import com.google.gwt.dom.client.TagName;
 
 @TagName(CoreInputElement.TAG)
 public class CoreInputElement extends InputElement {
-	public static final String TAG = "CORE-INPUT";
+  public static final String TAG = "CORE-INPUT";
 
-	protected CoreInputElement() {
-	}
+  protected CoreInputElement() {}
 
-//  public static CoreInputElement as(Element elem) {
-////    System.out.println(elem);
-//		String tagName = elem.getTagName();
-////		System.out.println("tagname " + tagName);
-//		assert tagName.equalsIgnoreCase(TAG);
-//		return (CoreInputElement) elem;
-//	}
-
-	public final native String getInputValue() /*-{
-	  return this.inputValue;
-	}-*/;
+  public final native String getInputValue() /*-{
+	return this.inputValue;
+  }-*/;
 
   public final native boolean getRequired() /*-{
     return this.required;

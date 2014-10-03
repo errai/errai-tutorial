@@ -23,8 +23,6 @@ public class CoreInputWidget extends TextBoxBase {
 
   protected CoreInputWidget(Element elem) {
     super(elem);
-    // Assert that the element is attached.
-    //assert CoreInputElement.as(elem).getTagName().equalsIgnoreCase(CoreInputElement.TAG);
   }
 
   public static CoreInputWidget wrap(Element element) {
@@ -47,10 +45,10 @@ public class CoreInputWidget extends TextBoxBase {
   public void setText(String text) {
     setValue(text);
   }
-  
-//  public String getValue() {
-//    return getCoreElement().getValue();
-//  }
+
+  public String getValue() {
+    return getCoreElement().getValue();
+  }
 
   public void setValue(String value) {
     getCoreElement().setValue(value);
@@ -158,7 +156,6 @@ public class CoreInputWidget extends TextBoxBase {
     }
     return addHandler(handler, ValueChangeEvent.getType());
   }
-
 
   private CoreInputElement getCoreElement() {
     Element elem = super.getElement();

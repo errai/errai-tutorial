@@ -11,6 +11,8 @@ paper-input {
 	word-wrap: break-word;
 }
 
-paper-button {
-  text-transform: none;
+paper-button /deep/ #icon {
+  margin: 0px;
+  width: 30px;
+  height: 30px;
 }

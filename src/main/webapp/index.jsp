@@ -9,9 +9,16 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+<script src="components/platform/platform.js"></script>
+<link rel="import" href="<%=contextPath%>/components/paper-input/paper-input.html">
+<link rel="import" href="<%=contextPath%>/components/paper-button/paper-button.html">
+<link rel="import" href="<%=contextPath%>/components/core-icons/image-icons.html">
+
 <link href="<%=contextPath%>/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="<%=contextPath%>/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
 <link href="<%=contextPath%>/css/application.css" rel="stylesheet">
+<link href="<%=contextPath%>/css/polymer-styling.css" rel="stylesheet" shim-shadowdom>
 
 <link href='http://fonts.googleapis.com/css?family=Gudea:400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>

@@ -30,26 +30,26 @@ h1 {
 	padding-right: 15px;
 }
 
-input,textarea .result,.error,.replaced {
-	padding: 10px;
-	font-size: 25px !important;
-	line-height: 25px !important;
-	font-family: monospace;
-	white-space: pre-wrap;
-	overflow: hidden;
-	word-wrap: break-word;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+.btn-cancel {
+  padding: 11px 40px;
+  color: #FFFFFF;
+  background-color: #A80000;
+  background-image: linear-gradient(to bottom, #A80000, #580000);
+  border-color: #800000;
 }
 
-input,textarea {
-	display: block;
-	width: 100%;
-	background-color: white;
+.btn-cancel:active, .btn-cancel:hover{
+  background-color: #580000;
+  color: #FFFFFF;
 }
 
+.centered {
+  margin-left: 130px;
+}
 
+.padded {
+  margin: 50px 0px 70px;
+}
 
 .blackened {
 	background-color: rgb(200,200,200);
@@ -70,6 +70,7 @@ input,textarea {
 .footer {
 	margin-top: 50px;
 	text-align: center;
+	font-size: 15px;
 }
 
 .error {
@@ -120,6 +121,10 @@ input,textarea {
 
 .static {
 	position: static;
+}
+
+#text {
+  height: 10em;
 }
 
 @media (max-width: 767px) {

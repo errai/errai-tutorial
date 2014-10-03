@@ -12,12 +12,10 @@ import org.jboss.errai.demo.client.local.elements.PaperButtonElement;
 public class PaperButtonWidget extends ButtonBase {
 
   public static PaperButtonWidget wrap(Element element) {
-
     // Assert that the element is attached.
     assert Document.get().getBody().isOrHasChild(element);
 
     PaperButtonWidget button = new PaperButtonWidget(element);
-
     // Mark it attached and remember it for cleanup.
     button.onAttach();
     RootPanel.detachOnWindowClose(button);

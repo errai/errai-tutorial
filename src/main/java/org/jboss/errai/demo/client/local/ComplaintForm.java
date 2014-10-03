@@ -5,6 +5,8 @@ import javax.inject.Inject;
 
 import com.google.gwt.user.client.ui.*;
 import org.jboss.errai.common.client.api.Caller;
+import org.jboss.errai.demo.client.local.widgets.PaperButtonWidget;
+import org.jboss.errai.demo.client.local.widgets.PaperInputWidget;
 import org.jboss.errai.demo.client.shared.UserComplaint;
 import org.jboss.errai.demo.client.shared.UserComplaintEndpoint;
 import org.jboss.errai.enterprise.client.jaxrs.api.ResponseCallback;
