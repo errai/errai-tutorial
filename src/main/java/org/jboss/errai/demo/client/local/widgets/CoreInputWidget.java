@@ -1,4 +1,4 @@
-package org.jboss.errai.demo.client.local;
+package org.jboss.errai.demo.client.local.widgets;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -9,6 +9,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBoxBase;
+import org.jboss.errai.demo.client.local.elements.CoreInputElement;
 
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>

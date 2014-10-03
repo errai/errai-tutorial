@@ -1,6 +1,5 @@
-package org.jboss.errai.demo.client.local;
+package org.jboss.errai.demo.client.local.elements;
 
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.TagName;
 

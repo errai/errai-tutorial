@@ -1,19 +1,22 @@
-package org.jboss.errai.demo.client.local;
+package org.jboss.errai.demo.client.local.widgets;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootPanel;
+import org.jboss.errai.demo.client.local.elements.PaperButtonElement;
 
 /**
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
-public class PaperIconButtonWidget extends PaperButtonWidget {
-  public static PaperIconButtonWidget wrap(Element element) {
+public class PaperButtonWidget extends ButtonBase {
+
+  public static PaperButtonWidget wrap(Element element) {
 
     // Assert that the element is attached.
     assert Document.get().getBody().isOrHasChild(element);
 
-    PaperIconButtonWidget button = new PaperIconButtonWidget(element);
+    PaperButtonWidget button = new PaperButtonWidget(element);
 
     // Mark it attached and remember it for cleanup.
     button.onAttach();
@@ -22,16 +25,16 @@ public class PaperIconButtonWidget extends PaperButtonWidget {
     return button;
   }
 
-  public PaperIconButtonWidget() {
-    super(Document.get().createElement(PaperIconButtonElement.tag));
+  public PaperButtonWidget() {
+    super(Document.get().createElement(PaperButtonElement.tag));
   }
 
-  public PaperIconButtonWidget(Element elem) {
+  public PaperButtonWidget(Element elem) {
     super(elem);
-    PaperIconButtonElement.as(elem);
+    PaperButtonElement.as(elem);
   }
 
-  public PaperIconButtonElement getButtonElement() {
+  public PaperButtonElement getButtonElement() {
     return getElement().cast();
   }
 
