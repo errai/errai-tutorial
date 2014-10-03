@@ -29,15 +29,12 @@ import com.googlecode.gwtphonegap.client.camera.PictureCallback;
 import com.googlecode.gwtphonegap.client.camera.PictureOptions;
 
 /**
- * This is the companion Java class of the complaint form as specified by
- * {@link Templated}. It refers to a data field called "app-template" in
- * ComplaintForm.html as its root and gains access to all data fields in the
- * template to add dynamic behavior (e.g. event handlers, data bindings, page
- * transitions).
+ * This is the companion Java class of the complaint form as specified by {@link Templated}. It refers to a data field
+ * called "app-template" in ComplaintForm.html as its root and gains access to all data fields in the template to add
+ * dynamic behavior (e.g. event handlers, data bindings, page transitions).
  * 
- * The {@link Page} annotation declares this form as a bookmarkable page that
- * can be transitioned to by other pages of this application. Further the
- * specified role (DefaultPage.class) make this page appear by default when the
+ * The {@link Page} annotation declares this form as a bookmarkable page that can be transitioned to by other pages of
+ * this application. Further the specified role (DefaultPage.class) make this page appear by default when the
  * application is started.
  */
 @Page(role = DefaultPage.class)
@@ -45,11 +42,9 @@ import com.googlecode.gwtphonegap.client.camera.PictureOptions;
 public class ComplaintForm extends Composite {
 
   /**
-   * Errai's data binding module will automatically bind the injected instance
-   * of {@link UserComplaint} to all fields annotated with {@link Bound}. If not
-   * specified otherwise, the bindings occur based on matching field names (e.g.
-   * userComplaint.name will automatically be kept in sync with the data-field
-   * "name")
+   * Errai's data binding module will automatically bind the injected instance of {@link UserComplaint} to all fields
+   * annotated with {@link Bound}. If not specified otherwise, the bindings occur based on matching field names (e.g.
+   * userComplaint.name will automatically be kept in sync with the data-field "name")
    */
   @Inject
   @Model
@@ -80,37 +75,32 @@ public class ComplaintForm extends Composite {
   private PaperButtonWidget submit;
 
   /**
-   * Errai's JAX-RS module generates a stub class that makes AJAX calls back to
-   * the server for each resource method on the {@link UserComplaintEndpoint}
-   * interface. The paths and HTTP methods for the AJAX calls are determined
-   * automatically based on the JAX-RS annotations ({@code @Path}, {@code @GET},
-   * {@code @POST}, and so on) on the resource.
+   * Errai's JAX-RS module generates a stub class that makes AJAX calls back to the server for each resource method on
+   * the {@link UserComplaintEndpoint} interface. The paths and HTTP methods for the AJAX calls are determined
+   * automatically based on the JAX-RS annotations ({@code @Path}, {@code @GET}, {@code @POST}, and so on) on the
+   * resource.
    */
   @Inject
   private Caller<UserComplaintEndpoint> endpoint;
 
   /**
-   * Errai's Navigation module allows to inject page transitions for all
-   * {@link Page}s of this application. It will automatically update the
-   * fragment ID in the browser's location bar when the transition is executed
-   * (the .go() method is invoked). This provides bookmarkable URLs and
-   * automatic history support.
+   * Errai's Navigation module allows to inject page transitions for all {@link Page}s of this application. It will
+   * automatically update the fragment ID in the browser's location bar when the transition is executed (the .go()
+   * method is invoked). This provides bookmarkable URLs and automatic history support.
    */
   @Inject
   private TransitionTo<ComplaintSubmitted> complaintSubmittedPage;
 
   /**
-   * A {@link TransitionAnchor} provides special support for using anchor tags
-   * in HTML templates. When the anchor is clicked it will automatically
-   * transition to the corresponding page.
+   * A {@link TransitionAnchor} provides special support for using anchor tags in HTML templates. When the anchor is
+   * clicked it will automatically transition to the corresponding page.
    */
   @Inject
   @DataField
   private TransitionAnchor<Admin> admin;
 
   /**
-   * Errai's Cordova integration module makes native device hardware injectable
-   * into your code.
+   * Errai's Cordova integration module makes native device hardware injectable into your code.
    */
   @Inject
   private Camera camera;
@@ -119,12 +109,8 @@ public class ComplaintForm extends Composite {
   @DataField
   private PaperButtonWidget takePicture;
 
-  @PostConstruct
-  public void postInit() {
-  }
   /**
-   * This method is registered as an event handler for click events on the
-   * submit button of the complaint form.
+   * This method is registered as an event handler for click events on the submit button of the complaint form.
    * 
    * @param e
    *          the click event.
@@ -145,10 +131,9 @@ public class ComplaintForm extends Composite {
   }
 
   /**
-   * This method is registered as an event handler for click events on the
-   * takePicture button of the complaint form. When running on devices that have
-   * camera support, it will cause the camera app to open and allow you to take
-   * a picture.
+   * This method is registered as an event handler for click events on the takePicture button of the complaint form.
+   * When running on devices that have camera support, it will cause the camera app to open and allow you to take a
+   * picture.
    * 
    * @param e
    *          the click event.

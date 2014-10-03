@@ -36,7 +36,7 @@ public class CoreInputWidget extends TextBoxBase {
 
     return inputWidget;
   }
-  
+
   @Override
   public String getText() {
     return getCoreElement().getInputValue();
@@ -71,12 +71,12 @@ public class CoreInputWidget extends TextBoxBase {
   }
 
   public String getPlaceholder() {
-   return getCoreElement().getPlaceholder();
+    return getCoreElement().getPlaceholder();
   }
 
   public void setPlaceholder(String placeholder) {
-     if (placeholder != null)
-       getCoreElement().setPlaceholder(placeholder);
+    if (placeholder != null)
+      getCoreElement().setPlaceholder(placeholder);
   }
 
   public String getPattern() {

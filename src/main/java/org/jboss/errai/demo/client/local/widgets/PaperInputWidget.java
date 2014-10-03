@@ -70,7 +70,6 @@ public class PaperInputWidget extends CoreInputWidget {
     getPaperElement().setFloatingLabel(floatLabel);
   }
 
-
   public HandlerRegistration addValueChangeHandler(ValueChangeHandler<String> handler) {
     // Initialization code
     if (!valueChangeHandlerInitialized) {
@@ -83,7 +82,6 @@ public class PaperInputWidget extends CoreInputWidget {
     }
     return addHandler(handler, ValueChangeEvent.getType());
   }
-
 
   private PaperInputElement getPaperElement() {
     Element elem = super.getElement();

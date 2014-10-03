@@ -36,53 +36,53 @@ public class CoreInputElement extends InputElement {
     this.step = step;
   }-*/;
 
-	public final native boolean getMultiline() /*-{
-		return this.multiline;
-	}-*/;
+  public final native boolean getMultiline() /*-{
+	return this.multiline;
+  }-*/;
 
   public final native void setMultiline(boolean multiline) /*-{
     this.multiline = multiline;
   }-*/;
 
-	public final native String getPattern() /*-{
-		return this.pattern;
-	}-*/;
+  public final native String getPattern() /*-{
+	return this.pattern;
+  }-*/;
 
   public final native void setPattern(String pattern) /*-{
     this.pattern =  pattern;
   }-*/;
 
-	public final native boolean getDisabled() /*-{
-		return this.disabled;
-	}-*/;
+  public final native boolean getDisabled() /*-{
+	return this.disabled;
+  }-*/;
 
-	public final native double getMin() /*-{
-		return this.min;
-	}-*/;
+  public final native double getMin() /*-{
+	return this.min;
+  }-*/;
 
   public final native void setMin(double min) /*-{
     this.min = min;
   }-*/;
 
-	public final native double getMax() /*-{
-		return this.max;
-	}-*/;
+  public final native double getMax() /*-{
+	return this.max;
+  }-*/;
   
   public final native void setMax(double max) /*-{
     this.max = max;
   }-*/;
     
-	public final native int getMaxRows() /*-{
-		return this.maxRows;
-	}-*/;
+  public final native int getMaxRows() /*-{
+	return this.maxRows;
+  }-*/;
     
   public final native void setMaxRows(int maxRows) /*-{
     this.maxRows =  maxRows;
   }-*/;
   
-	public final native boolean getInvalid() /*-{
-		return this.invalid;
-	}-*/;
+  public final native boolean getInvalid() /*-{
+	return this.invalid;
+  }-*/;
   
   public final native void setInvalid(boolean invalid) /*-{
     this.invalid = invalid;
