@@ -12,6 +12,9 @@ import com.google.gwt.user.client.ui.TextBoxBase;
 import org.jboss.errai.demo.client.local.elements.CoreInputElement;
 
 /**
+ * Provides a Widget wrapper for the {@link org.jboss.errai.demo.client.local.elements.CoreInputElement}
+ * so GWT widget methods can be used on the Polymer element.
+ *
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
 public class CoreInputWidget extends TextBoxBase {
@@ -142,19 +145,6 @@ public class CoreInputWidget extends TextBoxBase {
 
   public void setAutoFocus(boolean autoFocus) {
     getCoreElement().setAutoFocus(autoFocus);
-  }
-
-  public HandlerRegistration addValueChangeHandler(ValueChangeHandler<String> handler) {
-    // Initialization code
-    if (!valueChangeHandlerInitialized) {
-      valueChangeHandlerInitialized = true;
-      addChangeHandler(new ChangeHandler() {
-        public void onChange(ChangeEvent event) {
-          ValueChangeEvent.fire(CoreInputWidget.this, getValue());
-        }
-      });
-    }
-    return addHandler(handler, ValueChangeEvent.getType());
   }
 
   private CoreInputElement getCoreElement() {

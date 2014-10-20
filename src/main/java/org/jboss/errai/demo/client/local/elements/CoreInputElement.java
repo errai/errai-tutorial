@@ -4,6 +4,8 @@ import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.TagName;
 
 /**
+ * This class provides accessor methods for the properties of Polymer's core-input element.
+ *
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
 

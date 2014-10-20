@@ -14,6 +14,40 @@ html {
 }
 
 /*
+ * Polymer-specific styles
+ */
+paper-input {
+	display: block;
+    padding: 1.5%;
+	width: 97%;
+	font-size: 25px;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 1em;
+	line-height: 30px;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+
+paper-button /deep/ #icon {
+  margin: 0px;
+  width: 30px;
+  height: 30px;
+}
+
+.btn-cancel {
+  padding: 11px 40px;
+  color: #FFFFFF;
+  background-color: #A80000;
+  background-image: linear-gradient(to bottom, #A80000, #580000);
+  border-color: #800000;
+}
+
+.btn-cancel:active, .btn-cancel:hover{
+  background-color: #580000;
+  color: #FFFFFF;
+}
+/*
  * Application styles
  */
 body {
@@ -30,18 +64,6 @@ h1 {
 	padding-right: 15px;
 }
 
-.btn-cancel {
-  padding: 11px 40px;
-  color: #FFFFFF;
-  background-color: #A80000;
-  background-image: linear-gradient(to bottom, #A80000, #580000);
-  border-color: #800000;
-}
-
-.btn-cancel:active, .btn-cancel:hover{
-  background-color: #580000;
-  color: #FFFFFF;
-}
 
 .centered {
   margin-left: 130px;
