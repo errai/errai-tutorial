@@ -40,6 +40,14 @@ public class CoreInputWidget extends TextBoxBase {
     return inputWidget;
   }
 
+  public boolean isEmpty() {
+    String value = getValue();
+    if((value == null) || (value.isEmpty())) {
+      return true;
+    }
+    return false;
+  }
+
   @Override
   public String getText() {
     return getCoreElement().getInputValue();

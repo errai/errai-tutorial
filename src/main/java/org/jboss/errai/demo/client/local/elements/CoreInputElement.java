@@ -9,7 +9,7 @@ import com.google.gwt.dom.client.TagName;
  * @author Divya Dadlani <ddadlani@redhat.com>
  */
 
-@TagName(CoreInputElement.TAG)
+
 public class CoreInputElement extends InputElement {
   public static final String TAG = "CORE-INPUT";
 

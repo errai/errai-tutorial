@@ -1,8 +1,13 @@
 package org.jboss.errai.demo.client.local;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.*;
 import org.jboss.errai.common.client.api.Caller;
 import org.jboss.errai.demo.client.local.widgets.PaperButtonWidget;
@@ -109,6 +114,13 @@ public class ComplaintForm extends Composite {
   @DataField
   private PaperButtonWidget takePicture;
 
+  private HandlerRegistration handlerReg;
+
+  @PostConstruct
+  private void setup() {
+    handlerReg = addEnterKeyHandler();
+  }
+
   /**
    * This method is registered as an event handler for click events on the submit button of the complaint form.
    * 
@@ -160,4 +172,32 @@ public class ComplaintForm extends Composite {
       }
     });
   }
+
+  /**
+   * Adds a handler to trigger form submission if the Enter key is pressed
+   * while focused on the Complaint Form.
+   *
+   * @return A HandlerRegistration that can be used to remove the handler.
+   */
+  private HandlerRegistration addEnterKeyHandler() {
+    return this.addDomHandler(new KeyUpHandler() {
+      @Override
+      public void onKeyUp(KeyUpEvent event) {
+        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+          if (!isEmptyForm())
+            submit.click();
+        }
+      }
+    }, KeyUpEvent.getType());
+  }
+
+  private boolean isEmptyForm() {
+    return (name.isEmpty() && email.isEmpty() && text.isEmpty());
+  }
+
+  @PreDestroy
+  private void cleanup() {
+    handlerReg.removeHandler();
+  }
+
 }
