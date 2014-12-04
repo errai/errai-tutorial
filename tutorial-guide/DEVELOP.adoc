@@ -1,6 +1,6 @@
 == Development Mode with Errai
 
-In this section we will configure GWT development mode to use the JBoss Application Server so that it is NOT necessary to manually start the server and deploy a war file before running an Application in dev mode.
+In this section we will configure GWT development mode to use the Wildfly Application Server so that it is NOT necessary to manually start the server and deploy a war file before running an Application in dev mode.
 
 Before starting this, you should:
 
@@ -20,11 +20,11 @@ click "Next"
 it is selected
 * Click "Finished"
 
-=== Setting up DevMode for JBoss AS 7
+=== Setting up DevMode for Wildfly 8
 
 Note that you will only need to go through this step if you're upgrading an existing Errai App. If you've just downloaded the errai-tutorial this configuration is already set up for you.
 
-Currently to use this feature, you must be using errai 3.0-SNAPSHOT. Here is the main dependency for the DevMode setup.
+Currently to use this feature, you must be using errai 3.0.0 or greater. Here is the main dependency for the DevMode setup.
 
 -------------------------------------------------------------------------------
 <dependency>
@@ -34,7 +34,7 @@ Currently to use this feature, you must be using errai 3.0-SNAPSHOT. Here is the
 </dependency>
 -------------------------------------------------------------------------------
 
-This new dependency is a ServletLauncher, which the gwt-maven-plugin will use to control the JBoss AS instance.
+This new dependency is a ServletLauncher, which the gwt-maven-plugin will use to control the Wildfly AS instance.
 
 Additionally, the plugin configuration has changed. First we have the new gwt-maven-plugin configuration:
 
@@ -73,7 +73,7 @@ The main differences in this configuration are:
 Additionally, we have added a new execution for the maven-dependency plugin:
 
 -------------------------------------------------------------------------------
-<!-- Unpack jboss-as from maven. Remove this if you wish to use your own jboss/wildfly instance. -->
+<!-- Unpack wildfly from maven. Remove this if you wish to use your own wildfly instance. -->
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
   <artifactId>maven-dependency-plugin</artifactId>
@@ -87,8 +87,8 @@ Additionally, we have added a new execution for the maven-dependency plugin:
       <configuration>
         <artifactItems>
           <artifactItem>
-            <groupId>org.jboss.as</groupId>
-            <artifactId>jboss-as-dist</artifactId>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-dist</artifactId>
             <version>${as.version}</version>
             <type>zip</type>
             <overWrite>false</overWrite>
@@ -101,7 +101,7 @@ Additionally, we have added a new execution for the maven-dependency plugin:
 </plugin>
 -------------------------------------------------------------------------------
 
-This new execution will unpack a Jboss Application Server and unzip it into your target directory.
+This new execution will unpack a Wildfly Application Server and unzip it into your target directory.
 
 Finally, at the top of the pom we've included the following necessary properties:
 
@@ -111,27 +111,27 @@ Finally, at the top of the pom we've included the following necessary properties
   <gwt.version>2.5.1</gwt.version>
   <errai.dev.context>${project.artifactId}</errai.dev.context>
   <as.version>7.1.1.Final</as.version>
-  <!-- Add the absolute path for $JBOSS_HOME below to manage another instance -->
-  <errai.jboss.home>${project.build.directory}/jboss-as-${as.version}</errai.jboss.home>
+  <!-- Add the absolute path for $WILDFLY_HOME below to manage another instance -->
+  <errai.jboss.home>${project.build.directory}/wildfly-${as.version}</errai.jboss.home>
 </properties>
 -------------------------------------------------------------------------------
 
 === Managing an External Jboss AS (or Wildfly) (**Optional**)
 
-One of the extra JVM arguments we gave to the gwt-maven-plugin, errai.jboss.home, is used to tell the launcher where $JBOSS_HOME is located. *It is necessary to set this to the path of your $JBOSS_HOME.* In the configuration above, this is done for you for the Jboss installation that is provided by maven.
+One of the extra JVM arguments we gave to the gwt-maven-plugin, errai.jboss.home, is used to tell the launcher where $WILDFLY_HOME is located. *It is necessary to set this to the path of your $WILDFLY_HOME.* In the configuration above, this is done for you for the Wildfly installation that is provided by maven.
 
-But if you wish to use a different application server (Jboss 7 or Wildfly 8), you can do so by changing the pom property *errai.jboss.home* near the top of the *pom.xml*.
+But if you wish to use a different application server, you can do so by changing the pom property *errai.jboss.home* near the top of the *pom.xml*.
 
 Just find the comment:
 
 -------------------------------------------------------------------------------
-<!-- Add the absolute path for $JBOSS_HOME below to manage another instance -->
+<!-- Add the absolute path for $WILDFLY_HOME below to manage another instance -->
 -------------------------------------------------------------------------------
 
-Then replace the line below with the following, where $JBOSS_HOME is the absolute path to your AS home folder:
+Then replace the line below with the following, where $WILDFLY_HOME is the absolute path to your AS home folder:
 
 -------------------------------------------------------------------------------
-<errai.jboss.home>$JBOSS_HOME</errai.jboss.home>
+<errai.jboss.home>$WILDFLY_HOME</errai.jboss.home>
 -------------------------------------------------------------------------------
 
 === Running DevMode

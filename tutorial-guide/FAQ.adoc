@@ -33,6 +33,6 @@ In your pom.xml add the following to the `extraJvmArgs` in the gwt-maven-plugin 
 
 === Can I use my own instance of Jboss/Wildfly instead of the one provided?
 Absolutely. If your project is based off of the errai-tutorial project, there are only two steps:
-* Set the `errai.jboss.home` property at the top of the pom.xml to the absolute path of your `$JBOSS_HOME`
+* Set the `errai.jboss.home` property at the top of the pom.xml to the absolute path of your `$WILDFLY_HOME`
 * In the plugins tag in the pom.xml, remove the maven-dependency-plugin configuration
-The Dev Mode launcher will now start the Jboss/Wildfly instance located at `$JBOSS_HOME`.
+The Dev Mode launcher will now start the Wildfly instance located at `$WILDFLY_HOME`.

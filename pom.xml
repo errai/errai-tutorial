@@ -11,8 +11,8 @@
   <name>Errai::Tutorial</name>
 
   <properties>
-    <errai.version>3.0.4.Final</errai.version>
-    <gwt.version>2.5.1</gwt.version>
+    <errai.version>3.1.0.Final</errai.version>
+    <gwt.version>2.7.0</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javaee.version>3.0.2.Final</javaee.version>
@@ -24,37 +24,13 @@
 
   <dependencyManagement>
     <dependencies>
-
       <dependency>
         <groupId>org.jboss.errai.bom</groupId>
-        <artifactId>errai-version-master</artifactId>
+        <artifactId>errai-bom</artifactId>
         <version>${errai.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
-      <dependency>
-        <groupId>org.jboss.errai</groupId>
-        <artifactId>errai-parent</artifactId>
-        <version>${errai.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>org.jboss.spec</groupId>
-        <artifactId>jboss-javaee-6.0</artifactId>
-        <version>${javaee.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>org.jboss.errai</groupId>
-        <artifactId>errai-cdi-jboss</artifactId>
-        <version>${errai.version}</version>
-      </dependency>
-
     </dependencies>
   </dependencyManagement>
 

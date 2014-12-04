@@ -10,8 +10,10 @@
     <when-type-is class="org.jboss.errai.bus.client.framework.Configuration" />
   </replace-with>
 
-  <set-property name="phonegap.logging.consoleHandler" value="DISABLED" />
+  <set-property name="phonegap.logging.consoleHandler"
+    value="DISABLED" />
 
-  <!-- Uncomment the line below to enable all logging statements (default level is "INFO"). -->
+  <!-- Uncomment the line below to enable all logging statements (default 
+    level is "INFO"). -->
   <!-- <set-property name="gwt.logging.logLevel" value="ALL"/> -->
 </module>

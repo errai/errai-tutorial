@@ -10,7 +10,7 @@ with the rest of the tutorial:
 
 * JDK (6 or 7)
 * Maven (3.x)
-* JBoss AS 7 or Wildfly 8 (Optional -- necessary for production, but not development mode)
+* Wildfly 8 (Optional -- necessary for production, but not development mode)
 * GWT Developer Plugin
 * Eclipse IDE (with the M2E plugin)
 
@@ -20,7 +20,7 @@ encourage you to use the suggested tools on your first go.
 JDK
 ~~~
 
-We recommend you use a version 6 or 7 of the Oracle JDK or the OpenJDK.
+We recommend you use a version 7 of the Oracle JDK or the OpenJDK.
 
 You can find Oracle's JDK
 http://www.oracle.com/technetwork/java/javase/downloads/index.html[here].
@@ -42,16 +42,15 @@ version of Maven and follow the
 http://maven.apache.org/download.cgi#Installation_Instructions[installation
 instructions].
 
-JBoss AS and Wildfly
+Wildfly
 ~~~~~~~~~~~~~~~~~~~~
 
-JBoss AS and Wildlfy are Application Servers. We will use one of them to host our Errai
+Wildlfy is an Application Server which we will use to host our Errai
 Application locally. In the tutorial we will be using
-JBoss 7.1.1, but it should also be possible to use EAP 6 or Wildfly 8 in a similar
-fashion.
+Wildfly 8.1.0.Final.
 
-You can download a zip file with JBoss 7.1
-http://download.jboss.org/jbossas/7.1/jboss-as-7.1.1.Final/jboss-as-7.1.1.Final.zip[here].
+You can download a zip file with Wildfly 8 
+http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip[here].
 No installation is necessary. Simply unzip it to wherever you would like
 the application's directory to be located.
 
