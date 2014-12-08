@@ -35,42 +35,23 @@ More detailed instructions can be found [here](tutorial-guide/RUN.adoc)
 Code and Refresh (development mode)
 ----------------
 
-Using GWT DevMode, it is possible to instantly view changes to client code by simply refreshing the browser window. You should be able to start the demo in dev mode with this single command:
+Using GWT's SuperDevMode, it is possible to instantly view changes to client code by simply refreshing the browser window. You should be able to start the demo in dev mode with this single command:
 
     % mvn clean gwt:run
 
-When the GWT Dev Mode window opens, press "Launch Default Browser" to start the app.
+When the GWT Dev Mode window opens, press "Launch Default Browser" to start the app. You can now also debug your client-side code directly in the browser using source maps (make sure source maps are enabled in your browser). Alternatively, you can also configure a debug environment for Eclipse by installing
 
-To debug in development mode, set up two remote debuggers: one on port 8000 for the client-side code, and one on port 8001 for the server-side code. Then:
+- the Google Plugin for Eclipse: https://developers.google.com/eclipse/docs/download
+- the SDBG plugin: http://sdbg.github.io/
+
+To debug in server-side code, set up a remote debugger on port 8001.
+Then:
 * Run `mvn clean gwt:debug`
 * Start your server remote debugger
 * Start your client remote debugger
 * Press "Launch Default Browser"
 
 See our development guide [here](tutorial-guide/DEVELOP.adoc) for more instructions on setting up dev mode and other details.
-
-Super Devmode
--------------
-
-Use Super DevMode to try this application on browsers without the GWT DevMode plugin.
-
-To do so, open two terminals. In the first enter:
-
-    % mvn clean gwt:run
-
-In the second:
-
-    % mvn gwt:run-codeserver
-
-After the second command has finished, go [here](http://127.0.0.1:9876) in your browser and copy the *Dev Mode On* and *Dev Mode Off* bookmarks.
-
-Now you can run the demo by:
-
-* Going [here](http://127.0.0.1:8888/errai-tutorial). Wait until the page background has loaded. If you see a message saying your GWT module needs to be compiled, click *OK*.
-
-* Click the *Dev Mode On* bookmark you copied previously.
-
-* When the Super DevMode prompt appears on the page, click *Compile* to start a GWT compile. When the compile finishes the app will be ready.
 
 Build and deploy as native app to your mobile device
 -----------------------------------------------------
