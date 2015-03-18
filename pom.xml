@@ -162,6 +162,7 @@
           <runTarget>${errai.dev.context}/index.html</runTarget>
           <soyc>false</soyc>
           <hostedWebapp>src/main/webapp</hostedWebapp>
+          <strict>true</strict>
         </configuration>
       </plugin>
       <plugin>
