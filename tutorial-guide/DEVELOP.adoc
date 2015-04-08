@@ -134,9 +134,11 @@ Then replace the line below with the following, where $WILDFLY_HOME is the absol
 <errai.jboss.home>$WILDFLY_HOME</errai.jboss.home>
 -------------------------------------------------------------------------------
 
-=== Running DevMode
+=== Running SuperDevMode
 
-You should now be able to start the demo in dev mode with this single command:
+If you're using the Google Plugin for Eclipse or IntelliJ Ultimate Edition follow http://docs.jboss.org/errai/latest/errai/reference/html_single/#_running_and_debugging_in_your_ide_using_gwt_tooling[these instructions].
+
+Alternatively, you should now be able to start the demo in dev mode with this single command:
 
 -------------------------------------------------------------------------------
 mvn clean gwt:run
@@ -144,45 +146,9 @@ mvn clean gwt:run
 
 When the GWT Dev Mode window opens, press "Launch Default Browser" to start the app.
 
-=== Debugging with Standard DevMode
-
-To debug in dev mode, we will need to set up two remote debuggers: one on port 8000 for the client-side code, and one on port 8001 for the server-side code.
-
-=== Creating a Remote Debug Configuration in Eclipse
-
-* In the menu, go to "Run" > "Debug Configurations..."
-* Find and select "Remote Java Application" in the left pane and click
-"New Launch Configuration" in the top left corner
-* Under "Project" click "Browse" and select the errai-tutorial project.
-* Name the configuration and change the port number
-* Click "Close", and save the changes when prompted
-
-=== Start Debugging
-
-Once you have your server and client remote debugging profiles setup, here is how you start debugging:
-
-* Run `mvn clean gwt:debug`
-
-* Launch the *client* remote debugger
-
-* *Wait for the "Launch in Broswer" button to appear*, then start the *server* remote debugger
-
-* Press "Launch Default Broswer"
-
-=== Code and Refresh
-
-Client side changes can now be seen instantly by refreshing the browser window. Give it a try and see for yourself!
-
-=== Refreshing Server Code
-
-Server code can be updated in two steps:
-
-* Open a new terminal in the project and run `mvn compile`
-* Click the "Restart Server" button in the server tab of the gwt dev mode window
-
 === Debugging with SuperDevMode
 
-With Super DevMode, you can debug client-side code directly in your web browser using source-maps. You can also configure a debug environment for Eclipse by installing
+With Super DevMode, you can debug client-side code directly in your web browser using source-maps. You can also configure a debug environment for Eclipse by installing.
 
 - the Google Plugin for Eclipse: https://developers.google.com/eclipse/docs/download
 - the SDBG plugin: http://sdbg.github.io/

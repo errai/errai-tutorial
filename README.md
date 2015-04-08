@@ -35,7 +35,11 @@ More detailed instructions can be found [here](tutorial-guide/RUN.adoc)
 Code and Refresh (development mode)
 ----------------
 
-Using GWT's Super Dev Mode, it is possible to instantly view changes to client-side code by simply refreshing the browser window. You should be able to start the demo in development mode with this single command:
+Using GWT's Super Dev Mode, it is possible to instantly view changes to client-side code by simply refreshing the browser window. 
+
+If you're using the Google Plugin for Eclipse or IntelliJ Ultimate Edition follow [these instructions](http://docs.jboss.org/errai/latest/errai/reference/html_single/#_running_and_debugging_in_your_ide_using_gwt_tooling) to start development mode.
+
+Alternatively, you should be able to start the demo in development mode with this single command:
 
     % mvn clean gwt:run
 
