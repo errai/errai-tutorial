@@ -43,7 +43,7 @@ http://maven.apache.org/download.cgi#Installation_Instructions[installation
 instructions].
 
 Wildfly
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
 
 Wildlfy is an Application Server which we will use to host our Errai
 Application locally. In the tutorial we will be using

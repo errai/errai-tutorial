@@ -66,6 +66,7 @@ link:SETUP.adoc[setup] instructions.
 
 Now go to http://localhost:8080 in your web browser. If the server is
 running correctly, you should see a Wildfly welcome page.
+
 === Building and Deploying
 
 It's time to really get things started. While the Wildfly server is still
