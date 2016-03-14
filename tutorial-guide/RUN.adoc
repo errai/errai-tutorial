@@ -152,3 +152,10 @@ For deploying the native application to your Android device simply execute:
 ----
 % adb install target/template/platforms/android/bin/HelloCordova-debug.apk
 ----
+
+What's Next?
+~~~~~~~~~~~~
+
+Now that you are able to run an Errai application locally in production mode,
+it's time to learn how to develop an Errai app in our link:DEVELOP.adoc[next
+section].

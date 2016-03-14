@@ -11,7 +11,6 @@ with the rest of the tutorial:
 * JDK (6 or 7)
 * Maven (3.x)
 * Wildfly 8 (Optional -- necessary for production, but not development mode)
-* GWT Developer Plugin
 * Eclipse IDE (with the M2E plugin)
 
 Although it is possible to use counterparts for some of these tools, we
@@ -53,25 +52,6 @@ You can download a zip file with Wildfly 8
 http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip[here].
 No installation is necessary. Simply unzip it to wherever you would like
 the application's directory to be located.
-
-GWT Developer Plugin
-~~~~~~~~~~~~~~~~~~~~
-
-The GWT Developer plugin allows to view your Errai Application in the
-browser while running in Development Mode.
-
-For Google Chrome
-^^^^^^^^^^^^^^^^^
-
-You can find the plugin for Google Chrome
-https://chrome.google.com/webstore/detail/gwt-developer-plugin/jpjpnpmbddbjkfaccnmhnkdgjideieim?hl=en[here].
-
-For Mozilla Firefox, Internet Explorer, or Safari
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The first time you attempt to view a Errai Application in Developer Mode
-through the browser, you will be prompted with a link to install the
-plugin.
 
 Eclipse IDE with the M2E Plugin
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

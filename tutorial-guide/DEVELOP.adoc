@@ -34,7 +34,7 @@ Currently to use this feature, you must be using errai 3.0.0 or greater. Here is
 </dependency>
 -------------------------------------------------------------------------------
 
-This new dependency is a ServletLauncher, which the gwt-maven-plugin will use to control the Wildfly AS instance.
+This new dependency contains a ServletLauncher, which the gwt-maven-plugin will use to control the Wildfly AS instance.
 
 Additionally, the plugin configuration has changed. First we have the new gwt-maven-plugin configuration:
 
@@ -52,10 +52,10 @@ Additionally, the plugin configuration has changed. First we have the new gwt-ma
     </execution>
   </executions>
   <configuration>
-    <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -XX:MaxPermSize=128M -Derrai.jboss.home=${errai.jboss.home} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${errai.version}/errai-client-local-class-hider-${errai.version}.jar</extraJvmArgs>
+    <extraJvmArgs>-Xmx712m -XX:CompileThreshold=7000 -Derrai.jboss.home=${errai.jboss.home}</extraJvmArgs>
     <logLevel>INFO</logLevel>
     <noServer>false</noServer>
-    <server>org.jboss.errai.cdi.server.gwt.JBossLauncher</server>
+    <server>org.jboss.errai.cdi.server.gwt.EmbeddedWildflyLauncher</server>
     <disableCastChecking>true</disableCastChecking>
     <runTarget>webapp/index.html</runTarget>
     <soyc>false</soyc>
@@ -107,16 +107,16 @@ Finally, at the top of the pom we've included the following necessary properties
 
 -------------------------------------------------------------------------------
 <properties>
-  <errai.version>3.0-SNAPSHOT</errai.version>
-  <gwt.version>2.5.1</gwt.version>
+  <errai.version>4.0.0-SNAPSHOT</errai.version>
+  <gwt.version>2.8.0-beta1</gwt.version>
   <errai.dev.context>${project.artifactId}</errai.dev.context>
-  <as.version>7.1.1.Final</as.version>
+  <as.version>8.1.0.Final</as.version>
   <!-- Add the absolute path for $WILDFLY_HOME below to manage another instance -->
   <errai.jboss.home>${project.build.directory}/wildfly-${as.version}</errai.jboss.home>
 </properties>
 -------------------------------------------------------------------------------
 
-=== Managing an External Jboss AS (or Wildfly) (**Optional**)
+=== Managing an External Wildfly Instance (**Optional**)
 
 One of the extra JVM arguments we gave to the gwt-maven-plugin, errai.jboss.home, is used to tell the launcher where $WILDFLY_HOME is located. *It is necessary to set this to the path of your $WILDFLY_HOME.* In the configuration above, this is done for you for the Wildfly installation that is provided by maven.
 
@@ -138,7 +138,7 @@ Then replace the line below with the following, where $WILDFLY_HOME is the absol
 
 If you're using the Google Plugin for Eclipse or IntelliJ Ultimate Edition follow http://docs.jboss.org/errai/latest/errai/reference/html_single/#_running_and_debugging_in_your_ide_using_gwt_tooling[these instructions].
 
-Alternatively, you should now be able to start the demo in dev mode with this single command:
+Alternatively, you should now be able to start the demo in super dev mode with this single command:
 
 -------------------------------------------------------------------------------
 mvn clean gwt:run

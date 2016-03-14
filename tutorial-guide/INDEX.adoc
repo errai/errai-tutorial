@@ -11,9 +11,11 @@ is an index of the files in this tutorial guide and what they cover:
 1.  link:SETUP.adoc[*SETUP*] : Get the tools you need (such as Git, Maven, and Wildfly)
 2.  link:RUN.adoc[*RUN*] : Run an Errai Application in production mode 
 3.  link:DEVELOP.adoc[*DEVELOP*] : Import the project into your IDE and make use of 
-development mode. DevMode skips the translation to JavaScript and lets you debug your 
-client and server-side logic as Java code in your IDE. It also allows for quick 
-"code-test-debug" cycles. Simply refresh your browser window to load changes.
+development mode. Super Dev Mode runs a faster draft-compile of your client-side code
+that allows for a quick "code-test-debug" cycle. Simply refresh your browser in Super Dev Mode
+to update client-side code. Super Dev Mode usese source maps so that it you can
+debug your client-side code with the original source even after it has been compiled.
+With the right Eclipse or IntelliJ plugin you can debug client-side code from your IDE.
 4.  link:FAQ.adoc[*FAQ*] : Answers to frequently asked questions about the dev mode 
 setup.
 
