@@ -94,9 +94,8 @@ public class ContactListPage {
   @AutoBound
   private DataBinder<List<Contact>> binder;
 
-  /* By binding to "this", the ContactList is kept in sync with the list from binder. */
   @Inject
-  @Bound(property="this")
+  @Bound
   @DataField
   private ListComponent<Contact, ContactDisplay> list;
 
