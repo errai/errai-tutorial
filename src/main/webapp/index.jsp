@@ -34,18 +34,6 @@
 
 <body>
   <div id="rootPanel" class="container"></div>
-  <div class="container">
-    <hr>
-    <!-- Footer -->
-    <footer>
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright &copy; Your Website 2014</p>
-        </div>
-      </div>
-    </footer>
-  </div>
-  <!-- /.container -->
 
   <iframe src="javascript:''" id="__gwt_historyFrame" style="width: 0; height: 0; border: 0"></iframe>
   <script src="js/jquery.js"></script>

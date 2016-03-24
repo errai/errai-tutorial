@@ -30,10 +30,10 @@ import javax.inject.Inject;
 
 import org.jboss.errai.bus.client.api.ClientMessageBus;
 import org.jboss.errai.common.client.api.Caller;
-import org.jboss.errai.common.client.dom.DOMUtil;
 import org.jboss.errai.common.client.dom.Anchor;
 import org.jboss.errai.common.client.dom.Button;
-import org.jboss.errai.common.client.dom.Div;
+import org.jboss.errai.common.client.dom.DOMUtil;
+import org.jboss.errai.common.client.dom.Form;
 import org.jboss.errai.common.client.function.Function;
 import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.databinding.client.api.StateSync;
@@ -86,7 +86,7 @@ import com.google.gwt.user.client.Event;
  * Instances of this type should be obtained via Errai IoC, either by using {@link Inject} in another container managed
  * bean, or by programmatic lookup through the bean manager.
  */
-@Page(role = DefaultPage.class)
+@Page(role = DefaultPage.class, path = "/contacts")
 @Templated(value = "contact-page.html#contact-list", stylesheet = "contact-page.css")
 public class ContactListPage {
 
@@ -101,7 +101,7 @@ public class ContactListPage {
 
   @Inject
   @DataField
-  private Div modal;
+  private Form modal;
 
   @Inject
   @DataField("modal-fields")
@@ -248,12 +248,14 @@ public class ContactListPage {
   @SinkNative(Event.ONCLICK)
   @EventHandler("modal-submit")
   public void onModalSubmitClick(final Event event) {
-    DOMUtil.removeCSSClass(modal, "displayed");
-    if (binder.getModel().contains(editor.getValue())) {
-      updateContactFromEditor();
-    }
-    else {
-      createNewContactFromEditor();
+    if (modal.checkValidity()) {
+      DOMUtil.removeCSSClass(modal, "displayed");
+      if (binder.getModel().contains(editor.getValue())) {
+        updateContactFromEditor();
+      }
+      else {
+        createNewContactFromEditor();
+      }
     }
   }
 

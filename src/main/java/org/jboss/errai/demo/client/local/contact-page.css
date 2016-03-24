@@ -20,6 +20,11 @@ label {
 .modal input {
   height: 35px;
   display: block;
+  border: 1px solid grey;
+}
+
+.modal input:invalid {
+  border-color: #D40000;
 }
 
 .modal-fields > *:first-child {
