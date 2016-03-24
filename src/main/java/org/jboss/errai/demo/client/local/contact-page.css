@@ -84,6 +84,7 @@ button.new-contact {
 .contact {
   margin-top: 20px;
   height: auto;
+  cursor: pointer;
 }
 
 .contact .notes {

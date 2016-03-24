@@ -84,11 +84,11 @@ public class ContactDisplay extends ContactPresenter implements IsElement {
 
   @Inject
   @Bound @DataField
-  private Div phonenumber;
+  private BindableTelAnchor phonenumber;
 
   @Inject
   @Bound @DataField
-  private Div email;
+  private BindableEmailAnchor email;
 
   /*
    * We specify a converter because Errai does not provide built-in conversion from String to Date.
