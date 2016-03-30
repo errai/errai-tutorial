@@ -25,11 +25,16 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 /**
- * An {@link Anchor} interface with special Errai Data-Binding semantics. Binding to this element sets the element's
+ * <p>
+ * An {@link Anchor} interface with special Errai Data Binding semantics. Binding to this element sets the element's
  * inner text and it's href. The bound value is presumed to be an telephone number.
+ *
+ * <p>
+ * Because this type implements {@link HasValue}, the {@link #getValue()} and {@link #setValue(String)} methods will be
+ * used for accessing or mutating the element's value if this element is used with {@link Bound declarative data binding}.
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "HTMLAnchorElement")
 @Element("a")
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "HTMLAnchorElement")
 public abstract class BindableTelAnchor implements Anchor, HasValue<String> {
 
   @JsOverlay @Override

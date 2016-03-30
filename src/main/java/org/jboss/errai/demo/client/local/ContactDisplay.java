@@ -49,12 +49,13 @@ import com.google.gwt.event.dom.client.DoubleClickEvent;
  * <p>
  * The {@link DataField} annotation marks fields that replace HTML elements from the template file. As an example, the
  * field {@link ContactDisplay#contact} is the root {@code
- * <tr>
+ *
+<tr>
  * } element of this component; it can be used to attach this component to the DOM.
  *
  * <p>
- * The {@link Bound} annotations mark UI fields with values that Errai Data-Binding keeps synchronized with properties
- * in the bound {@link Contact} model instance. (See the base class, {@link ContactPresenter}.)
+ * The {@link Bound} annotations mark UI fields as managed by Errai Data Binding, which keeps UI values synchronized
+ * with properties in the bound {@link Contact} model instance. (See the base class, {@link ContactPresenter}.)
  *
  * <p>
  * Errai UI automatically registers methods annotated with {@link EventHandler} to listen for DOM events.
@@ -110,8 +111,8 @@ public class ContactDisplay extends ContactPresenter implements IsElement {
   private Event<ContactDisplay> dblClick;
 
   /**
-   * Called for single-click events on the {@link DataField @DataField} {@link #contact}. This event is observed by
-   * {@link ContactList#selectComponent(ContactDisplay)}.
+   * Called for single-click events on the {@link DataField @DataField} {@link #contact}. The CDI event fired here is
+   * observed by {@link ContactList#selectComponent(ContactDisplay)}.
    */
   @EventHandler("contact")
   public void onClick(final ClickEvent event) {
@@ -119,8 +120,8 @@ public class ContactDisplay extends ContactPresenter implements IsElement {
   }
 
   /**
-   * Called for double-click events on the {@link DataField @DataField} {@link #contact}. This event is observed by
-   * {@link ContactListPage#editComponent(ContactDisplay)}.
+   * Called for double-click events on the {@link DataField @DataField} {@link #contact}. The CDI event fired here is
+   * observed by {@link ContactListPage#editComponent(ContactDisplay)}.
    */
   @EventHandler("contact")
   public void onDoubleClick(final DoubleClickEvent event) {

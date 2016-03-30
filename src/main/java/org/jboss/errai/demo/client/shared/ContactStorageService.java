@@ -28,24 +28,57 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.jboss.errai.bus.client.api.ClientMessageBus;
+import org.jboss.errai.demo.server.ContactStorageServiceImpl;
+
 /**
  * Defines a JaxRS HTTP service for performing CRUD operations on {@link Contact Contacts}.
+ *
+ * @see ContactStorageServiceImpl
  */
 @Path("/contact")
 public interface ContactStorageService {
 
+  /**
+   * @return A list of all contacts in this service.
+   */
   @GET
   @Produces("application/json")
   List<Contact> getAllContacts();
 
+  /**
+   * An HTTP endpoint for creating a new {@link Contact}.
+   *
+   * @param contactOperation
+   *          Contains the {@link Contact} to be created and the {@link ClientMessageBus#getSessionId() queue session
+   *          id} of the client creating this contact.
+   * @return A {@link Response} with status 201 and a {@code Location} header with the URL for the created contact, if
+   *         successful. Otherwise a {@link Response} with an appropriate error status.
+   */
   @POST
   @Consumes("application/json")
   Response create(ContactOperation contactOperation);
 
+  /**
+   * An HTTP endpoint for updating an existing {@link Contact}.
+   *
+   * @param contactOperation
+   *          Contains the {@link Contact} to be updated and the {@link ClientMessageBus#getSessionId() queue session
+   *          id} of the client creating this contact. The id of the contained contact must match an existing contact
+   *          from this service.
+   * @return A {@link Response} with status 204 if successful. Otherwise a {@link Response} with an appropriate error
+   *         status.
+   */
   @PUT
   @Consumes("application/json")
   Response update(ContactOperation contactOperation);
 
+  /**
+   * @param id
+   *          The id number of an existing {@link Contact} to be deleted.
+   * @return A {@link Response} with status 204 if successful. Otherwise a {@link Response} with an appropriate error
+   *         status.
+   */
   @DELETE
   @Path("/{id:[0-9]+}")
   Response delete(@PathParam("id") Long id);

@@ -37,7 +37,7 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
  * binding to it (and then later overwrite the state of the copied {@link Contact}).
  *
  * <p>
- * The HTML markup for this {@link Templated} component is the HTML element with the CSS class {@code modal-content} in
+ * The HTML markup for this {@link Templated} component is the HTML element with the CSS class {@code modal-fields} in
  * the file {@code contact-page.html} in this package. This component uses CSS from the file {@code contact-page.css} in
  * this package.
  *
@@ -47,8 +47,8 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
  * component to the DOM.
  *
  * <p>
- * The {@link Bound} annotations mark UI fields with values that Errai Data-Binding keeps synchronized with properties
- * in the bound {@link Contact} model instance. (See the base class, {@link ContactPresenter}.)
+ * The {@link Bound} annotations mark UI fields as managed by Errai Data Binding, which keeps UI values synchronized
+ * with properties in the bound {@link Contact} model instance. (See the base class, {@link ContactPresenter}.)
  *
  * <p>
  * Instances of this type should be obtained via Errai IoC, either by using {@link Inject} in another container managed
@@ -59,7 +59,7 @@ public class ContactEditor extends ContactPresenter implements IsElement {
 
   /**
    * The {@link DataField} annotation for this field declares that this {@link Div} is the element from the
-   * template file with the CSS class {@code modal-content}. Because of the fragment {@code #modal-content} in the
+   * template file with the CSS class {@code modal-fields}. Because of the fragment {@code #modal-fields} in the
    * {@link Templated#value()} on this class, this is the root element of this template.
    */
   @Inject
@@ -94,7 +94,7 @@ public class ContactEditor extends ContactPresenter implements IsElement {
   private DateInput birthday;
 
   /**
-   * Sets the given model as the model for this component but pauses data-binding. Any changes made to the UI or model
+   * Sets the given model as the model for this component but pauses data binding. Any changes made to the UI or model
    * will not be synchronized until {@link #syncStateFromUI()} is called.
    */
   public void setValuePaused(final Contact model) {

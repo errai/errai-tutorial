@@ -31,7 +31,25 @@ import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 /**
+ * <p>
+ * An Errai UI component for displaying a bootstrap 3 navigation bar.
  *
+ * <p>
+ * The HTML markup for this {@link Templated} component is the HTML element with the CSS class {@code navbar} in the
+ * file {@code contact-page.html} in this package.
+ *
+ * <p>
+ * The {@link DataField} annotation marks fields that replace HTML elements from the template file. As an example, the
+ * field {@link #navbar} is the root {@code nav} element of this component; it can be used to attach this component to
+ * the DOM (see {@link AppSetup}).
+ *
+ * <p>
+ * The {@link Bound} annotations mark UI fields as managed by Errai Data Binding, which keeps UI values synchronized
+ * with properties in the bound {@link Contact} model instance. (See the base class, {@link ContactPresenter}.)
+ *
+ * <p>
+ * Instances of this type should be obtained via Errai IoC, either by using {@link Inject} in another container managed
+ * bean, or by programmatic lookup through the bean manager.
  */
 @ApplicationScoped
 @Templated("contact-page.html#navbar")

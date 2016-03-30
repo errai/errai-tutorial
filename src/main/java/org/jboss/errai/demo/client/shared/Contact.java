@@ -35,13 +35,13 @@ import com.google.gwt.i18n.shared.DateTimeFormat.PredefinedFormat;
 /**
  * Models a contact in an address book.
  * <p>
- * {@link Bindable} allows Errai Data-Binding to synchronize properties from instances in this class with UI components
- * in {@link Templated} Errai UI components. Properties that can be bound must have getter and setter methods following
+ * {@link Bindable} allows Errai Data Binding to synchronize properties from instances in this class with UI components
+ * in {@link Templated} Errai UI beans. Properties that can be bound must have getter and setter methods following
  * typical Java naming conventions.
  * <p>
  * {@link Portable} allows instances of this class to be serialized. This allows {@link Contact} instances to be used as
  * parameters or return values of Errai RPC methods. It also allows {@link Contact} instances to be fired and observed
- * between client and server.
+ * as Errai CDI events between client and server.
  * <p>
  * {@link Entity} allows this class to be easily persisted on the server via JPA and {@link NamedQueries} defines a
  * query for looking up all persisted {@link Contact Contacts}.

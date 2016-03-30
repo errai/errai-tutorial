@@ -34,7 +34,6 @@ import org.jboss.errai.common.client.dom.Anchor;
 import org.jboss.errai.common.client.dom.Button;
 import org.jboss.errai.common.client.dom.DOMUtil;
 import org.jboss.errai.common.client.dom.Form;
-import org.jboss.errai.common.client.function.Function;
 import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.databinding.client.api.StateSync;
 import org.jboss.errai.databinding.client.components.ListComponent;
@@ -44,6 +43,7 @@ import org.jboss.errai.demo.client.shared.ContactStorageService;
 import org.jboss.errai.demo.client.shared.Operation;
 import org.jboss.errai.enterprise.client.jaxrs.api.ResponseCallback;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;
+import org.jboss.errai.ui.nav.client.local.NavigationPanel;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.PageHiding;
 import org.jboss.errai.ui.nav.client.local.PageShown;
@@ -63,7 +63,7 @@ import com.google.gwt.user.client.Event;
  * <p>
  * An Errai UI component for creating, displaying, updating, and deleting {@link Contact Contacts}. This component is
  * also an Errai Navigation {@link Page}; it will be displayed on the GWT host page whenever the navigation URL fragment
- * is {@code #ContactList}.
+ * is {@code #/contacts}.
  *
  * <p>
  * The HTML markup for this {@link Templated} component is the HTML element with the CSS class {@code contact-list} in
@@ -73,14 +73,14 @@ import com.google.gwt.user.client.Event;
  * <p>
  * The {@link DataField} annotation marks fields that replace HTML elements from the template file. As an example, the
  * field {@link ContactDisplay#editor} replaces the {@code <div>} element in the template with the CSS class
- * {@code modal-content}. Because {@link ContactEditor} is an Errai UI component, the markup for {@link ContactEditor}
- * will replace the contents of the {@code modal-content} div in this component.
+ * {@code modal-fields}. Because {@link ContactEditor} is an Errai UI component, the markup for {@link ContactEditor}
+ * will replace the contents of the {@code modal-fields} div in this component.
  *
  * <p>
- * This component uses {@link ContactList} to display a list of {@link Contact Contacts}. The {@code List<Contact>}
+ * This component uses a {@link ListComponent} to display a list of {@link Contact Contacts}. The {@code List<Contact>}
  * returned by calling {@link DataBinder#getModel()} on {@link #binder} is a model bound to a table of
  * {@link ContactDisplay ContactDisplays} in an HTML table. Any changes to the model list (such as adding or removing
- * items) will be automatically reflected in the displayed table. See {@link ContactList} for more details.
+ * items) will be automatically reflected in the displayed table.
  *
  * <p>
  * Instances of this type should be obtained via Errai IoC, either by using {@link Inject} in another container managed
@@ -147,10 +147,16 @@ public class ContactListPage {
     // Remove placeholder table row from template.
     DOMUtil.removeAllElementChildren(list.getElement());
 
+    /*
+     * Configure actions for when a ContactDisplay in the list is selected or deselected.
+     */
     list.setSelector(display -> display.setSelected(true));
     list.setDeselector(display -> display.setSelected(false));
 
-    newContactAnchor.setHref("javascript:");
+    /*
+     * Setup anchors that are added to the nav bar when the page is shown.
+     */
+    newContactAnchor.setHref("javascript:void(0);");
     newContactAnchor.setTextContent("Create Contact");
     newContactAnchor.setOnclick(e -> displayFormWithNewContact());
 
@@ -159,12 +165,18 @@ public class ContactListPage {
     sortContactsAnchor.setOnclick(e -> sortContactsByName());
   }
 
+  /**
+   * This method is invoked when this {@link Page} is attached to the {@link NavigationPanel}.
+   */
   @PageShown
   public void addNavBarButtons() {
     navbar.add(newContactAnchor);
     navbar.add(sortContactsAnchor);
   }
 
+  /**
+   * This method is invoked when this {@link Page} is being removed from the {@link NavigationPanel}.
+   */
   @PageHiding
   public void removeNavBarButtons() {
     navbar.remove(newContactAnchor);
@@ -172,50 +184,8 @@ public class ContactListPage {
   }
 
   /**
-   * This is called in response to Errai CDI {@link javax.enterprise.event.Event Events} fired from the server when a
-   * new {@link Contact} is created. In this way we can display newly created contacts from other browser sessions.
-   */
-  public void onRemoteCreated(final @Observes @Operation(CREATE) ContactOperation contactOperation) {
-    if (sourceIsNotThisClient(contactOperation)) {
-      binder.getModel().add(contactOperation.getContact());
-    }
-  }
-
-  /**
-   * This is called in response to Errai CDI {@link javax.enterprise.event.Event Events} fired from the server when an
-   * existing {@link Contact} is updated. In this way we can display new property values for contacts when they are
-   * updated from other browser sessions.
-   */
-  public void onRemoteUpdated(final @Observes @Operation(UPDATE) ContactOperation contactOperation) {
-    if (sourceIsNotThisClient(contactOperation)) {
-      final int indexOf = binder.getModel().indexOf(contactOperation.getContact());
-      if (indexOf == -1) {
-        logger.warn("Received update before creation for " + contactOperation.getContact() + " from " + contactOperation.getSourceQueueSessionId());
-        binder.getModel().add(contactOperation.getContact());
-      } else {
-        binder.getModel().set(indexOf, contactOperation.getContact());
-      }
-    }
-  }
-
-  /**
-   * This is called in response to Errai CDI {@link javax.enterprise.event.Event Events} fired from the server when an
-   * existing {@link Contact} is deleted. In this way we can remove displayed contacts when they are deleted in other
-   * browser sessions.
-   */
-  public void onRemoteDelete(final @Observes @Operation(DELETE) Long id) {
-    final Iterator<Contact> contactIter = binder.getModel().iterator();
-    while (contactIter.hasNext()) {
-      if (id.equals(contactIter.next().getId())) {
-        contactIter.remove();
-        break;
-      }
-    }
-  }
-
-  /**
    * This is an Errai UI native event handler. The element for which this handler is regsitered is in this class's HTML
-   * template file and has the {@code new-content} CSS class.
+   * template file and has the id {@code new-content}.
    * <p>
    * Because there is no {@code new-content} {@link DataField} in this class, this method's parameter is a non-specific
    * {@link Event} (rather than a more specific {@link ClickEvent}). For the same reason, the {@link SinkNative}
@@ -227,11 +197,6 @@ public class ContactListPage {
   @EventHandler("new-contact")
   public void onNewContactClick(final Event event) {
     displayFormWithNewContact();
-  }
-
-  private void displayFormWithNewContact() {
-    editor.setValue(new Contact());
-    displayModal(false);
   }
 
   /**
@@ -257,30 +222,6 @@ public class ContactListPage {
         createNewContactFromEditor();
       }
     }
-  }
-
-  private void createNewContactFromEditor() {
-    final Contact editorModel = editor.getValue();
-    // Adding this model to the list will create and display a new, bound ContactDisplay in the table.
-    binder.getModel().add(editorModel);
-    contactService.call((ResponseCallback) response -> {
-      // Set the id if we successfully create this contact.
-      if (response.getStatusCode() == Response.SC_CREATED) {
-        final String createdUri = response.getHeader("Location");
-        final String idString = createdUri.substring(createdUri.lastIndexOf('/')+1);
-        final long id = Long.parseLong(idString);
-        editorModel.setId(id);
-      }
-    }).create(new ContactOperation(editorModel, bus.getSessionId()));
-  }
-
-  private void updateContactFromEditor() {
-    /*
-     * When editting a contact we paused binding so that changes from the UI do not propogate to the model until
-     * "submit" is clicked. This call updates the model with all changes made in the UI while binding was paused.
-     */
-    editor.syncStateFromUI();
-    contactService.call().update(new ContactOperation(editor.getValue(), bus.getSessionId()));
   }
 
   /**
@@ -348,6 +289,77 @@ public class ContactListPage {
   }
 
   /**
+   * This is called in response to Errai CDI {@link javax.enterprise.event.Event Events} fired from the server when a
+   * new {@link Contact} is created. In this way we can display newly created contacts from other browser sessions.
+   */
+  public void onRemoteCreated(final @Observes @Operation(CREATE) ContactOperation contactOperation) {
+    if (sourceIsNotThisClient(contactOperation)) {
+      binder.getModel().add(contactOperation.getContact());
+    }
+  }
+
+  /**
+   * This is called in response to Errai CDI {@link javax.enterprise.event.Event Events} fired from the server when an
+   * existing {@link Contact} is updated. In this way we can display new property values for contacts when they are
+   * updated from other browser sessions.
+   */
+  public void onRemoteUpdated(final @Observes @Operation(UPDATE) ContactOperation contactOperation) {
+    if (sourceIsNotThisClient(contactOperation)) {
+      final int indexOf = binder.getModel().indexOf(contactOperation.getContact());
+      if (indexOf == -1) {
+        logger.warn("Received update before creation for " + contactOperation.getContact() + " from " + contactOperation.getSourceQueueSessionId());
+        binder.getModel().add(contactOperation.getContact());
+      } else {
+        binder.getModel().set(indexOf, contactOperation.getContact());
+      }
+    }
+  }
+
+  /**
+   * This is called in response to Errai CDI {@link javax.enterprise.event.Event Events} fired from the server when an
+   * existing {@link Contact} is deleted. In this way we can remove displayed contacts when they are deleted in other
+   * browser sessions.
+   */
+  public void onRemoteDelete(final @Observes @Operation(DELETE) Long id) {
+    final Iterator<Contact> contactIter = binder.getModel().iterator();
+    while (contactIter.hasNext()) {
+      if (id.equals(contactIter.next().getId())) {
+        contactIter.remove();
+        break;
+      }
+    }
+  }
+
+  private void createNewContactFromEditor() {
+    final Contact editorModel = editor.getValue();
+    // Adding this model to the list will create and display a new, bound ContactDisplay in the table.
+    binder.getModel().add(editorModel);
+    contactService.call((ResponseCallback) response -> {
+      // Set the id if we successfully create this contact.
+      if (response.getStatusCode() == Response.SC_CREATED) {
+        final String createdUri = response.getHeader("Location");
+        final String idString = createdUri.substring(createdUri.lastIndexOf('/')+1);
+        final long id = Long.parseLong(idString);
+        editorModel.setId(id);
+      }
+    }).create(new ContactOperation(editorModel, bus.getSessionId()));
+  }
+
+  private void displayFormWithNewContact() {
+    editor.setValue(new Contact());
+    displayModal(false);
+  }
+
+  private void updateContactFromEditor() {
+    /*
+     * When editting a contact we paused binding so that changes from the UI do not propogate to the model until
+     * "submit" is clicked. This call updates the model with all changes made in the UI while binding was paused.
+     */
+    editor.syncStateFromUI();
+    contactService.call().update(new ContactOperation(editor.getValue(), bus.getSessionId()));
+  }
+
+  /**
    * For ignoring remote events that originate from this client.
    */
   private boolean sourceIsNotThisClient(final ContactOperation contactOperation) {
@@ -369,7 +381,7 @@ public class ContactListPage {
 
   private void editModel(final Contact model) {
     /*
-     * This sets the editor model with data-binding paused so that changes to the model are not propogated until the
+     * This sets the editor model with data binding paused so that changes to the model are not propogated until the
      * user clicks "submit".
      */
     editor.setValuePaused(model);
@@ -378,10 +390,7 @@ public class ContactListPage {
 
   private void sortContactsByName() {
     binder.pause();
-    final Function<Contact, String> nickGetter = c -> (c.getNickname() == null ? "" : c.getNickname());
-    Collections.sort(binder.getModel(), (a,b) -> {
-      return nickGetter.apply(a).compareTo(nickGetter.apply(b));
-    });
+    Collections.sort(binder.getModel(), (a,b) -> a.getNickname().compareTo(b.getNickname()));
     binder.resume(StateSync.FROM_MODEL);
   }
 }

@@ -167,6 +167,8 @@
         <configuration>   
           <logLevel>INFO</logLevel>
           <noServer>false</noServer>          
+          <!-- Configuration for Errai's JBossLauncher. This launcher controls a Wildfly instance in a separate JVM.
+            It's configuration is more complex but useful if you encounter classloading issues using the embedded launcher. -->
           <!--extraJvmArgs>-Xmx2048m -XX:CompileThreshold=7000 -Derrai.jboss.home=${errai.jboss.home} -Derrai.dev.context=${errai.dev.context} -Derrai.jboss.javaopts="-Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${errai.version}/errai-client-local-class-hider-${errai.version}.jar</extraJvmArgs>
           <server>org.jboss.errai.cdi.server.gwt.JBossLauncher</server-->
 
@@ -180,7 +182,7 @@
           <extraJvmArgs>-Xmx2048m -XX:CompileThreshold=7000 -Derrai.jboss.home=${errai.jboss.home} -Derrai.dev.context=${errai.dev.context}</extraJvmArgs>
           <server>org.jboss.errai.cdi.server.gwt.EmbeddedWildFlyLauncher</server>
           <disableCastChecking>true</disableCastChecking>
-          <runTarget>${errai.dev.context}/index.jsp</runTarget>
+          <runTarget>${errai.dev.context}/</runTarget>
           <soyc>false</soyc>
           <hostedWebapp>src/main/webapp</hostedWebapp>
           <strict>true</strict>

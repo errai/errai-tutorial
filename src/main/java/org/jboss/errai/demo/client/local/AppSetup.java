@@ -19,6 +19,7 @@ package org.jboss.errai.demo.client.local;
 import static org.jboss.errai.common.client.dom.Window.getDocument;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.jboss.errai.common.client.dom.DOMUtil;
@@ -29,7 +30,13 @@ import org.jboss.errai.ui.nav.client.local.NavigationPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
+ * <p>
+ * This bean attaches the {@link NavBar} and {@link NavigationPanel} when the application starts.
  *
+ * <p>
+ * The {@link EntryPoint} scope is like {@link ApplicationScoped} except that entry points are eagerly initilialized
+ * when the IoC container starts. Consequently, the {@link PostConstruct} of this bean will be invoked when the
+ * container is initialized.
  */
 @EntryPoint
 public class AppSetup {

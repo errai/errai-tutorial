@@ -26,10 +26,12 @@ import org.jboss.errai.ui.shared.api.annotations.Bound;
 import com.google.gwt.user.client.TakesValue;
 
 /**
+ * <p>
  * A base class for Errai UI components that present {@link Contact Contacts}.
  *
+ * <p>
  * This class has an {@link AutoBound @AutoBound} {@link DataBinder} so that UI components in subclasses annotated with
- * {@link Bound @Bound} are kept in sync with the assigned {@link Contact} model properties via Errai Data-Binding.
+ * {@link Bound @Bound} are kept in sync with the assigned {@link Contact} model properties via Errai Data Binding.
  */
 public class ContactPresenter implements TakesValue<Contact> {
 

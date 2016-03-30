@@ -21,8 +21,8 @@ import org.jboss.errai.common.client.api.annotations.MapsTo;
 import org.jboss.errai.common.client.api.annotations.Portable;
 
 /**
- * This {@link Portable} type is fired as a CDI event from the server so that clients can observe created and updated
- * {@link Contact Contacts} from different browser sessions without refreshing.
+ * This {@link Portable} type is fired as an Errai CDI event from the server so that clients can observe created and
+ * updated {@link Contact Contacts} from different browser sessions without refreshing.
  * <p>
  * This type encapulates a session id as well as a {@link Contact} so that the client that orginally created or updated
  * a {@link Contact} can ignore the event.

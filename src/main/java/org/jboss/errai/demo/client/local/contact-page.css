@@ -75,7 +75,7 @@ button {
   margin: 20px auto 10px;
 }
 
-button.new-contact {
+button#new-contact {
   border: 0;
   font-size: 16pt;
   background-color: #FACD22;

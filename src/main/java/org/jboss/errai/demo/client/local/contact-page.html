@@ -11,8 +11,32 @@
     <link rel="stylesheet" href="../../../../../../../webapp/css/shop-homepage.css">
     <script src="../../../../../../../webapp/js/jquery.js"></script>
     <script src="../../../../../../../webapp/js/bootstrap.js"></script>
+
+    <!-- When this file is opened in a browser this performs some simple tasks
+         that make it easier to fully view the template without running the entire application.
+         Since the head and body tag are not used by Errai's templating engine,
+         this code never runs in the actual application. -->
+    <script type="text/javascript">
+      function translateImgSrc() {
+        var imgs = document.getElementsByTagName("img")
+        for (var i = 0; i < imgs.length; i++) {
+          imgs[i].src = "../../../../../../../webapp/" + imgs[i].getAttribute("src");
+        }
+      }
+      function toggleModal() {
+        var modal = document.getElementsByTagName("form")[0];
+        modal.classList.toggle("displayed");
+      }
+      function init() {
+        translateImgSrc();
+        var buttons = document.getElementsByTagName("button");
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].onclick = toggleModal;
+        }
+      }
+    </script>
   </head>
-  <body>
+  <body onload="init();">
     <!-- Navigation -->
     <nav data-field="navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -78,10 +102,10 @@
                 <button class="modal-button modal-submit">Submit</button>
               </div>
               <div class="col-xs-4">
-                <button class="modal-button modal-cancel">Cancel</button>
+                <button class="modal-button modal-cancel" formnovalidate>Cancel</button>
               </div>
               <div class="col-xs-4">
-                <button class="modal-button modal-delete">Delete</button>
+                <button class="modal-button modal-delete" formnovalidate>Delete</button>
               </div>
             </div>
 
@@ -96,7 +120,7 @@
                 <p>This simple demo app is a contact book that allows users to create, update, and delete contacts.
                 <p>Click "Create Contact" to display a form for adding new contacts.
                 <p>Double-click on an existing contact to edit it.
-                <button class="new-contact">Create Contact</button>
+                <button id="new-contact">Create Contact</button>
               </div>
             </div>
           </div>

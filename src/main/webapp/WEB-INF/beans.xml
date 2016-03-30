@@ -10,6 +10,7 @@
     <exclude name = "org.jboss.errai.demo.client.local.ContactPresenter" />
     <exclude name = "org.jboss.errai.demo.client.local.DateConverter" />
     <exclude name = "org.jboss.errai.demo.client.local.NavBar" />
+    <exclude name = "org.jboss.errai.demo.client.local.BindableTelAnchor" />
     <exclude name = "org.jboss.errai.demo.client.local.ContactDisplay" />
     <exclude name = "org.jboss.errai.demo.client.local.Click" />
     <exclude name = "org.jboss.errai.demo.client.local.ContactListPage" />
