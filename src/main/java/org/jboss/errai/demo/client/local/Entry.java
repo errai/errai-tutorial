@@ -19,6 +19,7 @@ package org.jboss.errai.demo.client.local;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.jboss.errai.common.client.dom.Anchor;
 import org.jboss.errai.common.client.dom.Div;
 import org.jboss.errai.common.client.dom.Document;
 import org.jboss.errai.ioc.client.api.EntryPoint;
@@ -37,6 +38,9 @@ public class Entry {
   private Document doc;
 
   @Inject
+  private Anchor plainAnchor;
+
+  @Inject
   private EmailAnchor anchorSubtype;
 
   @PostConstruct
@@ -48,6 +52,14 @@ public class Entry {
       println("Successfully accessed textContent propery of anchor subtype.");
     } catch (final Throwable t) {
       final String msg = "Failed to access textContent property of anchor subtype.";
+      println(msg + " See console for details.");
+      logger.error(msg, t);
+    }
+    try {
+      plainAnchor.getTextContent();
+      println("Successfully accessed textContent propery of plain anchor.");
+    } catch (final Throwable t) {
+      final String msg = "Failed to access textContent property of plain anchor.";
       println(msg + " See console for details.");
       logger.error(msg, t);
     }
