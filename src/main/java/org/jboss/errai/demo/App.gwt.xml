@@ -3,7 +3,8 @@
             "http://google-web-toolkit.googlecode.com/svn/tags/2.5.0/distro-source/core/src/gwt-module.dtd">
 
 <module rename-to="app">
-  <inherits name="org.jboss.errai.enterprise.All" />
+  <inherits name="org.jboss.errai.ioc.Container" />
+  <inherits name="org.jboss.errai.ui.UI" />
 
   <set-property name="gwt.logging.enabled" value="TRUE"/>
   <!-- Uncomment the line below to enable all logging statements (default 
