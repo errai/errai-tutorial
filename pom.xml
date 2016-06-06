@@ -11,8 +11,8 @@
   <name>Errai::Tutorial</name>
 
   <properties>
-    <errai.version>4.0.0.Beta1</errai.version>
-    <gwt.version>2.8.0-beta1</gwt.version>
+    <errai.version>4.0.0-SNAPSHOT</errai.version>
+    <gwt.version>2.8.0-SNAPSHOT</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javaee.version>1.0.2.Final</javaee.version>
@@ -34,6 +34,11 @@
       <name>Sonatype Public Snapshots Repo</name>
       <url>https://oss.sonatype.org/content/repositories/public</url>
     </repository>
+    
+    <repository>
+      <id>GOOGLE_SNAPSHOTS</id>
+      <url>https://oss.sonatype.org/content/repositories/google-snapshots</url>
+    </repository>
   </repositories>
 
   <dependencyManagement>
@@ -54,6 +59,16 @@
        <groupId>com.google.guava</groupId>
        <artifactId>guava</artifactId>
        <version>20.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-user</artifactId>
+        <version>${gwt.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-dev</artifactId>
+        <version>${gwt.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
