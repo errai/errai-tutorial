@@ -55,7 +55,7 @@ import com.google.gwt.event.dom.client.DoubleClickEvent;
  *
  * <p>
  * The {@link Bound} annotations mark UI fields as managed by Errai Data Binding, which keeps UI values synchronized
- * with properties in the bound {@link Contact} model instance. (See the base class, {@link ContactPresenter}.)
+ * with properties in the bound {@link Contact} model instance. (See the base class, {@link BaseContactView}.)
  *
  * <p>
  * Errai UI automatically registers methods annotated with {@link EventHandler} to listen for DOM events.
@@ -65,7 +65,7 @@ import com.google.gwt.event.dom.client.DoubleClickEvent;
  * bean, or by programmatic lookup through the bean manager.
  */
 @Templated(value = "contact-page.html#contact", stylesheet = "contact-page.css")
-public class ContactDisplay extends ContactPresenter implements IsElement {
+public class ContactDisplay extends BaseContactView implements IsElement {
 
   /**
    * This element is the root element of this component (as declared in the {@code #contact} fragment of the

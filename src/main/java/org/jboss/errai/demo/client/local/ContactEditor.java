@@ -48,14 +48,14 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
  *
  * <p>
  * The {@link Bound} annotations mark UI fields as managed by Errai Data Binding, which keeps UI values synchronized
- * with properties in the bound {@link Contact} model instance. (See the base class, {@link ContactPresenter}.)
+ * with properties in the bound {@link Contact} model instance. (See the base class, {@link BaseContactView}.)
  *
  * <p>
  * Instances of this type should be obtained via Errai IoC, either by using {@link Inject} in another container managed
  * bean, or by programmatic lookup through the bean manager.
  */
 @Templated(value = "contact-page.html#modal-fields", stylesheet = "contact-page.css")
-public class ContactEditor extends ContactPresenter implements IsElement {
+public class ContactEditor extends BaseContactView implements IsElement {
 
   /**
    * The {@link DataField} annotation for this field declares that this {@link Div} is the element from the
