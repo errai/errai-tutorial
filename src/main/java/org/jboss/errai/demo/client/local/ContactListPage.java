@@ -16,6 +16,8 @@
 
 package org.jboss.errai.demo.client.local;
 
+import static org.jboss.errai.demo.client.local.Click.Type.DOUBLE;
+import static org.jboss.errai.demo.client.local.Click.Type.SINGLE;
 import static org.jboss.errai.demo.client.shared.Operation.OperationType.CREATE;
 import static org.jboss.errai.demo.client.shared.Operation.OperationType.DELETE;
 import static org.jboss.errai.demo.client.shared.Operation.OperationType.UPDATE;
@@ -34,6 +36,7 @@ import org.jboss.errai.common.client.dom.Anchor;
 import org.jboss.errai.common.client.dom.Button;
 import org.jboss.errai.common.client.dom.DOMUtil;
 import org.jboss.errai.common.client.dom.Form;
+import org.jboss.errai.common.client.dom.MouseEvent;
 import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.databinding.client.api.StateSync;
 import org.jboss.errai.databinding.client.components.ListComponent;
@@ -51,13 +54,12 @@ import org.jboss.errai.ui.shared.api.annotations.AutoBound;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;
-import org.jboss.errai.ui.shared.api.annotations.SinkNative;
+import org.jboss.errai.ui.shared.api.annotations.ForEvent;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.slf4j.Logger;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.http.client.Response;
-import com.google.gwt.user.client.Event;
 
 /**
  * <p>
@@ -142,7 +144,7 @@ public class ContactListPage {
      * Triggers an HTTP request to the ContactStorageService. The call back will be invoked asynchronously to display
      * all retrieved contacts.
      */
-    contactService.call((List<Contact> contacts) -> binder.getModel().addAll(contacts)).getAllContacts();
+    contactService.call((final List<Contact> contacts) -> binder.getModel().addAll(contacts)).getAllContacts();
 
     // Remove placeholder table row from template.
     DOMUtil.removeAllElementChildren(list.getElement());
@@ -184,35 +186,33 @@ public class ContactListPage {
   }
 
   /**
-   * This is an Errai UI native event handler. The element for which this handler is regsitered is in this class's HTML
+   * This is an Errai UI event handler. The element for which this handler is regsitered is in this class's HTML
    * template file and has the id {@code new-content}.
    * <p>
-   * Because there is no {@code new-content} {@link DataField} in this class, this method's parameter is a non-specific
-   * {@link Event} (rather than a more specific {@link ClickEvent}). For the same reason, the {@link SinkNative}
-   * annotation is required to specify which kinds of DOM events this method should handle.
+   * The parameter is a JS interop wrapper for a native DOM {@link MouseEvent}. The {@code MouseEvent} interface like many
+   * DOM event interfaces is used for multiple browser event types (i.e. "click", "dblclick", "mouseover", etc.). In order
+   * to only listen for "click" events we use the {@link ForEvent} annotation.
    * <p>
    * This method displays the hidden modal form so that a user can create a new {@link Contact}.
    */
-  @SinkNative(Event.ONCLICK)
   @EventHandler("new-contact")
-  public void onNewContactClick(final Event event) {
+  public void onNewContactClick(final @ForEvent("click") MouseEvent event) {
     displayFormWithNewContact();
   }
 
   /**
-   * This is an Errai UI native event handler. The element for which this handler is regsitered is in this class's HTML
+   * This is an Errai UI event handler. The element for which this handler is regsitered is in this class's HTML
    * template file and has the {@code modal-submit} CSS class.
    * <p>
-   * Because there is no {@code modal-submit} {@link DataField} in this class, this method's parameter is a non-specific
-   * {@link Event} (rather than a more specific {@link ClickEvent}). For the same reason, the {@link SinkNative}
-   * annotation is required to specify which kinds of DOM events this method should handle.
+   * The parameter is a JS interop wrapper for a native DOM {@link MouseEvent}. The {@code MouseEvent} interface like many
+   * DOM event interfaces is used for multiple browser event types (i.e. "click", "dblclick", "mouseover", etc.). In order
+   * to only listen for "click" events we use the {@link ForEvent} annotation.
    * <p>
    * This method displays and persists changes made to a {@link Contact} in the {@link ContactEditor}, whether it is a
    * newly created or an previously existing {@link Contact}.
    */
-  @SinkNative(Event.ONCLICK)
   @EventHandler("modal-submit")
-  public void onModalSubmitClick(final Event event) {
+  public void onModalSubmitClick(final @ForEvent("click") MouseEvent event) {
     if (modal.checkValidity()) {
       DOMUtil.removeCSSClass(modal, "displayed");
       if (binder.getModel().contains(editor.getValue())) {
@@ -225,18 +225,17 @@ public class ContactListPage {
   }
 
   /**
-   * This is an Errai UI native event handler. The element for which this handler is regsitered is in this class's HTML
+   * This is an Errai UI event handler. The element for which this handler is regsitered is in this class's HTML
    * template file and has the {@code modal-cancel} CSS class.
    * <p>
-   * Because there is no {@code modal-cancel} {@link DataField} in this class, this method's parameter is a non-specific
-   * {@link Event} (rather than a more specific {@link ClickEvent}). For the same reason, the {@link SinkNative}
-   * annotation is required to specify which kinds of DOM events this method should handle.
+   * The parameter is a JS interop wrapper for a native DOM {@link MouseEvent}. The {@code MouseEvent} interface like many
+   * DOM event interfaces is used for multiple browser event types (i.e. "click", "dblclick", "mouseover", etc.). In order
+   * to only listen for "click" events we use the {@link ForEvent} annotation.
    * <p>
    * This method hides the ContactEditor modal form and resets the bound model.
    */
-  @SinkNative(Event.ONCLICK)
   @EventHandler("modal-cancel")
-  public void onModalCancelClick(final Event event) {
+  public void onModalCancelClick(final @ForEvent("click") MouseEvent event) {
     DOMUtil.removeCSSClass(modal, "displayed");
   }
 
@@ -244,14 +243,15 @@ public class ContactListPage {
    * This is an Errai UI native event handler. The element for which this handler is regsitered is in this class's HTML
    * template file and has the {@code modal-delete} CSS class.
    * <p>
-   * Because there is a {@code modal-delete} {@link DataField} in this class, this method's parameter indicates that
-   * this handles click events by accepting {@link ClickEvent} as its parameter.
+   * The parameter is a JS interop wrapper for a native DOM {@link MouseEvent}. The {@code MouseEvent} interface like many
+   * DOM event interfaces is used for multiple browser event types (i.e. "click", "dblclick", "mouseover", etc.). In order
+   * to only listen for "click" events we use the {@link ForEvent} annotation.
    * <p>
    * This method removes a {@link Contact} from the displayed table and makes an HTTP request to delete the contact from
    * persistent storage on the server.
    */
   @EventHandler("modal-delete")
-  public void onModalDeleteClick(final ClickEvent event) {
+  public void onModalDeleteClick(final @ForEvent("click") MouseEvent event) {
     if (binder.getModel().contains(editor.getValue())) {
       final Contact deleted = editor.getValue();
       contactService.call((ResponseCallback) response -> {
@@ -269,7 +269,7 @@ public class ContactListPage {
    * {@link ContactDisplay#onDoubleClick(com.google.gwt.event.dom.client.DoubleClickEvent)}, in order to display the
    * modal form for editting a contact.
    */
-  public void editComponent(final @Observes @DoubleClick ContactDisplay component) {
+  public void editComponent(final @Observes @Click(DOUBLE) ContactDisplay component) {
     selectComponent(component);
     editModel(component.getValue());
   }
@@ -278,7 +278,7 @@ public class ContactListPage {
    * This method observes CDI events fired locally by {@link ContactDisplay#onClick(ClickEvent)} in order to highlight a
    * {@link ContactDisplay} when it is clicked.
    */
-  public void selectComponent(final @Observes @Click ContactDisplay component) {
+  public void selectComponent(final @Observes @Click(SINGLE) ContactDisplay component) {
     if (list.getSelectedComponents().contains(component)) {
       list.deselectAll();
     }

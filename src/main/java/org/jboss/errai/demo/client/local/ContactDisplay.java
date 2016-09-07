@@ -16,6 +16,9 @@
 
 package org.jboss.errai.demo.client.local;
 
+import static org.jboss.errai.demo.client.local.Click.Type.DOUBLE;
+import static org.jboss.errai.demo.client.local.Click.Type.SINGLE;
+
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,15 +28,14 @@ import org.jboss.errai.common.client.dom.DOMUtil;
 import org.jboss.errai.common.client.dom.Div;
 import org.jboss.errai.common.client.dom.HTMLElement;
 import org.jboss.errai.common.client.dom.Heading;
+import org.jboss.errai.common.client.dom.MouseEvent;
 import org.jboss.errai.databinding.client.components.ListComponent;
 import org.jboss.errai.demo.client.shared.Contact;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;
+import org.jboss.errai.ui.shared.api.annotations.ForEvent;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
-
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.DoubleClickEvent;
 
 /**
  * <p>
@@ -103,11 +105,11 @@ public class ContactDisplay extends BaseContactView implements IsElement {
   private Div notes;
 
   @Inject
-  @Click
+  @Click(SINGLE)
   private Event<ContactDisplay> click;
 
   @Inject
-  @DoubleClick
+  @Click(DOUBLE)
   private Event<ContactDisplay> dblClick;
 
   /**
@@ -115,7 +117,7 @@ public class ContactDisplay extends BaseContactView implements IsElement {
    * observed by {@link ContactList#selectComponent(ContactDisplay)}.
    */
   @EventHandler("contact")
-  public void onClick(final ClickEvent event) {
+  public void onClick(final @ForEvent("click") MouseEvent event) {
     click.fire(this);
   }
 
@@ -124,7 +126,7 @@ public class ContactDisplay extends BaseContactView implements IsElement {
    * observed by {@link ContactListPage#editComponent(ContactDisplay)}.
    */
   @EventHandler("contact")
-  public void onDoubleClick(final DoubleClickEvent event) {
+  public void onDoubleClick(final @ForEvent("dblclick") MouseEvent event) {
     dblClick.fire(this);
   }
 

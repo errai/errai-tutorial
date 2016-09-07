@@ -30,4 +30,10 @@ import com.google.gwt.event.dom.client.ClickEvent;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Click {
 
+  static enum Type {
+    SINGLE, DOUBLE
+  }
+
+  Type value();
+
 }
