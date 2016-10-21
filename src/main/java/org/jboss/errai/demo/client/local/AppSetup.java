@@ -22,8 +22,8 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.jboss.errai.common.client.dom.DOMUtil;
 import org.jboss.errai.common.client.dom.Body;
+import org.jboss.errai.demo.client.local.JQueryProducer.JQuery;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.ui.nav.client.local.NavigationPanel;
 
@@ -47,11 +47,14 @@ public class AppSetup {
   @Inject
   private NavBar navbar;
 
+  @Inject
+  private JQuery $;
+
   @PostConstruct
   public void init() {
     RootPanel.get("rootPanel").add(navPanel);
     final Body body = getDocument().getBody();
-    body.insertBefore(navbar.getElement(), DOMUtil.getFirstChildElement(body).orElse(null));
+    $.wrap($.wrap(body).children().first()).before(navbar.getElement());
   }
 
 }

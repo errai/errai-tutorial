@@ -28,8 +28,13 @@
   <script type="text/javascript">
     erraiJaxRsApplicationRoot = "rest";
   </script>
+  <script src="<%=contextPath%>/bower_components/platform/platform.js"></script>
+  <script src="<%=contextPath%>/bower_components/webcomponentsjs/webcomponents.js"></script>
   <script type="text/javascript" src="<%=contextPath%>/app/app.nocache.js"></script>
 
+  <link href="<%=contextPath%>/bower_components/polymer/polymer.html" rel="import">
+  <link href="<%=contextPath%>/bower_components/paper-input/paper-input.html" rel="import">
+  <link href="<%=contextPath%>/bower_components/paper-input/paper-textarea.html" rel="import">
 </head>
 
 <body>

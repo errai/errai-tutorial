@@ -19,9 +19,9 @@ package org.jboss.errai.demo.client.local;
 import org.jboss.errai.common.client.api.annotations.Element;
 import org.jboss.errai.common.client.dom.Anchor;
 import org.jboss.errai.common.client.ui.HasValue;
+import org.jboss.errai.ui.shared.api.annotations.Bound;
 
 import jsinterop.annotations.JsOverlay;
-import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 /**
@@ -30,20 +30,20 @@ import jsinterop.annotations.JsType;
  * inner text and it's href. The bound value is presumed to be an telephone number.
  *
  * <p>
- * Because this type implements {@link HasValue}, the {@link #getValue()} and {@link #setValue(String)} methods will be
+ * Because this type extends {@link HasValue}, the {@link #getValue()} and {@link #setValue(String)} methods will be
  * used for accessing or mutating the element's value if this element is used with {@link Bound declarative data binding}.
  */
 @Element("a")
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "HTMLAnchorElement")
-public abstract class BindableTelAnchor implements Anchor, HasValue<String> {
+@JsType(isNative = true)
+public interface BindableTelAnchor extends Anchor, HasValue<String> {
 
   @JsOverlay @Override
-  public final String getValue() {
+  default String getValue() {
     return getTextContent();
   }
 
   @JsOverlay @Override
-  public final void setValue(final String value) {
+  default void setValue(final String value) {
     setTextContent(value);
     setHref("tel:" + value);
   }

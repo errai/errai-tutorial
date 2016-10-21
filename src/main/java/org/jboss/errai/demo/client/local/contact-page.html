@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="../../../../../../../webapp/css/shop-homepage.css">
     <script src="../../../../../../../webapp/js/jquery.js"></script>
     <script src="../../../../../../../webapp/js/bootstrap.js"></script>
+    <script src="../../../../../../../webapp/bower_components/platform/platform.js"></script>
+    <script src="../../../../../../../webapp/bower_components/webcomponentsjs/webcomponents.js"></script>
+
+    <link href="../../../../../../../webapp/bower_components/polymer/polymer.html" rel="import">
+    <link href="../../../../../../../webapp/bower_components/paper-input/paper-input.html" rel="import">
+    <link href="../../../../../../../webapp/bower_components/paper-input/paper-textarea.html" rel="import">
 
     <!-- When this file is opened in a browser this performs some simple tasks
          that make it easier to fully view the template without running the entire application.
@@ -71,29 +77,23 @@
         <form class="modal container" action="javascript:void(0);">
 
             <div data-field="modal-fields" class="modal-fields">
-              <div class="col-xs-12">
-                <label class="col-sm-2 col-xs-12">Nickname</label>
-                <input data-field="nickname" class="nickname col-sm-9 col-xs-12" type="text" placeholder="Nickname" required>
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-input data-field="nickname" class="nickname" type="text" label="Nickname" placeholder="Nickname" required></paper-input>
               </div>
-              <div class="col-xs-12">
-                <label class="col-sm-2 col-xs-12">Full Name</label>
-                <input data-field="fullname" class="fullname col-sm-9 col-xs-12" type="text" placeholder="Full Name">
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-input data-field="fullname" class="fullname" type="text" label="Full Name" placeholder="Full Name"></paper-input>
               </div>
-              <div class="col-xs-12">
-                <label class="col-sm-2 col-xs-12">Telephone</label>
-                <input data-field="phonenumber" class="phonenumber col-sm-9 col-xs-12" type="tel" placeholder="1 234 567 8910">
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-input data-field="phonenumber" class="phonenumber" type="tel" label="Telephone" placeholder="1 234 567 8910"></paper-input>
               </div>
-              <div class="col-xs-12">
-                <label class="col-sm-2 col-xs-12">Email</label>
-                <input data-field="email" class="email col-sm-9 col-xs-12" type="email" placeholder="email@domain.tld">
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-input data-field="email" class="email" type="email" label="Email" placeholder="email@domain.tld"></paper-input>
               </div>
-              <div class="col-xs-12">
-                <label class="col-sm-2 col-xs-12">Birthdate</label>
-                <input data-field="birthday" class="birthday col-sm-9 col-xs-12" type="date" placeholder="2016-01-01">
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-input data-field="birthday" class="birthday" type="date" label="Birthdate" placeholder="2016-01-01"></paper-input>
               </div>
-              <div class="col-xs-12">
-                <label class="col-sm-2 col-xs-12">Notes</label>
-                <textarea data-field="notes" class="notes col-sm-9 col-xs-12" rows="4" placeholder="I met so-and-so at..."></textarea>
+              <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                <paper-textarea data-field="notes" class="notes" label="Notes" placeholder="I met so-and-so at..."></paper-textarea>
               </div>
             </div>
 

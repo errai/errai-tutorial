@@ -68,30 +68,30 @@ public class ContactEditor extends BaseContactView implements IsElement {
 
   @Inject
   @Bound @DataField
-  private TextInput fullname;
+  private PaperInput fullname;
 
   @Inject
   @Bound @DataField
-  private TextInput nickname;
+  private PaperInput nickname;
 
   @Inject
   @Bound @DataField
-  private TextInput phonenumber;
+  private PaperInput phonenumber;
 
   @Inject
   @Bound @DataField
-  private TextInput email;
+  private PaperInput email;
 
   @Inject
   @Bound @DataField
-  private TextArea notes;
+  private PaperTextArea notes;
 
   /*
    * We specify a converter because Errai does not provide built-in conversion from String to Date.
    */
   @Inject
   @Bound(converter = DateConverter.class) @DataField
-  private DateInput birthday;
+  private PaperInput birthday;
 
   /**
    * Sets the given model as the model for this component but pauses data binding. Any changes made to the UI or model

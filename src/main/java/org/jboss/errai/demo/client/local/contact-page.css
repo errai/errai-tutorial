@@ -17,26 +17,12 @@ label {
   border-radius: 2px;
 }
 
-.modal input {
-  height: 35px;
-  display: block;
-  border: 1px solid grey;
-}
-
-.modal input:invalid {
-  border-color: #D40000;
-}
-
 .modal-fields > *:first-child {
   margin-top: 20px;
 }
 
 .modal-fields > div {
   margin-bottom: 20px;
-}
-
-.modal input[type="date"] {
-  height: 40px;
 }
 
 .modal {
