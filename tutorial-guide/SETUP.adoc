@@ -10,7 +10,7 @@ with the rest of the tutorial:
 
 * JDK (6 or 7)
 * Maven (3.x)
-* Wildfly 8 (Optional -- necessary for production, but not development mode)
+* WildFly 10 (Optional -- necessary for production, but not development mode)
 * Eclipse IDE (with the M2E plugin)
 
 Although it is possible to use counterparts for some of these tools, we
@@ -41,15 +41,15 @@ version of Maven and follow the
 http://maven.apache.org/download.cgi#Installation_Instructions[installation
 instructions].
 
-Wildfly
+WildFly
 ~~~~~~~
 
 Wildlfy is an Application Server which we will use to host our Errai
 Application locally. In the tutorial we will be using
-Wildfly 8.1.0.Final.
+WildFly 10.0.0.Final.
 
-You can download a zip file with Wildfly 8 
-http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip[here].
+You can download a zip file with WildFly 10 
+http://download.jboss.org/wildfly/10.0.0.Final/wildfly-10.0.0.Final.zip[here].
 No installation is necessary. Simply unzip it to wherever you would like
 the application's directory to be located.
 

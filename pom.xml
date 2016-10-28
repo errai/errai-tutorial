@@ -11,8 +11,8 @@
   <name>Errai::Tutorial</name>
 
   <properties>
-    <errai.version>4.0.0-SNAPSHOT</errai.version>
-    <gwt.version>2.8.0-rc2</gwt.version>
+    <errai.version>4.0.0.Beta4</errai.version>
+    <gwt.version>2.8.0</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <errai.dev.context>${project.artifactId}</errai.dev.context>
@@ -21,7 +21,6 @@
     <errai.jboss.home>${project.build.directory}/wildfly-${as.version}</errai.jboss.home>
   </properties>
 
-  <!-- These must be here in this order because of missing guava-gwt snapshots in the JBoss Public Repository. -->
   <repositories>
     <repository>
       <id>jboss</id>
@@ -32,11 +31,6 @@
       <id>sonatype-public</id>
       <name>Sonatype Public Snapshots Repo</name>
       <url>https://oss.sonatype.org/content/repositories/public</url>
-    </repository>
-    
-    <repository>
-      <id>GOOGLE_SNAPSHOTS</id>
-      <url>https://oss.sonatype.org/content/repositories/google-snapshots</url>
     </repository>
   </repositories>
 
@@ -320,37 +314,5 @@
       </dependencies>
     </profile>
 
-    <profile>
-      <id>mobile</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.jboss.errai</groupId>
-            <artifactId>cordova-maven-plugin</artifactId>
-            <version>${errai.version}</version>
-            <executions>
-              <execution>
-                <id>build</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>build-project</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>snapshots.jboss.org</id>
-          <name>JBoss Snapshot Repository</name>
-          <url>http://snapshots.jboss.org/maven2</url>
-          <layout>default</layout>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-        </pluginRepository>
-      </pluginRepositories>
-    </profile>
   </profiles>
 </project>

@@ -1,6 +1,6 @@
 == Development Mode with Errai
 
-In this section we will configure GWT development mode to use the Wildfly Application Server so that it is NOT necessary to manually start the server and deploy a war file before running an Application in dev mode.
+In this section we will configure GWT development mode to use the WildFly Application Server so that it is NOT necessary to manually start the server and deploy a war file before running an Application in dev mode.
 
 Before starting this, you should:
 
@@ -20,7 +20,7 @@ click "Next"
 it is selected
 * Click "Finished"
 
-=== Setting up DevMode for Wildfly 8
+=== Setting up DevMode for WildFly 10
 
 Note that you will only need to go through this step if you're upgrading an existing Errai App. If you've just downloaded the errai-tutorial this configuration is already set up for you.
 
@@ -34,7 +34,7 @@ Currently to use this feature, you must be using errai 3.0.0 or greater. Here is
 </dependency>
 -------------------------------------------------------------------------------
 
-This new dependency contains a ServletLauncher, which the gwt-maven-plugin will use to control the Wildfly AS instance.
+This new dependency contains a ServletLauncher, which the gwt-maven-plugin will use to control the WildFly AS instance.
 
 Additionally, the plugin configuration has changed. First we have the new gwt-maven-plugin configuration:
 
@@ -101,7 +101,7 @@ Additionally, we have added a new execution for the maven-dependency plugin:
 </plugin>
 -------------------------------------------------------------------------------
 
-This new execution will unpack a Wildfly Application Server and unzip it into your target directory.
+This new execution will unpack a WildFly Application Server and unzip it into your target directory.
 
 Finally, at the top of the pom we've included the following necessary properties:
 
@@ -116,9 +116,9 @@ Finally, at the top of the pom we've included the following necessary properties
 </properties>
 -------------------------------------------------------------------------------
 
-=== Managing an External Wildfly Instance (**Optional**)
+=== Managing an External WildFly Instance (**Optional**)
 
-One of the extra JVM arguments we gave to the gwt-maven-plugin, errai.jboss.home, is used to tell the launcher where $WILDFLY_HOME is located. *It is necessary to set this to the path of your $WILDFLY_HOME.* In the configuration above, this is done for you for the Wildfly installation that is provided by maven.
+One of the extra JVM arguments we gave to the gwt-maven-plugin, errai.jboss.home, is used to tell the launcher where $WILDFLY_HOME is located. *It is necessary to set this to the path of your $WILDFLY_HOME.* In the configuration above, this is done for you for the WildFly installation that is provided by maven.
 
 But if you wish to use a different application server, you can do so by changing the pom property *errai.jboss.home* near the top of the *pom.xml*.
 

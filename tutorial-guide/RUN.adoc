@@ -52,24 +52,24 @@ Errai.
 ** The location of html and css files, and any other resources to be
 served to clients.
 
-=== Starting Wildfly
+=== Starting WildFly
 
-To run this demo, we'll be deploying it to the Wildfly Application Server.
-To start a standalone instance of Wildfly, run
+To run this demo, we'll be deploying it to the WildFly Application Server.
+To start a standalone instance of WildFly, run
 
 ----------------------------------------
 $WILDFLY_HOME/bin/standalone.sh
 ----------------------------------------
 
-where `$WILDFLY_HOME` is the path to Wildfly folder you unzipped from the
+where `$WILDFLY_HOME` is the path to WildFly folder you unzipped from the
 link:SETUP.adoc[setup] instructions.
 
 Now go to http://localhost:8080 in your web browser. If the server is
-running correctly, you should see a Wildfly welcome page.
+running correctly, you should see a WildFly welcome page.
 
 === Building and Deploying
 
-It's time to really get things started. While the Wildfly server is still
+It's time to really get things started. While the WildFly server is still
 running, run the command
 
 ---------------------------------
@@ -108,9 +108,9 @@ least two browser windows open. Try submitting complaints with one
 window and see them live update to the admin screen. Or open two admin
 windows and completing complaints.
 
-*Note*: By default, Wildfly will only serve the application locally. If
+*Note*: By default, WildFly will only serve the application locally. If
 you would like to try the demo on multiple devices, you can configure
-Wildfly to bind to all addresses by editing
+WildFly to bind to all addresses by editing
 `$WILDFLY_HOME/standalone/configuration/standalone.xml`. Take just these lines:
 
 -----------------------------------------------------------------
@@ -126,32 +126,6 @@ And replace them with this:
     <any-address/>
 </interface>
 -------------------------
-
-=== Build and deploy as native app to your mobile device
-
-The native application will have to know the absolute path to your 
-server or cluster. For this demo you will have to change the REST 
-and Errai Bus endpoint URL in Config.java and App.java (see comments) 
-before building the native application. Make sure that your application
-server instance is bound to an IP address that can be reached from your 
-mobile device. The section <<verify-deployment, Verify Deployment>> 
-desribes how to change the binding address of Wildfly AS.
-
-To produce the native applications run:
-
-----
-% mvn clean package -Pmobile,jboss7
-----
-
-After that you can simply install the native app on your phone or tablet.
-
-Note that you will need to enable development options on your device and 
-have the Android SDK installed on your local machine.
-
-For deploying the native application to your Android device simply execute:
-----
-% adb install target/template/platforms/android/bin/HelloCordova-debug.apk
-----
 
 What's Next?
 ~~~~~~~~~~~~

@@ -5,20 +5,20 @@ This simple demo allows users to create contact entires for an address book. The
 
 Creating contacts is done using a simple JAX-RS endpoint and Errai's typesafe REST caller support (see the `@EventHandler` method for the submit button in `ContactListPage.java`). Every time a new contact is created, the server will fire a CDI event which will be observed by all connected clients (new contacts will automatically appear in the displayed contact lists of all connected clients). The relevant code for firing and observing this CDI event can be found in `ContactStorageServiceImpl.java` and `ContactListPage.java`. The filed contacts are persisted on the server.
 
-This demo is designed to work with a full Java EE 7 server such as Wildfly 8. Although it should be possible to craft a deployment of this demo to a simpler web server, it's much simpler to deploy to an EE 7 capable app server.
+This demo is designed to work with a full Java EE 7 server such as WildFly 10. Although it should be possible to craft a deployment of this demo to a simpler web server, it's much simpler to deploy to an EE 7 capable app server.
 
 Prerequisites
 -------------
 
  * Maven 3 (run `mvn --version` on the command line to check)
- * An unzipped copy of Wildfly 8 (Optional)
+ * An unzipped copy of WildFly 10 (Optional)
 
 More detailed instructions can be found in our [Setup Tutorial](tutorial-guide/SETUP.adoc)
 
 Build and deploy (production mode)
 ----------------
 
-To build a .war file and deploy it to the local running Wildfly instance:
+To build a .war file and deploy it to the local running WildFly instance:
 
     % mvn clean package wildfly:deploy
 
@@ -58,21 +58,6 @@ Then:
 * Press "Launch Default Browser"
 
 See our development guide [here](tutorial-guide/DEVELOP.adoc) for more instructions on setting up dev mode and other details.
-
-Build and deploy as native app to your mobile device
------------------------------------------------------
-
-The native application will have to know the absolute path to your server or cluster. For this demo you will have to change the REST and Errai Bus endpoint URL in Config.java and App.java (see comments) before building the native application.
-
-To produce the native applications run:
-
-    % mvn clean package -Pmobile,wildfly -Dplatform=android
-
-After that you can simply install the native app on your phone or tablet. 
-
-e.g for Android run:
-
-    % adb install target/template/platforms/android/bin/HelloCordova-debug.apk
 
 Troubleshooting
 ---------------
