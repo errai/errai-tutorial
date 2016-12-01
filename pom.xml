@@ -183,6 +183,7 @@
           <hostedWebapp>src/main/webapp</hostedWebapp>
           <strict>true</strict>
           <compileReport>true</compileReport>
+          <saveSource>true</saveSource>
         </configuration>
         <dependencies>
           <dependency>
@@ -266,6 +267,19 @@
             <configuration>
               <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
               <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
+              <webResources>
+                <resource>
+                  <directory>${basedir}/target/extra/app/src</directory>
+                  <targetPath>src</targetPath>
+                </resource>
+                <resource>
+                  <directory>${basedir}/target/extra/app/symbolMaps</directory>
+                  <includes>
+                    <include>*.json</include>
+                  </includes>
+                  <targetPath>src</targetPath>
+                </resource>
+              </webResources>
             </configuration>
           </plugin>
           <plugin>

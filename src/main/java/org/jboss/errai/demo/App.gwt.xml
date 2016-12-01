@@ -9,4 +9,9 @@
   <!-- Uncomment the line below to enable all logging statements (default 
     level is "INFO"). -->
   <!-- <set-property name="gwt.logging.logLevel" value="ALL"/> -->
+
+  <add-linker name="xsiframe"/>
+  <set-property name="compiler.useSourceMaps" value="true"/>
+  <set-configuration-property name="includeSourceMapUrl" 
+    value="http://localhost:8080/errai-tutorial/src/__HASH___sourceMap__FRAGMENT__.json"/>
 </module>
