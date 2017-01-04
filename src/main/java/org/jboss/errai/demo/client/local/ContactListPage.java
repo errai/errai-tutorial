@@ -44,7 +44,6 @@ import org.jboss.errai.demo.client.shared.Contact;
 import org.jboss.errai.demo.client.shared.ContactOperation;
 import org.jboss.errai.demo.client.shared.ContactStorageService;
 import org.jboss.errai.demo.client.shared.Operation;
-import org.jboss.errai.enterprise.client.jaxrs.api.ResponseCallback;
 import org.jboss.errai.ui.nav.client.local.DefaultPage;
 import org.jboss.errai.ui.nav.client.local.NavigationPanel;
 import org.jboss.errai.ui.nav.client.local.Page;
@@ -254,7 +253,7 @@ public class ContactListPage {
   public void onModalDeleteClick(final @ForEvent("click") MouseEvent event) {
     if (binder.getModel().contains(editor.getValue())) {
       final Contact deleted = editor.getValue();
-      contactService.call((ResponseCallback) response -> {
+      contactService.call((final Response response) -> {
         if (response.getStatusCode() >= 200 && response.getStatusCode() < 300) {
           binder.getModel().remove(deleted);
         }
@@ -334,7 +333,7 @@ public class ContactListPage {
     final Contact editorModel = editor.getValue();
     // Adding this model to the list will create and display a new, bound ContactDisplay in the table.
     binder.getModel().add(editorModel);
-    contactService.call((ResponseCallback) response -> {
+    contactService.call((final Response response) -> {
       // Set the id if we successfully create this contact.
       if (response.getStatusCode() == Response.SC_CREATED) {
         final String createdUri = response.getHeader("Location");

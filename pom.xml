@@ -11,7 +11,7 @@
   <name>Errai::Tutorial</name>
 
   <properties>
-    <errai.version>4.0.0.Beta7</errai.version>
+    <errai.version>4.0.0.CR1</errai.version>
     <gwt.version>2.8.0</gwt.version>
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -238,7 +238,7 @@
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>org.wildfly</groupId>
+                  <groupId>org.jboss.errai</groupId>
                   <artifactId>wildfly-dist</artifactId>
                   <version>${as.version}</version>
                   <type>zip</type>
@@ -305,7 +305,6 @@
         <dependency><groupId>javax.validation</groupId><artifactId>validation-api</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>junit</groupId><artifactId>junit</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.hibernate.common</groupId><artifactId>hibernate-commons-annotations</artifactId><scope>provided</scope></dependency>
-        <dependency><groupId>org.hibernate.javax.persistence</groupId><artifactId>hibernate-jpa-2.0-api</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.hibernate</groupId><artifactId>hibernate-core</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.hibernate</groupId><artifactId>hibernate-entitymanager</artifactId><scope>provided</scope></dependency>
         <dependency><groupId>org.hibernate</groupId><artifactId>hibernate-validator</artifactId><scope>provided</scope></dependency>
