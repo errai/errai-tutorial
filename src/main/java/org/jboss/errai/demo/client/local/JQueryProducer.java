@@ -27,17 +27,34 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
+ * <p>
+ * An example JS interop API for JQuery. Wraps a small subset of JQuery and allows for the JQuery function to be
+ * injected.
  *
  * @author Max Barkley <mbarkley@redhat.com>
  */
 @JsType(isNative = true)
 public abstract class JQueryProducer {
 
+  /**
+   * <p>
+   * The JQuery function, used to enhance regular elements.
+   */
   @JsFunction @FunctionalInterface
   public static interface JQuery {
     JQueryElement wrap(Element element);
   }
 
+  /**
+   * <p>
+   * Interface for enhanced JQuery elements, exposing API for some convenient methods for getting children or inserting
+   * sibling elements.
+   *
+   * <p>
+   * See {@link AppSetup} for usage.
+   *
+   * @see AppSetup
+   */
   @JsType(isNative = true)
   public static interface JQueryElement extends HTMLElement {
     void after(HTMLElement element);
@@ -46,12 +63,23 @@ public abstract class JQueryProducer {
     JQueryArray children(String selector);
   }
 
+  /**
+   * <p>
+   * Interface for an element array returned by some {@link JQueryElement} methods.
+   */
   @JsType(isNative = true)
   public static interface JQueryArray {
     JQueryElement first();
     JQueryElement get(int index);
   }
 
+  /**
+   * <p>
+   * Declares a producer for the JQuery function, allowing it to be injected via Errai IoC.
+   *
+   * <p>
+   * {@link JsProperty} is used so that GWT translates method calls to property access of the globally-scoped {@code $} symbol.
+   */
   @Produces
   @JsProperty(name = "$", namespace = JsPackage.GLOBAL)
   public static native JQuery get();
