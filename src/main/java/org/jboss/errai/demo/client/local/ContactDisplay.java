@@ -23,19 +23,19 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.jboss.errai.common.client.api.IsElement;
-import org.jboss.errai.common.client.dom.DOMUtil;
 import org.jboss.errai.common.client.dom.Div;
-import org.jboss.errai.common.client.dom.HTMLElement;
-import org.jboss.errai.common.client.dom.Heading;
 import org.jboss.errai.common.client.dom.MouseEvent;
 import org.jboss.errai.databinding.client.components.ListComponent;
 import org.jboss.errai.demo.client.shared.Contact;
+import org.jboss.errai.ui.client.local.api.IsElement;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.EventHandler;
 import org.jboss.errai.ui.shared.api.annotations.ForEvent;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
+
+import elemental2.dom.HTMLDivElement;
+import elemental2.dom.HTMLHeadingElement;
 
 /**
  * <p>
@@ -75,15 +75,15 @@ public class ContactDisplay extends BaseContactView implements IsElement {
    */
   @Inject
   @DataField
-  private Div contact;
+  private HTMLDivElement contact;
 
   @Inject
   @Bound @DataField
-  private Div fullname;
+  private HTMLDivElement fullname;
 
   @Inject @Named("h4")
   @Bound @DataField
-  private Heading nickname;
+  private HTMLHeadingElement nickname;
 
   @Inject
   @Bound @DataField
@@ -139,15 +139,10 @@ public class ContactDisplay extends BaseContactView implements IsElement {
    */
   public void setSelected(final boolean selected) {
     if (selected) {
-      DOMUtil.addCSSClass(contact, "selected");
+      contact.classList.remove("selected");
     } else {
-      DOMUtil.removeCSSClass(contact, "selected");
+      contact.classList.add("selected");
     }
-  }
-
-  @Override
-  public HTMLElement getElement() {
-    return contact;
   }
 
 }

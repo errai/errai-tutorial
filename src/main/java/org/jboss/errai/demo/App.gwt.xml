@@ -4,6 +4,7 @@
 
 <module rename-to="app">
   <inherits name="org.jboss.errai.enterprise.All" />
+  <inherits name="elemental2.dom.Dom" />
 
   <set-property name="gwt.logging.enabled" value="TRUE"/>
   <!-- Uncomment the line below to enable all logging statements (default 

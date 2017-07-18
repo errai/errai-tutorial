@@ -3,6 +3,7 @@
 
   <scan>
     <!-- These exclusions were added by Errai to avoid deploying client-side classes to the server -->
+    <exclude name = "org.jboss.errai.demo.client.local.ElementalProducer" />
     <exclude name = "org.jboss.errai.demo.client.local.Click$Type" />
     <exclude name = "org.jboss.errai.demo.client.local.BindableEmailAnchor" />
     <exclude name = "org.jboss.errai.demo.client.local.ContactEditor" />

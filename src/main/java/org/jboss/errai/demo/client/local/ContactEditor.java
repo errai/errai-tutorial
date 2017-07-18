@@ -19,11 +19,8 @@ package org.jboss.errai.demo.client.local;
 import javax.inject.Inject;
 
 import org.jboss.errai.common.client.api.IsElement;
-import org.jboss.errai.common.client.dom.DateInput;
 import org.jboss.errai.common.client.dom.Div;
 import org.jboss.errai.common.client.dom.HTMLElement;
-import org.jboss.errai.common.client.dom.TextArea;
-import org.jboss.errai.common.client.dom.TextInput;
 import org.jboss.errai.databinding.client.api.StateSync;
 import org.jboss.errai.demo.client.shared.Contact;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
