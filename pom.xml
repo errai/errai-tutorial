@@ -6,12 +6,12 @@
 
   <groupId>org.jboss.errai.demo</groupId>
   <artifactId>errai-tutorial</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>4.1.0-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>Errai::Tutorial</name>
 
   <properties>
-    <errai.version>4.0.2.Final</errai.version>
+    <errai.version>${project.version}</errai.version>
     <gwt.version>2.8.1</gwt.version>
     <elemental.version>1.0.0-beta-1</elemental.version>
     <slf4j.version>1.5.11</slf4j.version>
