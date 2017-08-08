@@ -191,7 +191,7 @@
           <server>org.jboss.errai.cdi.server.gwt.EmbeddedWildFlyLauncher</server>
           <disableCastChecking>true</disableCastChecking>
           <runTarget>${errai.dev.context}/</runTarget>
-          <soyc>false</soyc>
+          <soycDetailed>false</soycDetailed>
           <hostedWebapp>src/main/webapp</hostedWebapp>
           <strict>true</strict>
           <compileReport>true</compileReport>
