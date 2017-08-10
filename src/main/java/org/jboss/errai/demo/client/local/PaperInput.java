@@ -16,17 +16,17 @@
 
 package org.jboss.errai.demo.client.local;
 
-import org.jboss.errai.common.client.api.annotations.Element;
-import org.jboss.errai.common.client.dom.HTMLElement;
-import org.jboss.errai.common.client.ui.HasValue;
-
+import elemental2.dom.HTMLElement;
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import org.jboss.errai.common.client.api.annotations.Element;
+import org.jboss.errai.common.client.ui.HasValue;
 
 /**
  * <p>
- * A wrapper for the Polymer paper-input element.
- *
+ * A wrapper using Elemental2 API for the Polymer paper-input element.
+ * <p>
  * <p>
  * Implements {@link HasValue} with {@link JsProperty} methods so that Errai data-binding binds to the {@code value}
  * property of this element.
@@ -34,11 +34,15 @@ import jsinterop.annotations.JsType;
  * @author Max Barkley <mbarkley@redhat.com>
  */
 @Element("paper-input")
-@JsType(isNative = true)
-public interface PaperInput extends HTMLElement, HasValue<String> {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public abstract class PaperInput extends HTMLElement implements HasValue<String> {
 
-  @Override @JsProperty String getValue();
-  @Override @JsProperty void setValue(String value);
+  @Override
+  @JsProperty
+  public abstract String getValue();
 
+  @Override
+  @JsProperty
+  public abstract void setValue(String value);
 
 }

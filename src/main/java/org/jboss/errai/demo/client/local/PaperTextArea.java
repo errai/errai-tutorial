@@ -25,7 +25,7 @@ import jsinterop.annotations.JsType;
 
 /**
  * <p>
- * A wrapper for the Polymer paper-textarea element.
+ * A wrapper using Errai DOM wrappers API for the Polymer paper-textarea element.
  *
  * <p>
  * Implements {@link HasValue} with {@link JsProperty} methods so that Errai data-binding binds to the {@code value}

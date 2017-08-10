@@ -16,35 +16,35 @@
 
 package org.jboss.errai.demo.client.local;
 
-import org.jboss.errai.common.client.api.annotations.Element;
-import org.jboss.errai.common.client.dom.Anchor;
+import elemental2.dom.HTMLAnchorElement;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 import org.jboss.errai.common.client.ui.HasValue;
 import org.jboss.errai.ui.shared.api.annotations.Bound;
 
-import jsinterop.annotations.JsOverlay;
-import jsinterop.annotations.JsType;
-
 /**
  * <p>
- * An {@link Anchor} interface with special Errai Data Binding semantics. Binding to this element sets the element's
+ * An {@link HTMLAnchorElement} class with special Errai Data Binding semantics. Binding to this element sets the element's
  * inner text and it's href. The bound value is presumed to be an email.
  *
  * <p>
- * Because this type extends {@link HasValue}, the {@link #getValue()} and {@link #setValue(String)} methods will be
+ * Because this type implements {@link HasValue}, the {@link #getValue()} and {@link #setValue(String)} methods will be
  * used for accessing or mutating the element's value if this element is used with {@link Bound declarative data binding}.
  */
-@Element("a")
-@JsType(isNative = true)
-public interface BindableEmailAnchor extends Anchor, HasValue<String> {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public class BindableEmailAnchor extends HTMLAnchorElement implements HasValue<String> {
 
-  @JsOverlay @Override
-  default String getValue() {
-    return getTextContent();
+  @JsOverlay
+  @Override
+  public final String getValue() {
+    return textContent;
   }
 
-  @JsOverlay @Override
-  default void setValue(final String value) {
-    setTextContent(value);
-    setHref("mailto:" + value);
+  @JsOverlay
+  @Override
+  public final void setValue(final String value) {
+    textContent = value;
+    href = "mailto:" + value;
   }
 }

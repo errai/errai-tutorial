@@ -1,12 +1,12 @@
 /**
  * Copyright (C) 2016 Red Hat, Inc. and/or its affiliates.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,13 +16,8 @@
 
 package org.jboss.errai.demo.client.local;
 
-import static org.jboss.errai.demo.client.local.Click.Type.DOUBLE;
-import static org.jboss.errai.demo.client.local.Click.Type.SINGLE;
-
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-import javax.inject.Named;
-
+import elemental2.dom.HTMLDivElement;
+import elemental2.dom.HTMLHeadingElement;
 import org.jboss.errai.common.client.dom.Div;
 import org.jboss.errai.common.client.dom.MouseEvent;
 import org.jboss.errai.databinding.client.components.ListComponent;
@@ -34,8 +29,12 @@ import org.jboss.errai.ui.shared.api.annotations.EventHandler;
 import org.jboss.errai.ui.shared.api.annotations.ForEvent;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
-import elemental2.dom.HTMLDivElement;
-import elemental2.dom.HTMLHeadingElement;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import static org.jboss.errai.demo.client.local.Click.Type.DOUBLE;
+import static org.jboss.errai.demo.client.local.Click.Type.SINGLE;
 
 /**
  * <p>
@@ -78,30 +77,37 @@ public class ContactDisplay extends BaseContactView implements IsElement {
   private HTMLDivElement contact;
 
   @Inject
-  @Bound @DataField
+  @Bound
+  @DataField
   private HTMLDivElement fullname;
 
-  @Inject @Named("h4")
-  @Bound @DataField
+  @Inject
+  @Named("h4")
+  @Bound
+  @DataField
   private HTMLHeadingElement nickname;
 
   @Inject
-  @Bound @DataField
+  @Bound
+  @DataField
   private BindableTelAnchor phonenumber;
 
   @Inject
-  @Bound @DataField
+  @Bound
+  @DataField
   private BindableEmailAnchor email;
 
   /*
    * We specify a converter because Errai does not provide built-in conversion from String to Date.
    */
   @Inject
-  @Bound(converter = DateConverter.class) @DataField
+  @Bound(converter = DateConverter.class)
+  @DataField
   private Div birthday;
 
   @Inject
-  @Bound @DataField
+  @Bound
+  @DataField
   private Div notes;
 
   @Inject
@@ -114,7 +120,7 @@ public class ContactDisplay extends BaseContactView implements IsElement {
 
   /**
    * Called for single-click events on the {@link DataField @DataField} {@link #contact}. The CDI event fired here is
-   * observed by {@link ContactList#selectComponent(ContactDisplay)}.
+   * observed by {@link ContactListPage#selectComponent(ContactDisplay)}.
    */
   @EventHandler("contact")
   public void onClick(final @ForEvent("click") MouseEvent event) {
