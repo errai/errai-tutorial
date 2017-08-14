@@ -32,7 +32,7 @@ import org.jboss.errai.ui.shared.api.annotations.Bound;
  * Because this type implements {@link HasValue}, the {@link #getValue()} and {@link #setValue(String)} methods will be
  * used for accessing or mutating the element's value if this element is used with {@link Bound declarative data binding}.
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "HTMLAnchorElement")
 public class BindableEmailAnchor extends HTMLAnchorElement implements HasValue<String> {
 
   @JsOverlay
