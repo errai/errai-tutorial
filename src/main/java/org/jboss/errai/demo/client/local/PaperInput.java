@@ -34,7 +34,7 @@ import org.jboss.errai.common.client.ui.HasValue;
  * @author Max Barkley <mbarkley@redhat.com>
  */
 @Element("paper-input")
-@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "HTMLElement")
 public abstract class PaperInput extends HTMLElement implements HasValue<String> {
 
   @Override
