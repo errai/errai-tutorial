@@ -1,12 +1,12 @@
 /**
  * Copyright (C) 2016 Red Hat, Inc. and/or its affiliates.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,27 +16,15 @@
 
 package org.jboss.errai.demo.client.local;
 
-import static org.jboss.errai.demo.client.local.Click.Type.DOUBLE;
-import static org.jboss.errai.demo.client.local.Click.Type.SINGLE;
-import static org.jboss.errai.demo.client.shared.Operation.OperationType.CREATE;
-import static org.jboss.errai.demo.client.shared.Operation.OperationType.DELETE;
-import static org.jboss.errai.demo.client.shared.Operation.OperationType.UPDATE;
-
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.event.Observes;
-import javax.inject.Inject;
-
+import com.google.gwt.http.client.Response;
+import elemental2.dom.HTMLAnchorElement;
+import elemental2.dom.HTMLButtonElement;
+import elemental2.dom.HTMLFormElement;
+import elemental2.dom.MouseEvent;
+import jsinterop.base.Js;
 import org.jboss.errai.bus.client.api.ClientMessageBus;
 import org.jboss.errai.common.client.api.Caller;
-import org.jboss.errai.common.client.dom.Anchor;
-import org.jboss.errai.common.client.dom.Button;
 import org.jboss.errai.common.client.dom.DOMUtil;
-import org.jboss.errai.common.client.dom.Form;
-import org.jboss.errai.common.client.dom.MouseEvent;
 import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.databinding.client.api.StateSync;
 import org.jboss.errai.databinding.client.components.ListComponent;
@@ -57,8 +45,18 @@ import org.jboss.errai.ui.shared.api.annotations.ForEvent;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.slf4j.Logger;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.http.client.Response;
+import javax.annotation.PostConstruct;
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+
+import static org.jboss.errai.demo.client.local.Click.Type.DOUBLE;
+import static org.jboss.errai.demo.client.local.Click.Type.SINGLE;
+import static org.jboss.errai.demo.client.shared.Operation.OperationType.CREATE;
+import static org.jboss.errai.demo.client.shared.Operation.OperationType.DELETE;
+import static org.jboss.errai.demo.client.shared.Operation.OperationType.UPDATE;
 
 /**
  * <p>
@@ -102,7 +100,7 @@ public class ContactListPage {
 
   @Inject
   @DataField
-  private Form modal;
+  private HTMLFormElement modal;
 
   @Inject
   @DataField("modal-fields")
@@ -110,16 +108,16 @@ public class ContactListPage {
 
   @Inject
   @DataField("modal-delete")
-  private Button delete;
+  private HTMLButtonElement delete;
 
   @Inject
   private NavBar navbar;
 
   @Inject
-  private Anchor newContactAnchor;
+  private HTMLAnchorElement newContactAnchor;
 
   @Inject
-  private Anchor sortContactsAnchor;
+  private HTMLAnchorElement sortContactsAnchor;
 
   /**
    * This is a simple interface for calling a remote HTTP service. Behind this interface, Errai has generated an HTTP
@@ -157,13 +155,19 @@ public class ContactListPage {
     /*
      * Setup anchors that are added to the nav bar when the page is shown.
      */
-    newContactAnchor.setHref("javascript:void(0);");
-    newContactAnchor.setTextContent("Create Contact");
-    newContactAnchor.setOnclick(e -> displayFormWithNewContact());
+    newContactAnchor.href = ("javascript:void(0);");
+    newContactAnchor.textContent = ("Create Contact");
+    newContactAnchor.onclick = e -> {
+      displayFormWithNewContact();
+      return null;
+    };
 
-    sortContactsAnchor.setHref("javascript:");
-    sortContactsAnchor.setTextContent("Sort By Nickname");
-    sortContactsAnchor.setOnclick(e -> sortContactsByName());
+    sortContactsAnchor.href = ("javascript:");
+    sortContactsAnchor.textContent = ("Sort By Nickname");
+    sortContactsAnchor.onclick = (e -> {
+      sortContactsByName();
+      return null;
+    });
   }
 
   /**
@@ -213,11 +217,12 @@ public class ContactListPage {
   @EventHandler("modal-submit")
   public void onModalSubmitClick(final @ForEvent("click") MouseEvent event) {
     if (modal.checkValidity()) {
-      DOMUtil.removeCSSClass(modal, "displayed");
+
+      modal.classList.remove("displayed");
+
       if (binder.getModel().contains(editor.getValue())) {
         updateContactFromEditor();
-      }
-      else {
+      } else {
         createNewContactFromEditor();
       }
     }
@@ -235,7 +240,7 @@ public class ContactListPage {
    */
   @EventHandler("modal-cancel")
   public void onModalCancelClick(final @ForEvent("click") MouseEvent event) {
-    DOMUtil.removeCSSClass(modal, "displayed");
+    modal.classList.remove("displayed");
   }
 
   /**
@@ -259,13 +264,14 @@ public class ContactListPage {
         }
       }).delete(editor.getValue().getId());
       editor.setValue(new Contact());
-      DOMUtil.removeCSSClass(modal, "displayed");
+
+      modal.classList.remove("displayed");
     }
   }
 
   /**
    * Observes local CDI events fired from
-   * {@link ContactDisplay#onDoubleClick(com.google.gwt.event.dom.client.DoubleClickEvent)}, in order to display the
+   * {@link ContactDisplay#onDoubleClick(elemental2.dom.MouseEvent)}, in order to display the
    * modal form for editting a contact.
    */
   public void editComponent(final @Observes @Click(DOUBLE) ContactDisplay component) {
@@ -274,14 +280,13 @@ public class ContactListPage {
   }
 
   /**
-   * This method observes CDI events fired locally by {@link ContactDisplay#onClick(ClickEvent)} in order to highlight a
+   * This method observes CDI events fired locally by {@link ContactDisplay#onClick(elemental2.dom.MouseEvent)} in order to highlight a
    * {@link ContactDisplay} when it is clicked.
    */
   public void selectComponent(final @Observes @Click(SINGLE) ContactDisplay component) {
     if (list.getSelectedComponents().contains(component)) {
       list.deselectAll();
-    }
-    else {
+    } else {
       list.deselectAll();
       list.selectComponent(component);
     }
@@ -306,7 +311,8 @@ public class ContactListPage {
     if (sourceIsNotThisClient(contactOperation)) {
       final int indexOf = binder.getModel().indexOf(contactOperation.getContact());
       if (indexOf == -1) {
-        logger.warn("Received update before creation for " + contactOperation.getContact() + " from " + contactOperation.getSourceQueueSessionId());
+        logger.warn("Received update before creation for " + contactOperation.getContact() + " from " + contactOperation
+                .getSourceQueueSessionId());
         binder.getModel().add(contactOperation.getContact());
       } else {
         binder.getModel().set(indexOf, contactOperation.getContact());
@@ -337,7 +343,7 @@ public class ContactListPage {
       // Set the id if we successfully create this contact.
       if (response.getStatusCode() == Response.SC_CREATED) {
         final String createdUri = response.getHeader("Location");
-        final String idString = createdUri.substring(createdUri.lastIndexOf('/')+1);
+        final String idString = createdUri.substring(createdUri.lastIndexOf('/') + 1);
         final long id = Long.parseLong(idString);
         editorModel.setId(id);
       }
@@ -362,7 +368,8 @@ public class ContactListPage {
    * For ignoring remote events that originate from this client.
    */
   private boolean sourceIsNotThisClient(final ContactOperation contactOperation) {
-    return contactOperation.getSourceQueueSessionId() == null || !contactOperation.getSourceQueueSessionId().equals(bus.getSessionId());
+    return contactOperation.getSourceQueueSessionId() == null || !contactOperation.getSourceQueueSessionId()
+            .equals(bus.getSessionId());
   }
 
   /**
@@ -371,11 +378,11 @@ public class ContactListPage {
    */
   private void displayModal(final boolean showDelete) {
     if (showDelete) {
-      delete.getStyle().removeProperty("display");
+      delete.style.removeProperty("display");
     } else {
-      delete.getStyle().setProperty("display", "none");
+      delete.style.setProperty("display", "none");
     }
-    DOMUtil.addCSSClass(modal, "displayed");
+    modal.classList.add("displayed");
   }
 
   private void editModel(final Contact model) {
@@ -389,7 +396,7 @@ public class ContactListPage {
 
   private void sortContactsByName() {
     binder.pause();
-    Collections.sort(binder.getModel(), (a,b) -> a.getNickname().compareTo(b.getNickname()));
+    binder.getModel().sort(Comparator.comparing(Contact::getNickname));
     binder.resume(StateSync.FROM_MODEL);
   }
 }

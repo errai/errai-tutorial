@@ -18,8 +18,7 @@ package org.jboss.errai.demo.client.local;
 
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLHeadingElement;
-import org.jboss.errai.common.client.dom.Div;
-import org.jboss.errai.common.client.dom.MouseEvent;
+import elemental2.dom.MouseEvent;
 import org.jboss.errai.databinding.client.components.ListComponent;
 import org.jboss.errai.demo.client.shared.Contact;
 import org.jboss.errai.ui.client.local.api.IsElement;
@@ -41,26 +40,26 @@ import static org.jboss.errai.demo.client.local.Click.Type.SINGLE;
  * An Errai UI component for displaying a single {@link Contact} as a row in an HTML table. Can be used to display
  * {@link Contact Contacts} in a {@link ListComponent}. This component can be bound to a {@link Contact} by calling
  * {@link #setValue(Contact)}.
- *
+ * <p>
  * <p>
  * The HTML markup for this {@link Templated} component is the HTML element with the CSS class {@code contact} in the
  * file {@code contact-page.html} in this package. This component uses CSS from the file {@code contact-page.css} in
  * this package.
- *
+ * <p>
  * <p>
  * The {@link DataField} annotation marks fields that replace HTML elements from the template file. As an example, the
  * field {@link ContactDisplay#contact} is the root {@code
- *
-<tr>
+ * <p>
+ * <tr>
  * } element of this component; it can be used to attach this component to the DOM.
- *
+ * <p>
  * <p>
  * The {@link Bound} annotations mark UI fields as managed by Errai Data Binding, which keeps UI values synchronized
  * with properties in the bound {@link Contact} model instance. (See the base class, {@link BaseContactView}.)
- *
+ * <p>
  * <p>
  * Errai UI automatically registers methods annotated with {@link EventHandler} to listen for DOM events.
- *
+ * <p>
  * <p>
  * Instances of this type should be obtained via Errai IoC, either by using {@link Inject} in another container managed
  * bean, or by programmatic lookup through the bean manager.
@@ -103,12 +102,12 @@ public class ContactDisplay extends BaseContactView implements IsElement {
   @Inject
   @Bound(converter = DateConverter.class)
   @DataField
-  private Div birthday;
+  private HTMLDivElement birthday;
 
   @Inject
   @Bound
   @DataField
-  private Div notes;
+  private HTMLDivElement notes;
 
   @Inject
   @Click(SINGLE)
@@ -139,9 +138,8 @@ public class ContactDisplay extends BaseContactView implements IsElement {
   /**
    * Marks this as selected (or not) so that it may be styled differently in the UI.
    *
-   * @param selected
-   *          If {@code true}, add the CSS class "selected" to the {@code <tr>} tag in this component. If {@code false},
-   *          remove the CSS class "selected" from the {@code <tr>} tag in this component.
+   * @param selected If {@code true}, add the CSS class "selected" to the {@code <tr>} tag in this component. If {@code false},
+   *                 remove the CSS class "selected" from the {@code <tr>} tag in this component.
    */
   public void setSelected(final boolean selected) {
     if (selected) {
