@@ -56,7 +56,7 @@ public abstract class JQueryProducer {
    * @see AppSetup
    */
   @JsType(isNative = true)
-  public abstract class JQueryElement extends HTMLElement {
+  public static abstract class JQueryElement extends HTMLElement {
     abstract void after(HTMLElement element);
 
     abstract void before(HTMLElement element);
