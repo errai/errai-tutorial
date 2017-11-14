@@ -17,6 +17,9 @@
 package org.jboss.errai.demo.client.local;
 
 import com.google.gwt.user.client.ui.RootPanel;
+
+import elemental2.dom.HTMLDocument;
+
 import org.jboss.errai.demo.client.local.JQueryProducer.JQuery;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.ui.nav.client.local.NavigationPanel;
@@ -24,8 +27,6 @@ import org.jboss.errai.ui.nav.client.local.NavigationPanel;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * <p>
@@ -47,6 +48,9 @@ public class AppSetup {
 
   @Inject
   private JQuery $;
+
+  @Inject
+  private HTMLDocument document;
 
   @PostConstruct
   public void init() {
