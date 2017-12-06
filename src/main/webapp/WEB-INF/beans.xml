@@ -10,6 +10,7 @@
     <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer" />
     <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQuery" />
     <exclude name = "org.jboss.errai.demo.client.local.PaperTextArea" />
+    <exclude name = "org.jboss.errai.demo.client.local.Elemental2Producer" />
     <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQueryElement" />
     <exclude name = "org.jboss.errai.demo.client.local.DateConverter" />
     <exclude name = "org.jboss.errai.demo.client.local.NavBar" />
