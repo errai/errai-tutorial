@@ -6,7 +6,7 @@
 
   <groupId>org.jboss.errai.demo</groupId>
   <artifactId>errai-tutorial</artifactId>
-  <version>4.2.0-SNAPSHOT</version>
+  <version>4.2.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>Errai::Tutorial</name>
 
@@ -17,7 +17,7 @@
     <slf4j.version>1.5.11</slf4j.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <errai.dev.context>${project.artifactId}</errai.dev.context>
-    <as.version>10.0.0.Final</as.version>
+    <as.version>11.0.0.Final</as.version>
     <!-- Add the absolute path for $JBOSS_HOME below to manage another instance -->
     <errai.jboss.home>${project.build.directory}/wildfly-${as.version}</errai.jboss.home>
   </properties>
