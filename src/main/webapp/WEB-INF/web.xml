@@ -7,6 +7,11 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 
+  <context-param>
+     <param-name>resteasy.use.builtin.providers</param-name>
+     <param-value>false</param-value>
+  </context-param>
+
   <servlet-mapping>
     <servlet-name>javax.ws.rs.core.Application</servlet-name>
     <url-pattern>/rest/*</url-pattern>
