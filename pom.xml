@@ -6,7 +6,7 @@
 
   <groupId>org.jboss.errai.demo</groupId>
   <artifactId>errai-tutorial</artifactId>
-  <version>4.3.5-SNAPSHOT</version>
+  <version>4.4.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>Errai::Tutorial</name>
 
